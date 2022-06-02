@@ -1,6 +1,4 @@
-# Machfiles
-
-![machfiles image](./machfiles.png)
+# Flexfiles
 
 ## Installing
 
@@ -22,6 +20,7 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
+TODO:
 ## Programs
 
 An updated list of all the programs I use can be found in the `programs` directory
