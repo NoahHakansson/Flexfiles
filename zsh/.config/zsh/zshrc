@@ -19,7 +19,6 @@ zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
 # compinit
-_comp_options+=(globdots)		# Include hidden files.
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -39,6 +38,7 @@ zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 
 # Plugins
+zsh_add_plugin "Aloxaf/fzf-tab"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
@@ -71,10 +71,12 @@ bindkey -r "^d"
 [ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 compinit
+_comp_options+=(globdots)		# Include hidden files.
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
+# bindkey '^I' fzf_completion
 
 ### caps as esc and key repeat
 xset r rate 300 80
