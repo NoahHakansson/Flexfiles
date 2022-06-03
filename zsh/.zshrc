@@ -78,12 +78,9 @@ compinit
 autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 
-# TODO Remove these
+### caps as esc and key repeat
+xset r rate 300 80
 setxkbmap -option caps:escape
-xset r rate 210 40
-
-# Speedy keys
-xset r rate 210 40
 
 # Environment variables set everywhere
 export EDITOR="nvim"
