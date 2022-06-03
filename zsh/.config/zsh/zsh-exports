@@ -3,8 +3,11 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+# export MANPAGER='nvim +Man!'
+### bat as manpager
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export BAT_THEME="TwoDark"
+# export MANWIDTH=999
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
@@ -18,9 +21,6 @@ export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 . "$HOME/.cargo/env"
 export PATH="$PATH:/usr/local/bin/Postman"
-### bat as manpager
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-export BAT_THEME="TwoDark"
 ### Nvim as editor
 export EDITOR='lvim'
 export VISUAL='lvim'
