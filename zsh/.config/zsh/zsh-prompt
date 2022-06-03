@@ -33,7 +33,7 @@ zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]
 
 # format our main prompt for hostname current folder, and permissions.
 NEWLINE=$'\n'
-PROMPT="%B%F{black}[%F{blue}%n%F{red}[@]%F{blue}%m%F{black}] %b%F{white}at %B%{$fg[cyan]%}%c%{$reset_color%}"
+PROMPT="%B%F{black}[%F{blue}%n%F{red}[@]%F{blue}%m%F{black}] %b%F{white}at %B%{$fg[cyan]%}%~%{$reset_color%}"
 # PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
 PROMPT+="\$vcs_info_msg_0_ "
 PROMPT+="${NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%b"
