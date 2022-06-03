@@ -20,7 +20,9 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-TODO:
-## Programs
+## Tmux
+Tmux needs TPM (Tmux Plugin Manager) https://github.com/tmux-plugins/tpm
+
+## Programs (TODO)
 
 An updated list of all the programs I use can be found in the `programs` directory
