@@ -1,0 +1,53 @@
+set recolor
+set recolor-keephue
+
+set default-fg 			    "#f2f2f2"
+set default-bg 			    "#282c34"
+
+set completion-bg		    "#1f2227"
+set completion-fg		    "#f2f2f2"
+set completion-highlight-bg	"#575268"
+set completion-highlight-fg	"#f2f2f2"
+set completion-group-bg		"#1f2227"
+set completion-group-fg		"#96cdfb"
+
+set statusbar-fg		    "#f2f2f2"
+set statusbar-bg		    "#1f2227"
+
+set notification-bg		    "#1f2227"
+set notification-fg		    "#f2f2f2"
+set notification-error-bg	"#1f2227"
+set notification-error-fg	"#f28fad"
+set notification-warning-bg	"#1f2227"
+set notification-warning-fg	"#fae3b0"
+
+set inputbar-fg			    "#f2f2f2"
+set inputbar-bg 		    "#1f2227"
+
+set recolor-lightcolor		"#1f2227"
+set recolor-darkcolor		"#f2f2f2"
+
+set index-fg			    "#f2f2f2"
+set index-bg			    "#1f2227"
+set index-active-fg		    "#f2f2f2"
+set index-active-bg		    "#1f2227"
+
+set render-loading-bg		"#1f2227"
+set render-loading-fg		"#f2f2f2"
+
+set highlight-color		    "#575268"
+set highlight-active-color	"#f5c2e7"
+
+
+
+
+
+
+
+# GruvBox theme
+# set recolor-lightcolor \#1d2021
+# set recolor-darkcolor \#ebdbb2
+# set recolor-keephue
+# set default-bg \#3c3836
+# set statusbar-bg \#282828
+# set statusbar-fg \#ebdbb2
