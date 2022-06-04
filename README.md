@@ -27,7 +27,6 @@ docker run --name testFF -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
     apt update
     apt install -y sudo curl unzip zsh vim exa tmux git stow fzf
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/NoahHakansson/Flexfiles/tryme/tryme.sh)"'
-    '
 ```
 
 ## Tmux
