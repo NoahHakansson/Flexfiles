@@ -26,16 +26,7 @@ stow zsh # Just my zsh config
 docker run --name testFF -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
     apt update
     apt install -y sudo curl unzip zsh vim exa tmux git stow fzf
-    useradd -r -m -s /usr/bin/zsh testUser
-    passwd -d testUser
-    NEWUSER="testUser"
-    echo "$NEWUSER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$NEWUSER && chmod 0440 /etc/sudoers.d/$NEWUSER
-    git clone https://github.com/NoahHakansson/Flexfiles.git /home/testUser/Flexfiles/
-    cd /home/testUser/Flexfiles/
-    stow */
-    chown -R testUser /home/testUser/
-    su testUser
-    echo "Thank you for testing!!"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/NoahHakansson/Flexfiles/tryme/tryme.sh)"'
     '
 ```
 
