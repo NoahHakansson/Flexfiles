@@ -20,7 +20,7 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 ## Try it in a docker container (Not everything is available in docker)
-### Important: type 'exec zsh' once to reload, otherwise zsh plugins dont work.
+### Important: type `exec zsh` once to reload, otherwise zsh plugins dont work.
 
 ```bash
 docker run --name testFF -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
