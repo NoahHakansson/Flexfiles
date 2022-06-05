@@ -19,7 +19,7 @@ stow */ # Everything (the '/' ignores the README)
 ```bash
 stow zsh # Just my zsh config
 ```
-## Try it in a docker container (Not everything is available)
+## Try it in a docker container (Not everything works perfectly)
 ### Important!! Type `exec zsh` once to reload zsh, otherwise plugins do not work.
 
 ```bash
