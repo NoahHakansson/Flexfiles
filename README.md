@@ -27,7 +27,8 @@ stow zsh # Just my zsh config
 ```
 
 ## Requirements
-* Make sure you have installed the latest version of `Neovim (v0.7.0+), git, make, pip, npm, node, fnm and cargo installed on your system.`
+* Make sure you have installed:
+`Neovim (v0.7.0+), git, make, pip, npm, node, fnm and cargo`
 * TPM [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 * lvim [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
 
