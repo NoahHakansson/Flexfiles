@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
- 1. [Install](#Install)
- 2. [Requirements](#Requirements)
- 3. [Programs](#Programs)
+ * [Install](#Install)
+ * [Requirements](#Requirements)
+ * [Programs](#Programs)
 
 ## Install
 
