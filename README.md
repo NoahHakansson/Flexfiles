@@ -21,11 +21,7 @@ stow zsh # Just my zsh config
 ```
 
 ## Tmux
-Tmux needs TPM (Tmux Plugin Manager) for plugins to work
-
-```
-https://github.com/tmux-plugins/tpm
-```
+Tmux needs TPM ([Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)) for plugins to work
 
 ## Programs (TODO)
 
