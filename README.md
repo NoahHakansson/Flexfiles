@@ -19,18 +19,13 @@ stow */ # Everything (the '/' ignores the README)
 ```bash
 stow zsh # Just my zsh config
 ```
-## Try it in a docker container (Not everything works perfectly)
-### Important!! Type `exec zsh` once to reload zsh, otherwise plugins do not work.
-
-```bash
-docker run --name testFF -e TERM -e COLORTERM -w /root -it --rm ubuntu sh -uec '
-    apt update
-    apt install -y sudo curl unzip zsh vim exa tmux git stow fzf
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/NoahHakansson/Flexfiles/tryme/tryme.sh)"'
-```
 
 ## Tmux
-Tmux needs TPM (Tmux Plugin Manager) https://github.com/tmux-plugins/tpm
+Tmux needs TPM (Tmux Plugin Manager) for plugins to work
+
+```
+https://github.com/tmux-plugins/tpm
+```
 
 ## Programs (TODO)
 
