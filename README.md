@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-* [Install](#Install)
-* [Requirements](#Requirements)
+* [Installation](#Installation)
+* [Other Requirements](#Other Requirements)
 * [Programs](#Programs)
 
-## Install
+## Installation
 
 You will need `git` and GNU `stow`
 
@@ -26,8 +26,8 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-## Requirements
-* Make sure you have installed the latest version of Neovim v0.7.0+. Have git, make, pip, npm, node and cargo installed on your system.
+## Other Requirements
+* Make sure you have installed the latest version of Neovim v0.7.0+. Have git, make, pip, npm, node, fnm and cargo installed on your system.
 * TPM [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 * lvim [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
 
