@@ -33,5 +33,6 @@ stow zsh # Just my zsh config
 * lvim [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
 
 ## Programs
+TODO:
 
 An updated list of all the programs I use can be found in the `programs` directory
