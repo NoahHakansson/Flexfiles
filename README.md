@@ -1,12 +1,12 @@
 # Flexfiles
 
 ## Table of Contents
-    <!--
-       - 1. [Installing](#Installing)
-       - 2. [Example2](#example2)
-       - 3. [Third Example](#third-example)
-       - 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
-       -->
+
+ - 1. [Installing](#Installing)
+ - 2. [Example2](#example2)
+ - 3. [Third Example](#third-example)
+ - 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
 ## Installing
 
 You will need `git` and GNU `stow`
