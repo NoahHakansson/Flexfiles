@@ -3,8 +3,8 @@
 ## Table of Contents
 
 * [Installation](#Installation)
-* [Other Requirements](#reqs)
-* [Programs](#Programs)
+* [Other Requirements](#Other%20Requirements)
+* [Programs](#Programs%20(TODO))
 
 ## Installation
 
@@ -26,11 +26,11 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-## [Other Requirements](reqs)
+## Other Requirements
 * Make sure you have installed the latest version of Neovim v0.7.0+. Have git, make, pip, npm, node, fnm and cargo installed on your system.
 * TPM [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 * lvim [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
 
-## [Programs (TODO)](Programs)
+## Programs (TODO)
 
 An updated list of all the programs I use can be found in the `programs` directory
