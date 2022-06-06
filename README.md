@@ -3,8 +3,8 @@
 ## Table of Contents
 
 * [Installation](#Installation)
-* [Other Requirements](#Other-Requirements)
-* [Programs](#Programs-(TODO))
+* [Other Requirements](<#Other Requirements>)
+* [Programs](<#Programs (TODO)>)
 
 ## Installation
 
