@@ -29,7 +29,7 @@ stow zsh # Just my zsh config
 ## Requirements
 
 Make sure you have installed:
-`Neovim (v0.7.0+), git, make, pip, npm, node, fnm and cargo`
+`Neovim (v0.7.0+), git, stow, make, pip, npm, node, fnm and cargo`
 
 ## Programs
 
