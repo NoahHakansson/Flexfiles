@@ -27,10 +27,14 @@ stow zsh # Just my zsh config
 ```
 
 ## Requirements
-* Make sure you have installed:
+Requirements for the programs in the Dotfiles.
+
+Make sure you have installed:
 `Neovim (v0.7.0+), git, make, pip, npm, node, fnm and cargo`
-* TPM [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
-* lvim [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
+
+* [Alacritty](https://github.com/alacritty/alacritty)
+* [LunarVim](https://www.lunarvim.org/01-installing.html#prerequisites)
+* [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
 ## Programs
 **TODO:**
