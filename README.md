@@ -2,12 +2,11 @@
 
 ## Table of Contents
 
- - 1. [Installing](#Installing)
- - 2. [Example2](#example2)
- - 3. [Third Example](#third-example)
- - 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+ - 1. [Install](#Install)
+ - 2. [Requirements](#Requirements)
+ - 3. [Programs](#Programs)
 
-## Installing
+## Install
 
 You will need `git` and GNU `stow`
 
@@ -27,7 +26,7 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-### Tmux
+### Requirements
 Tmux needs TPM ([Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)) for plugins to work
 
 ## Programs (TODO)
