@@ -26,7 +26,7 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-### Requirements
+## Requirements
 Tmux needs TPM ([Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)) for plugins to work
 
 ## Programs (TODO)
