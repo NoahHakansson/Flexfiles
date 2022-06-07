@@ -4,14 +4,14 @@ My Dotfiles.
 
 Feel free to use/steal anything :D
 
-![Flexfiles image 1](./Flexfiles-1.png)
-![Flexfiles image 2](./Flexfiles-2.png)
-
 ## Table of Contents
 
 * [Installation](#Installation)
 * [Requirements](#Requirements)
 * [Programs](#Programs)
+
+![Flexfiles image 1](./Flexfiles-1.png)
+![Flexfiles image 2](./Flexfiles-2.png)
 
 ## Installation
 
