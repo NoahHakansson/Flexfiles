@@ -2,7 +2,7 @@
 
 My Dotfiles.
 
-Feel free to use/steal anything :D
+Feel free to use/steal anything 😄
 
 Features:
 
