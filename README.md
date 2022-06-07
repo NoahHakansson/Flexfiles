@@ -6,7 +6,7 @@ Feel free to use/steal anything :D
 
 Features:
 
-- The fast and powerful [Alacritty](https://github.com/alacritty/alacritty) terminal with a onedark inspired theme.
+- The fast and powerful [Alacritty](https://github.com/alacritty/alacritty) terminal emulator with a onedark inspired theme.
 - Standalone Zshrc, (No, Oh My Zsh). With vim mode, [fzf](https://github.com/junegunn/fzf), tab completion powered with [fzf-tab](https://github.com/Aloxaf/fzf-tab) and a nice looking prompt with git integration.
 - Tmux with sane keybindings, automatic session saving and restoring on reboot and the same onedark inspired theme.
 - [Zathura](https://pwmt.org/projects/zathura/) a vim-like keyboard driven pdf viewer. 
