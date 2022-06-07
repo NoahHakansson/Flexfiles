@@ -4,7 +4,7 @@ My Dotfiles.
 
 Feel free to use/steal anything :D
 
-## Table of Contents
+### Table of Contents
 
 * [Installation](#Installation)
 * [Requirements](#Requirements)
