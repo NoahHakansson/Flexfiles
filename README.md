@@ -4,14 +4,18 @@ My Dotfiles.
 
 Feel free to use/steal anything :D
 
-### Table of Contents
+Features:
 
-* [Installation](#Installation)
-* [Requirements](#Requirements)
-* [Programs](#Programs)
+- Zsh with vim mode, [fzf](https://github.com/junegunn/fzf) powered tab completion with [fzf-tab](https://github.com/Aloxaf/fzf-tab)
 
 ![Flexfiles image 1](./Flexfiles-1.png)
 ![Flexfiles image 2](./Flexfiles-2.png)
+
+## Table of Contents
+
+- [Installation](#Installation)
+- [Requirements](#Requirements)
+- [Programs](#Programs)
 
 ## Installation
 
