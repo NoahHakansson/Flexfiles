@@ -144,7 +144,8 @@ lvim.builtin.telescope.defaults.mappings = {
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["h"] = { ":ClangdSwitchSourceHeader<CR>", "Switch Source/Header" }
 lvim.builtin.which_key.mappings["7"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" }
-lvim.builtin.which_key.vmappings["7"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
+lvim.builtin.which_key.vmappings["7"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
+  "Comment" }
 
 -- Search and replace
 -- lvim.builtin.which_key.mappings["r"] = {
@@ -317,6 +318,11 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+-- cheat.sh plugin bind
+lvim.builtin.which_key.mappings["?"] = {
+  "<cmd>Cheat<CR>", "Cheat.sh"
+}
+
 -- unbind <M-x> in insert mode
 -- vim.api.nvim_set_keymap("i", "<M-x>", "", {noremap = true})
 -- lsp_signature cfg
@@ -327,11 +333,11 @@ local cfg = {
   verbose = false, -- show debug line number
 
   bind = true, -- This is mandatory, otherwise border config won't get registered.
-               -- If you want to hook lspsaga or other signature handler, pls set to false
+  -- If you want to hook lspsaga or other signature handler, pls set to false
   doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
-                 -- set to 0 if you DO NOT want any API comments be shown
-                 -- This setting only take effect in insert mode, it does not affect signature help in normal
-                 -- mode, 10 by default
+  -- set to 0 if you DO NOT want any API comments be shown
+  -- This setting only take effect in insert mode, it does not affect signature help in normal
+  -- mode, 10 by default
 
   floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
@@ -343,16 +349,16 @@ local cfg = {
   floating_window_off_y = 1, -- adjust float windows y position.
 
 
-  fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
+  fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
   hint_enable = true, -- virtual hint enable
-  hint_prefix = "🐼 ",  -- Panda for parameter
+  hint_prefix = "🐼 ", -- Panda for parameter
   hint_scheme = "String",
   hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
   max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
-                   -- to view the hiding contents
+  -- to view the hiding contents
   max_width = 80, -- max_width of signature floating_window, line will be wrapped if exceed max_width
   handler_opts = {
-    border = "rounded"   -- double, rounded, single, shadow, none
+    border = "rounded" -- double, rounded, single, shadow, none
   },
 
   always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
@@ -370,13 +376,19 @@ local cfg = {
   toggle_key = 'nil' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 }
 
+-- load telescope extensions
+lvim.builtin.telescope.on_config_done = function(telescope)
+  -- pcall(telescope.load_extension, "frecency")
+  -- pcall(telescope.load_extension, "neoclip")
+  -- any other extensions loading
+end
 
 -- Additional Plugins
 lvim.plugins = {
   { "folke/tokyonight.nvim" },
   { "tpope/vim-surround" },
   { "sainnhe/gruvbox-material" },
-  {"olimorris/onedarkpro.nvim"},
+  { "olimorris/onedarkpro.nvim" },
   -- smart identation
   { "tpope/vim-sleuth" },
   -- {"Darazaki/indent-o-matic"},
@@ -386,6 +398,8 @@ lvim.plugins = {
   { "tpope/vim-rhubarb" },
   { "tpope/vim-obsession" },
   { "tommcdo/vim-fugitive-blame-ext" },
+  { "RishabhRD/popfix" },
+  { "dagle/nvim-cheat.sh" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
