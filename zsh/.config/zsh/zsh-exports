@@ -3,14 +3,15 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
-# export MANPAGER='nvim +Man!'
 ### bat as manpager
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export BAT_THEME="TwoDark"
-# export MANWIDTH=999
+# cargo
 export PATH=$HOME/.cargo/bin:$PATH
+# golang
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
+# node
 export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
 eval "$(fnm env)"
