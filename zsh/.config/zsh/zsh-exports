@@ -10,7 +10,7 @@ export BAT_THEME="TwoDark"
 # export MANWIDTH=999
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
-export GOPATH=$HOME/go-workspace
+export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
 eval "$(fnm env)"
