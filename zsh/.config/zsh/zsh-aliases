@@ -90,6 +90,9 @@ alias nvim='lvim'
 alias vim='lvim'
 alias vi='lvim'
 
+# Quality of life
+alias docker='sudo docker'
+
 # Config editing aliases
 ## Suckless
 alias cfdwm='cd $HOME/suckless/dwm; vim config.def.h'
