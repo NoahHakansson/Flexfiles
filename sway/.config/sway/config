@@ -71,9 +71,11 @@ exec swayidle -w \
 ### Input configuration
 
 input "type:keyboard" {
+    xkb_layout se
+    xkb_variant us
+    xkb_options caps:escape
     repeat_delay 300
     repeat_rate 80
-    xkb_options caps:escape
 }
 
 input "type:touchpad" {
@@ -87,9 +89,9 @@ input "type:touchpad" {
 
 input "type:pointer" {
     # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
-    accel_profile "adaptive"
+    accel_profile "flat"
     # set mouse sensitivity (between -1 and 1)
-    pointer_accel 0.5
+    pointer_accel 0.7
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -102,7 +104,7 @@ input "type:pointer" {
     bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
-    bindsym $mod+q kill
+    bindsym $mod+Shift+q kill
 
     # Start your launcher
     # bindsym $mod+d exec $menu
@@ -156,10 +158,10 @@ input "type:pointer" {
     bindsym $mod+Shift+t nop i3ipc_tabbed_toggle
 
     # Toggle fullscreen mode.
-    bindsym $mod+Shift+f fullscreen toggle
+    bindsym $mod+m fullscreen toggle
 
     # Toggle monocle mode.
-    bindsym $mod+f nop i3ipc_monocle_toggle
+    # bindsym $mod+f nop i3ipc_monocle_toggle
 
     # Toggle workspace.
     bindsym $mod+Tab workspace back_and_forth
@@ -235,10 +237,8 @@ input "type:pointer" {
     # bindsym $mod+b splith
     # bindsym $mod+v splitv
 
-    bindsym $mod+w exec $browser
-    bindsym $mod+m exec $music
-    bindsym $mod+b exec $email
-    bindsym $mod+e exec $files
+    bindsym $mod+Shift+w exec $browser
+    bindsym $mod+Shift+f exec $files
     # bindsym $mod+v exec $record
 
     # Switch the current container between different layout styles
@@ -302,7 +302,6 @@ default_border pixel 3
 for_window [title="^.*"] title_format " "
 #default_border normal 0
 # default_floating_border normal 0
-default_border pixel 3
 
 ### Gaps
 
