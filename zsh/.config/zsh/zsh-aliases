@@ -92,6 +92,7 @@ alias vi='lvim'
 
 # Quality of life
 alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
 
 # Config editing aliases
 ## Suckless
