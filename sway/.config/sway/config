@@ -91,7 +91,7 @@ input "type:pointer" {
     # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     accel_profile "flat"
     # set mouse sensitivity (between -1 and 1)
-    pointer_accel 0.7
+    pointer_accel 0.6
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -101,14 +101,14 @@ input "type:pointer" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Shift+Return exec $term
+    bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+p exec wofi --show drun --insensitive --allow-images --prompt=""
+    bindsym $mod+p exec wofi --gtk-dark --show drun --insensitive --allow-images --prompt=""
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -152,7 +152,7 @@ input "type:pointer" {
     bindsym $mod+shift+o nop i3ipc_move other
 
     # Swap window with the other container.
-    bindsym $mod+Return nop i3ipc_move swap
+    bindsym $mod+Shift+Return nop i3ipc_move swap
 
     # Toggle tabbed mode.
     bindsym $mod+Shift+t nop i3ipc_tabbed_toggle
@@ -237,8 +237,8 @@ input "type:pointer" {
     # bindsym $mod+b splith
     # bindsym $mod+v splitv
 
-    bindsym $mod+Shift+w exec $browser
-    bindsym $mod+Shift+f exec $files
+    bindsym $mod+w exec $browser
+    bindsym $mod+f exec $files
     # bindsym $mod+v exec $record
 
     # Switch the current container between different layout styles
