@@ -249,7 +249,7 @@ input "type:pointer" {
     # Make the current focus fullscreen
     # bindsym $mod+f fullscreen
 
-    bindsym $mod+y exec grim -g "$(slurp)" - | swappy -f - 
+    bindsym $mod+Ctrl+p exec grim -g "$(slurp)" - | swappy -f - 
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+semicolon floating toggle
@@ -297,22 +297,32 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### No titlebars
-# default_border none 
+# Borders
+default_border none
 default_border pixel 3
 for_window [title="^.*"] title_format " "
 #default_border normal 0
 # default_floating_border normal 0
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
 
 ### Gaps
 
 gaps inner 10
 gaps outer 10
-gaps horizontal 10 
-gaps vertical 10
-gaps top 10
-gaps right 10
-gaps bottom 10
-gaps left 10
+gaps horizontal 0 
+gaps vertical 0
+gaps top 0
+gaps right 0
+gaps bottom 0
+gaps left 0
 
 ### Opacity
 # set $opacity 0.97
