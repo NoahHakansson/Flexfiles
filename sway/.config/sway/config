@@ -60,12 +60,12 @@ output * bg $HOME/walls/dball.png fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 2700 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
-         timeout 5400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 1200 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
+         timeout 2700 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5'
 #
-# This will lock your screen after 45 mins of inactivity, then turn off
-# your displays after another 45 mins, and turn your screens back on when
+# This will lock your screen after 20 mins of inactivity, then turn off
+# your displays after another 25 mins (45 mins total), and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
