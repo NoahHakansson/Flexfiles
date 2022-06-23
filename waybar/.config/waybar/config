@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "battery", "clock", "tray", "sway/language"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -76,7 +76,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%a %e %b %R, Week %V}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -91,7 +91,7 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["","",""]
     },
     "backlight": {
         // "device": "acpi_video1",
