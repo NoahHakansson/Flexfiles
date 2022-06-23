@@ -108,7 +108,7 @@ input "type:pointer" {
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+p exec wofi --gtk-dark --show drun --insensitive --allow-images --prompt=""
+    bindsym $mod+p exec wofi --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
