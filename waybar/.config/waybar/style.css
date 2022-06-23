@@ -21,6 +21,8 @@ window#waybar.hidden {
 
 #window {
     margin-top: 8px;
+    margin-right: 22px;
+    margin-left: 22px;
     padding-left: 16px;
     padding-right: 16px;
 	border-radius: 26px;
