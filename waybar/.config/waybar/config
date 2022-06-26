@@ -122,7 +122,7 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click": "~/.config/wofi/scripts/wofi-wifi-menu/wofi-wifi-menu.sh"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

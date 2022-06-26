@@ -52,6 +52,11 @@ A non-exhaustive list of programs that I use.
 - [Bismuth](https://github.com/Bismuth-Forge/bismuth)
 - [patat](https://github.com/jaspervdj/patat)
 - [fzf](https://github.com/junegunn/fzf)
+- sway
+- waybar
+- mako
+- wofi
+- nmcli
 - git
 - stow
 - make
