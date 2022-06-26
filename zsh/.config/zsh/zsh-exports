@@ -4,7 +4,7 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
 ### bat as manpager
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER="bat -p"
 export BAT_THEME="TwoDark"
 # cargo
 export PATH=$HOME/.cargo/bin:$PATH
