@@ -127,8 +127,8 @@ input "type:pointer" {
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    # Logout
-    bindsym $mod+Shift+e exec wlogout
+    # Logout menu
+    bindsym $mod+Shift+e exec $HOME/.config/wofi/scripts/wofi-logout-menu/wofi-logout-menu.sh
 
 #
 # Moving around:
