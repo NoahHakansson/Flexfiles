@@ -19,6 +19,13 @@ exec_always $HOME/.config/sway/laptop-lid-fix.sh
 xwayland enable
 exec mako
 
+### set dark theme
+exec {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+}
+
 ### Variables
 
 set $mod Mod4
@@ -99,6 +106,15 @@ input "type:pointer" {
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
+
+### special window rules
+#
+# set windows to always be floating
+#
+for_window [title="Volume Control"] floating enable
+for_window [title="Volume Control"] resize set 900 600
+for_window [title="Bluetooth Devices"] floating enable
+for_window [title="Bluetooth Devices"] resize set 900 600
 
 ### Key bindings
 #
