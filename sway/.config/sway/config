@@ -321,7 +321,7 @@ bindsym $mod+r mode "resize"
 ### No titlebars
 # Borders
 default_border none
-default_border pixel 3
+default_border pixel 2
 for_window [title="^.*"] title_format " "
 #default_border normal 0
 # default_floating_border normal 0
