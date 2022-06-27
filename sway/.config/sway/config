@@ -115,6 +115,8 @@ for_window [title="Volume Control"] floating enable
 for_window [title="Volume Control"] resize set 900 600
 for_window [title="Bluetooth Devices"] floating enable
 for_window [title="Bluetooth Devices"] resize set 900 600
+for_window [title="Calendar"] floating enable
+for_window [title="Calendar"] resize set 900 600
 
 ### Key bindings
 #
