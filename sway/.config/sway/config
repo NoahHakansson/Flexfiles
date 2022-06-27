@@ -342,9 +342,9 @@ gaps outer 10
 gaps horizontal 0 
 gaps vertical 0
 gaps top 5
-gaps right 0
-gaps bottom 0
-gaps left 0
+gaps right 5
+gaps bottom 5
+gaps left 5
 
 ### Opacity
 # set $opacity 0.97
