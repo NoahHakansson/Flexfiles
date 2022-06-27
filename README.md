@@ -11,7 +11,6 @@ Feel free to use/steal anything 🙂
 ## Table of Contents
 
 - [Installation](#Installation)
-- [Requirements](#Requirements)
 - [Programs](#Programs)
 
 ## Installation
@@ -34,11 +33,6 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
-## Requirements
-
-Make sure you have installed:
-`Neovim (v0.7.0+), LunarVim, git, stow, fzf, make, pip, npm, node, fnm and cargo`
-
 ## Programs
 
 A non-exhaustive list of programs that I use.
@@ -52,10 +46,11 @@ A non-exhaustive list of programs that I use.
 - [Bismuth](https://github.com/Bismuth-Forge/bismuth)
 - [patat](https://github.com/jaspervdj/patat)
 - [fzf](https://github.com/junegunn/fzf)
-- sway
-- waybar
-- mako
+- [sway](https://swaywm.org/)
+- [waybar](https://github.com/Alexays/Waybar)
+- [mako](https://github.com/emersion/mako)
 - wofi
+- dmenu
 - nmcli
 - git
 - stow
@@ -63,7 +58,6 @@ A non-exhaustive list of programs that I use.
 - pip
 - npm
 - node
-- fnm
+- [fnm](https://github.com/Schniz/fnm)
 - cargo
-
 
