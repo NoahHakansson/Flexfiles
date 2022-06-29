@@ -1,10 +1,9 @@
 # https://github.com/swaywm/sway/wiki
 
-### Dynamic behavior
-exec_always $HOME/.config/sway/i3ipc_dynamic_tiling/i3ipc-dynamic-tiling
 ### Autotiling
-exec_always autotiling
+exec $HOME/.cargo/bin/autotiling-rs
 
+### Autostart
 exec nm-applet --indicator
 exec libinput-gestures-setup autostart start
 exec blueman-applet
@@ -154,33 +153,6 @@ for_window [title="System Monitor"] resize set 900 600
 # Moving around:
 #
 
-    # Focus next cycle.
-    bindsym $mod+j nop i3ipc_focus next
-
-    # Move next.
-    # bindsym $mod+shift+j nop i3ipc_move next
-
-    # Focus previous cycle.
-    bindsym $mod+k nop i3ipc_focus prev
-
-    # Move previous.
-    # bindsym $mod+shift+k nop i3ipc_move prev
-
-    # Focus previous window toggle.
-    bindsym $mod+i nop i3ipc_focus toggle
-
-    # Focus the other container.
-    bindsym $mod+o nop i3ipc_focus other
-
-    # Move to the other container.
-    bindsym $mod+shift+o nop i3ipc_move other
-
-    # Swap window with the other container.
-    bindsym $mod+Shift+Return nop i3ipc_move swap
-
-    # Toggle tabbed mode.
-    bindsym $mod+Shift+t nop i3ipc_tabbed_toggle
-
     # Toggle fullscreen mode.
     bindsym $mod+m fullscreen toggle
 
@@ -192,8 +164,8 @@ for_window [title="System Monitor"] resize set 900 600
 
     # Move your focus around
     bindsym $mod+$left focus left
-    # bindsym $mod+$down focus down
-    # bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
     # Arrow keys
