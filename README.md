@@ -48,6 +48,7 @@ A non-exhaustive list of programs that I use.
 - [fzf](https://github.com/junegunn/fzf)
 - [sway](https://swaywm.org/)
 - [waybar](https://github.com/Alexays/Waybar)
+- [autotiling-rs](https://github.com/ammgws/autotiling-rs)
 - [mako](https://github.com/emersion/mako)
 - wofi
 - dmenu
