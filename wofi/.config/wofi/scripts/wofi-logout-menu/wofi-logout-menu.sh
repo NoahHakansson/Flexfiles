@@ -3,7 +3,10 @@
 # dmenu theming
 lines="-l 5"
 font="-fn JetBrainsMonoNerdFont-15"
-colors="-nb #1f2227 -nf #9899a0 -sb #61afef -sf #2C323E"
+colors="-nb #1f2227 -nf #9899a0 -sb #61afef -sf #2c323e"
+tofi_lines="--num-results 5"
+tofi_font="--font JetBrainsMonoNerdFont-15"
+tofi_colors="--background-color #1f2227 --border-color #61afef --text-color #9899a0 --selection-background #61afef --selection-color #2c323e"
 
 first_prompt="Logout menu"
 opt1="Lock\nSuspend\nReboot\nShutdown\nLogout"
@@ -20,7 +23,13 @@ style="$HOME/.config/wofi/scripts/wofi-logout-menu/style-logout.css"
 ask() {
     answer="$( echo -e $1 | dmenu -i -p "$2" $lines $colors $font )"
 }
+# tofi
+# ask() {
+#     answer="$( echo -e $1 | tofi --prompt-text "$2" $tofi_lines $tofi_colors $tofi_font )"
+# }
 
+
+# main logic
 ask "$opt1" "$first_prompt"
 
 lock_screen=
