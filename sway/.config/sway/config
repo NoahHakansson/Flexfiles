@@ -147,7 +147,7 @@ for_window [title="System Monitor"] resize set 900 600
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Logout menu
-    bindsym $mod+Shift+e exec $HOME/.config/wofi/scripts/wofi-logout-menu/wofi-logout-menu.sh
+    bindsym $mod+Shift+e exec $HOME/.config/sway/scripts/dmenu-logout/logout-menu.sh
 
 #
 # Moving around:

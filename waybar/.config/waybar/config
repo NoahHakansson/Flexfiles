@@ -123,7 +123,7 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click": "~/.config/wofi/scripts/wofi-wifi-menu/wofi-wifi-menu.sh"
+        "on-click": "~/.config/sway/scripts/wofi-wifi-menu/wofi-wifi-menu.sh"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

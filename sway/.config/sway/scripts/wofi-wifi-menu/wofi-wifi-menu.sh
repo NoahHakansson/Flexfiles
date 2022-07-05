@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-conf=~/.config/wofi/scripts/wofi-wifi-menu
+conf=~/.config/sway/scripts/wofi-wifi-menu
 style=~/.config/wofi
 
 # this prints a beautifully formatted list. bash was a mistake

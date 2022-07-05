@@ -12,7 +12,7 @@ first_prompt="Logout menu"
 opt1="Lock\nSuspend\nReboot\nShutdown\nLogout"
 opt2="Yes\nNo"
 
-style="$HOME/.config/wofi/scripts/wofi-logout-menu/style-logout.css"
+style="$HOME/.config/sway/scripts/logout-menu/style-logout.css"
 
 # wofi
 # ask() {
