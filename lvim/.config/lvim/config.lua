@@ -27,6 +27,9 @@ local mode = {
 }
 lvim.builtin.lualine.sections.lualine_a = { mode }
 
+-- Fix Enter<CR> suggestion accept bug
+local cmp = require("cmp")
+lvim.builtin.cmp.mapping['<CR>'] = cmp.mapping.preset.insert(cmp.mapping.confirm({ select = true }))
 
 -- general
 lvim.log.level = "warn"
