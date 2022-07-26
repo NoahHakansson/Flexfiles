@@ -151,7 +151,7 @@ window#waybar.PCSX2 #window {
 	margin-top: 8px;
 	margin-left: 8px;
 	padding-left: 16px;
-	padding-right: 26px;
+	padding-right: 16px;
 	margin-bottom: 0;
 	border-radius: 26px;
 	transition: none;
