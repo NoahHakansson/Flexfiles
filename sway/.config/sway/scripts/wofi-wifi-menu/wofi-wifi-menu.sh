@@ -16,7 +16,7 @@ elif [[ "$CONSTATE" =~ "disabled" ]]; then
 fi
 
 # display menu; store user choice
-CHENTRY=$(echo -e "$TOGGLE\n$LIST" | uniq -u | wofi -d -c $conf/main_config -s $style/style.css)
+CHENTRY=$(echo -e "$TOGGLE\n$LIST" | uniq -u | wofi -i -d -c $conf/main_config -s $style/style.css)
 # store selected SSID
 CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
 
@@ -40,7 +40,7 @@ else
 		nmcli con up "$CHSSID"
 	else
 		if [[ "$CHENTRY" =~ "" ]]; then
-			WIFIPASS=$(echo " Press Enter if network is saved" | wofi -d -c $conf/pass_config -s $style/style.css )
+			WIFIPASS=$(echo " Press Enter if network is saved" | wofi -i -d -c $conf/pass_config -s $style/style.css )
 		fi
 		if nmcli dev wifi con "$CHSSID" password "$WIFIPASS"
 		then
