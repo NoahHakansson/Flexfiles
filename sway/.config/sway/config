@@ -44,6 +44,7 @@ set $browser brave-browser
 set $music spotify
 set $files nautilus
 set $email thunderbird
+set $slack slack --enable-features=WebRTCPipeWireCapturer
 # set $record wf-recorder --audio --file=$HOME/Video/recordings/recording_with_audio.mp4
 
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -237,6 +238,7 @@ for_window [title="System Monitor"] resize set 900 600
 
     bindsym $mod+w exec $browser
     bindsym $mod+f exec $files
+    bindsym $mod+s exec $slack
     # bindsym $mod+v exec $record
 
     # Switch the current container between different layout styles
