@@ -188,6 +188,8 @@ vim.cmd("map! <M-8> [")
 -- Center next search
 vim.cmd("nnoremap n nzzzv")
 vim.cmd("nnoremap N Nzzzv")
+-- make zz in normal mode center on 3 lines below
+vim.cmd("nnoremap zz jjjzzkkk")
 -- create undo step at following seperators
 vim.cmd("inoremap , ,<c-g>u")
 vim.cmd("inoremap . .<c-g>u")
