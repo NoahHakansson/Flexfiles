@@ -15,6 +15,9 @@ bindswitch --reload --locked lid:off output $laptop enable
 # prevent laptop lid from waking up on sway reload
 exec_always $HOME/.config/sway/laptop-lid-fix.sh
 
+# script to find path to cpu temp and create a symlink for waybar
+exec_always $HOME/.config/waybar/find-hwmon.sh
+
 ### use xwayland 
 xwayland enable
 exec mako
