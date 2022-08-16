@@ -12,7 +12,8 @@ first_prompt="Logout menu"
 opt1="Lock\nSuspend\nReboot\nShutdown\nLogout"
 opt2="Yes\nNo"
 
-style="$HOME/.config/sway/scripts/logout-menu/style-logout.css"
+style="$HOME/.config/sway/scripts/dmenu-logout/style-logout.css"
+tofi_conf="$HOME/.config/sway/scripts/dmenu-logout/tofi-theme.cfg"
 
 # wofi
 # ask() {
@@ -20,13 +21,13 @@ style="$HOME/.config/sway/scripts/logout-menu/style-logout.css"
 # }
 
 # dmenu
-ask() {
-    answer="$( echo -e $1 | dmenu -i -p "$2" $lines $colors $font )"
-}
-# tofi
 # ask() {
-#     answer="$( echo -e $1 | tofi --prompt-text "$2" $tofi_lines $tofi_colors $tofi_font )"
+#     answer="$( echo -e $1 | dmenu -i -p "$2" $lines $colors $font )"
 # }
+# tofi
+ask() {
+    answer="$( echo -e $1 | tofi --config $tofi_conf --prompt-text "$2: " $tofi_lines $tofi_colors $tofi_font )"
+}
 
 
 # main logic

@@ -417,6 +417,7 @@ lvim.plugins = {
     "ray-x/lsp_signature.nvim",
     config = function()
       require "lsp_signature".on_attach()
+      require "lsp_signature".insert()
       require "lsp_signature".setup(cfg)
     end,
     event = "BufRead"
