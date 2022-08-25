@@ -17,6 +17,9 @@ export GOPATH=$HOME/.local/share/go
 # node
 export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
+# deno
+export DENO_INSTALL="/home/noah/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(fnm env)"
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
