@@ -76,6 +76,35 @@ lvim.builtin.which_key.mappings["3"] = { "<cmd>lua require('harpoon.ui').nav_fil
 lvim.builtin.which_key.mappings["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon 4" }
 lvim.builtin.which_key.mappings["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Harpoon 5" }
 
+-- go.nvim and Go bindings
+lvim.builtin.which_key.mappings["G"] = {
+  name = "GO/Golang",
+  r = { "<cmd>GoRun -F<cr>", "'go run .' in floating window" },
+  e = { "<cmd>GoIfErr<cr>", "Add if err" },
+  l = { "<cmd>GoLint<cr>", "Lint (golangci-lint)" },
+  o = { "<cmd>GoPkgOutline<cr>", "Symbol outline" },
+  s = { "<cmd>GoAlt<cr>", "Swtich between go and test file" },
+  p = { "<cmd>GoCmt<cr>", "Add placeholder comment" },
+  m = {
+    name = "Modify tags",
+    a = { "<cmd>GoAddTag<cr>", "Add tag" },
+    r = { "<cmd>GoRmTag<cr>", "Remove tag" },
+    c = { "<cmd>GoClearTag<cr>", "Clear tag" },
+  },
+  t = {
+    name = "Test",
+    T = { "<cmd>GoTest<cr>", "go test ./... (Fail or pass, no window)" },
+    t = { "<cmd>GoTest -F<cr>", "go test ./..." },
+    p = { "<cmd>GoTestPkg -F<cr>", "Test package" },
+    f = { "<cmd>GoTestFunc -F<cr>", "Test function" },
+    c = { "<cmd>GoTestFile -F<cr>", "Test current file" },
+  },
+  c = {
+    name = "Coverage",
+    c = { "<cmd>GoCoverage<cr>", "Test coverage" },
+    t = { "<cmd>GoCoverage -t<cr>", "Toogle signs" },
+  },
+}
 
 -- rebind ToggleTerminal Terminal
 lvim.builtin.terminal.open_mapping = [[<c-x>]]
@@ -260,9 +289,46 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+
+-- ovverrided server settings
+require("lvim.lsp.manager").setup("gopls", {
+  settings = {
+    gopls = {
+      gofumpt = true,
+      usePlaceholders = true,
+      completeUnimported = true,
+      staticcheck = true,
+      matcher = "Fuzzy",
+      diagnosticsDelay = "500ms",
+      experimentalWatchedFileDelay = "200ms",
+      symbolMatcher = "fuzzy",
+      buildFlags = { "-tags", "integration" },
+      -- codelenses
+      codelenses = {
+        generate = true, -- show the `go generate` lens.
+        gc_details = true, -- Show a code lens toggling the display of gc's choices.
+        test = true,
+        tidy = true,
+        vendor = true,
+        regenerate_cgo = true,
+        upgrade_dependency = true,
+      },
+      -- hints
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+})
 
 -- extra language servers
 require("lvim.lsp.manager").setup("marksman")
@@ -435,14 +501,7 @@ lvim.plugins = {
   {
     "ray-x/go.nvim",
     config = function()
-      require("go").setup({
-        goimport = 'gopls', -- if set to 'gopls' will use golsp format
-        gofmt = 'gopls', -- if set to gopls will use golsp format
-        max_line_len = 120,
-        tag_transform = false,
-        test_dir = '',
-        comment_placeholder = '   ',
-      })
+      require("go").setup()
     end,
     requires = "ray-x/guihua.lua",
   },
