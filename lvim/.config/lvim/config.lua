@@ -79,11 +79,11 @@ lvim.builtin.which_key.mappings["5"] = { "<cmd>lua require('harpoon.ui').nav_fil
 -- go.nvim and Go bindings
 lvim.builtin.which_key.mappings["G"] = {
   name = "GO/Golang",
-  r = { "<cmd>GoRun -F<cr>", "'go run .' in floating window" },
+  r = { "<cmd>GoRun -F<cr>", "`go run .`(In floating window)" },
   e = { "<cmd>GoIfErr<cr>", "Add if err" },
   l = { "<cmd>GoLint<cr>", "Lint (golangci-lint)" },
   o = { "<cmd>GoPkgOutline<cr>", "Symbol outline" },
-  s = { "<cmd>GoAlt<cr>", "Swtich between go and test file" },
+  s = { "<cmd>GoAlt<cr>", "Switch between go and test file" },
   p = { "<cmd>GoCmt<cr>", "Add placeholder comment" },
   m = {
     name = "Modify tags",
@@ -93,8 +93,8 @@ lvim.builtin.which_key.mappings["G"] = {
   },
   t = {
     name = "Test",
-    T = { "<cmd>GoTest<cr>", "go test ./... (Fail or pass, no window)" },
-    t = { "<cmd>GoTest -F<cr>", "go test ./..." },
+    t = { "<cmd>GoTest<cr>", "go test ./... (Fail or pass, no window)" },
+    T = { "<cmd>GoTest -F<cr>", "go test ./..." },
     p = { "<cmd>GoTestPkg -F<cr>", "Test package" },
     f = { "<cmd>GoTestFunc -F<cr>", "Test function" },
     c = { "<cmd>GoTestFile -F<cr>", "Test current file" },
@@ -102,6 +102,7 @@ lvim.builtin.which_key.mappings["G"] = {
   c = {
     name = "Coverage",
     c = { "<cmd>GoCoverage<cr>", "Test coverage" },
+    q = { "<cmd>GoCoverage -m<cr>", "Test coverage to quickfix" },
     t = { "<cmd>GoCoverage -t<cr>", "Toogle signs" },
   },
 }
@@ -302,7 +303,7 @@ require("lvim.lsp.manager").setup("gopls", {
       completeUnimported = true,
       staticcheck = true,
       matcher = "Fuzzy",
-      diagnosticsDelay = "500ms",
+      diagnosticsDelay = "250ms",
       experimentalWatchedFileDelay = "200ms",
       symbolMatcher = "fuzzy",
       buildFlags = { "-tags", "integration" },
