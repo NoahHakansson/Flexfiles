@@ -303,9 +303,6 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   -- {
   --   name = "golangci_lint",
-  --   method = null_ls.methods.DIAGNOSTICS,
-  --   ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --   filetypes = {"go", "gomod", "gotmpl"},
   -- },
   {
     command = "eslint_d",
@@ -435,6 +432,13 @@ lvim.plugins = {
   { "RishabhRD/popfix" },
   { "dagle/nvim-cheat.sh" },
   {
+    "ray-x/go.nvim",
+    config = function()
+      require("go").setup()
+    end,
+    requires = "ray-x/guihua.lua",
+  },
+  {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
@@ -452,27 +456,6 @@ lvim.plugins = {
     end
   },
   { "ellisonleao/glow.nvim" },
-  -- Github copilot
-  -- {"github/copilot.vim"}, -- only needed for first setup.
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = "InsertEnter",
-  --   config = function ()
-  --     vim.schedule(function() require("copilot").setup() end)
-  --   end,
-  -- },
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = {"copilot.lua", "nvim-cmp"},
-  -- },
-  --
-  -- {
-  --   "AckslD/nvim-neoclip.lua",
-  --   event = "BufWinEnter",
-  --   setup = function()
-  --     vim.cmd [[packadd telescope.nvim]]
-  --   end,
-  -- },
   {
     "Badhi/nvim-treesitter-cpp-tools",
     requires = "nvim-treesitter/nvim-treesitter",
