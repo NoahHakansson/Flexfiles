@@ -41,6 +41,7 @@ A non-exhaustive list of programs that I use.
 - [LunarVim](https://www.lunarvim.org)
 - [Neovim](https://neovim.io/)
 - [Zathura](https://pwmt.org/projects/zathura/)
+- [gofumpt (stricter gofmt)](https://github.com/mvdan/gofumpt)
 - [Tmux](https://github.com/tmux/tmux)
 - [Bear](https://github.com/rizsotto/Bear)
 - [Bismuth](https://github.com/Bismuth-Forge/bismuth)

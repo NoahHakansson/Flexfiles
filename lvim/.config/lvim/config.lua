@@ -260,13 +260,20 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+
+-- extra language servers
+require("lvim.lsp.manager").setup("marksman")
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 -- vim.tbl_map(function(server)
 --   return server ~= "emmet_ls"
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
+-- vim.tbl_map(function(server)
+--   return server ~= "gopls"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- -- you can set a custom on_attach function that will be used for all the language servers
@@ -283,12 +290,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  -- {
-  --   -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-  --   command = "gofmt",
-  --   ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --   filetypes = {"go", "gomod", "gotmpl"},
-  -- },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
@@ -434,7 +435,14 @@ lvim.plugins = {
   {
     "ray-x/go.nvim",
     config = function()
-      require("go").setup()
+      require("go").setup({
+        goimport = 'gopls', -- if set to 'gopls' will use golsp format
+        gofmt = 'gopls', -- if set to gopls will use golsp format
+        max_line_len = 120,
+        tag_transform = false,
+        test_dir = '',
+        comment_placeholder = '   ',
+      })
     end,
     requires = "ray-x/guihua.lua",
   },
