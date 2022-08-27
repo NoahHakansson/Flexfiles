@@ -301,7 +301,6 @@ require("lvim.lsp.manager").setup("gopls", {
       gofumpt = true,
       usePlaceholders = true,
       completeUnimported = true,
-      staticcheck = true,
       matcher = "Fuzzy",
       diagnosticsDelay = "250ms",
       experimentalWatchedFileDelay = "200ms",
@@ -369,9 +368,8 @@ formatters.setup {
 -- local null_ls = require "null-ls"
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  -- {
-  --   name = "golangci_lint",
-  -- },
+  { name = "revive", }, -- Golang linter
+  { name = "yamllint", },
   {
     command = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
@@ -502,7 +500,9 @@ lvim.plugins = {
   {
     "ray-x/go.nvim",
     config = function()
-      require("go").setup()
+      require("go").setup({
+        comment_placeholder = '',
+      })
     end,
     requires = "ray-x/guihua.lua",
   },
