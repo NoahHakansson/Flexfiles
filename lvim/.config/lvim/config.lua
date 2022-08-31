@@ -28,8 +28,11 @@ local mode = {
 lvim.builtin.lualine.sections.lualine_a = { mode }
 
 -- Fix Enter<CR> suggestion accept bug
-local cmp = require("cmp")
-lvim.builtin.cmp.mapping['<CR>'] = cmp.mapping.preset.insert(cmp.mapping.confirm({ select = true }))
+local cmp = require('cmp')
+lvim.builtin.cmp.mapping["<CR>"] = cmp.mapping.confirm({ select = true })
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 
 -- general
 lvim.log.level = "warn"
@@ -356,6 +359,7 @@ require("lvim.lsp.manager").setup("marksman")
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
+  { name = "beautysh", },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
@@ -370,6 +374,7 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { name = "revive", }, -- Golang linter
   { name = "yamllint", },
+  { name = "shellcheck", },
   {
     command = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
@@ -483,9 +488,9 @@ local signature_cfg = {
 -- Additional Plugins
 lvim.plugins = {
   { "folke/tokyonight.nvim" },
+  { "catppuccin/nvim", as = "catppuccin" },
   { "tpope/vim-surround" },
   { "sainnhe/gruvbox-material" },
-  { "olimorris/onedarkpro.nvim" },
   -- smart identation
   { "tpope/vim-sleuth" },
   -- {"Darazaki/indent-o-matic"},
