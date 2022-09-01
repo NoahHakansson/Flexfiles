@@ -13,6 +13,7 @@ vim.opt.clipboard = ""
 vim.opt.showmode = false
 vim.opt.scrolloff = 15
 vim.opt.wrap = true
+lvim.builtin.dap.active = true
 -- vim.opt.mouse = ""
 
 -- Transparency
@@ -502,6 +503,7 @@ lvim.plugins = {
   { "tommcdo/vim-fugitive-blame-ext" },
   { "RishabhRD/popfix" },
   { "dagle/nvim-cheat.sh" },
+  { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
   {
     "ray-x/go.nvim",
     config = function()
