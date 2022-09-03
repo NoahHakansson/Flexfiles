@@ -60,7 +60,7 @@ set $menu wofi --gtk-dark --show drun --insensitive --allow-images --style $HOME
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg $HOME/walls/dball.png fill
+output * bg $HOME/walls/real_esrgan_dball.png fill
 # feh --bg-fill --randomize ~/Pictures/wallpapers/* &
 
 #
