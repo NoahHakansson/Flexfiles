@@ -7,6 +7,8 @@ exec $HOME/.cargo/bin/autotiling-rs
 exec nm-applet --indicator
 exec libinput-gestures-setup autostart start
 exec blueman-applet
+### clipboard
+exec wl-paste -t text --watch clipman store --no-persist
 
 ### Clamshell Mode
 set $laptop eDP-1
@@ -145,6 +147,15 @@ for_window [title="System Monitor"] resize set 900 600
     bindsym $mod+v exec $pavucontrol
     # bindsym $mod+v exec $record
 
+    ## music
+    bindsym $mod+Control+Shift+p exec playerctl play-pause
+    bindsym $mod+Control+Shift+n exec playerctl next
+    # Arrow keys
+    bindsym $mod+Left exec playerctl previous
+    bindsym $mod+Right exec playerctl next
+    bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%
+    bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%
+
 
 #
 # Basics:
@@ -193,14 +204,6 @@ for_window [title="System Monitor"] resize set 900 600
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-
-    # Arrow keys
-    bindsym Shift+Left exec swaymsg -t command workspace prev_on_output
-    bindsym Shift+Right exec swaymsg -t command workspace next_on_output
-    bindsym $mod+Left exec swaymsg -t command workspace prev_on_output
-    bindsym $mod+Right exec swaymsg -t command workspace next_on_output
-    bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%
-    bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%
 
     # Swap Windows
     bindsym $mod+Shift+$left mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
