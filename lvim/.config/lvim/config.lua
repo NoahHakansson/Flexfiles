@@ -53,8 +53,8 @@ lvim.keys.normal_mode["<space><space>"] = "<C-^>"
 lvim.keys.visual_mode["<space>y"] = '"+y'
 -- shift+q unbind
 lvim.keys.normal_mode["<S-q>"] = ""
--- lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":bprev<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":bprev<CR>"
 -- vim.cmd('vnoremap <leader>y "+y')
 -- vim.cmd("nnoremap <leader><leader> <c-^>")
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"

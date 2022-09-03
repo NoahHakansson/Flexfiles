@@ -48,9 +48,11 @@ set $music spotify
 set $files nautilus
 set $email thunderbird
 set $slack slack --enable-features=WebRTCPipeWireCapturer
+set $pavucontrol pavucontrol
+
+set $menu wofi --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
 # set $record wf-recorder --audio --file=$HOME/Video/recordings/recording_with_audio.mp4
 
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -71,18 +73,26 @@ output eDP-1 scale 1.5
 # output "Acer Technologies KG251Q T8ZEE0048532" resolution 1920x1080@144Hz position 1920,0
 # output "Ancor Communications Inc VS278 C8LMQS093350" resolution 1920x1080@60Hz position 0,0
 
+# sticky applications to certain workspace number
+assign [class="Spotify"] 9
+assign [class="WebCord"] 8
+assign [class="Slack"] 8
+assign [class="thunderbird"] 7
+
 ### Idle configuration
 #
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 1200 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
-         timeout 2700 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5'
+        timeout 1200 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
+        timeout 1500 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+        before-sleep 'playerctl pause' \
+        before-sleep 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
 #
 # This will lock your screen after 20 mins of inactivity, then turn off
-# your displays after another 25 mins (45 mins total), and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# your displays after another 5 mins (25 mins total), then after 1 hour it will put computer to sleep.
+# Will turn your screens back on when resumed.
+# It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 
@@ -126,6 +136,16 @@ for_window [title="System Monitor"] floating enable
 for_window [title="System Monitor"] resize set 900 600
 
 ### Key bindings
+
+    # exec programs
+    bindsym $mod+w exec $browser
+    bindsym $mod+f exec $files
+    bindsym $mod+s exec $slack
+    bindsym $mod+e exec $email
+    bindsym $mod+v exec $pavucontrol
+    # bindsym $mod+v exec $record
+
+
 #
 # Basics:
 #
@@ -137,7 +157,7 @@ for_window [title="System Monitor"] resize set 900 600
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+p exec wofi --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
+    bindsym $mod+p exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -188,6 +208,11 @@ for_window [title="System Monitor"] resize set 900 600
     bindsym $mod+Shift+$up mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
     bindsym $mod+Shift+$right mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
 
+    # Move workspace to different output/monitor
+    bindsym $mod+Control+Shift+$right move workspace to output right
+    bindsym $mod+Control+Shift+$left move workspace to output left
+    bindsym $mod+Control+Shift+$down move workspace to output down
+    bindsym $mod+Control+Shift+$up move workspace to output up
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+Left move left
@@ -238,11 +263,6 @@ for_window [title="System Monitor"] resize set 900 600
     # respectively.
     # bindsym $mod+b splith
     # bindsym $mod+v splitv
-
-    bindsym $mod+w exec $browser
-    bindsym $mod+f exec $files
-    bindsym $mod+s exec $slack
-    # bindsym $mod+v exec $record
 
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking

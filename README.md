@@ -51,6 +51,7 @@ A non-exhaustive list of programs that I use.
 - [waybar](https://github.com/Alexays/Waybar)
 - [autotiling-rs](https://github.com/ammgws/autotiling-rs)
 - [mako](https://github.com/emersion/mako)
+- playerctl
 - wofi
 - dmenu
 - nmcli
