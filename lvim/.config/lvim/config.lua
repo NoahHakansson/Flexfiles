@@ -103,6 +103,18 @@ lvim.builtin.which_key.mappings["G"] = {
     f = { "<cmd>GoTestFunc -F<cr>", "Test function" },
     c = { "<cmd>GoTestFile -F<cr>", "Test current file" },
   },
+  d = {
+    name = "Debug",
+    d = { "<cmd>GoDebug<cr>", "Start debug session" },
+    s = { "<cmd>GoDbgStop<cr>", "Stop/Exit debug session" },
+    r = { "<cmd>GoDebug -R<cr>", "Restart debug session" },
+    n = { "<cmd>GoDebug -n<cr>", "Start debug session for nearest go test function" },
+    p = { "<cmd>GoDebug -p<cr>", "Launch package test and start debug" },
+    b = { "<cmd>GoBreakToggle<cr>", "Toogle breakpoint" },
+    c = { "<cmd>GoDbgContinue<cr>", "Continue debug session" },
+    k = { "<cmd>GoDbgKeys<cr>", "show debug keymaps in a floating window (guihua)" },
+    h = { "<cmd>GoDebug -h<cr>", "Show help info" },
+  },
   c = {
     name = "Coverage",
     c = { "<cmd>GoCoverage<cr>", "Test coverage" },
@@ -503,7 +515,7 @@ lvim.plugins = {
   { "tommcdo/vim-fugitive-blame-ext" },
   { "RishabhRD/popfix" },
   { "dagle/nvim-cheat.sh" },
-  { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui" },
   {
     "ray-x/go.nvim",
     config = function()
