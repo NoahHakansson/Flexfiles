@@ -34,7 +34,7 @@ stow zsh # Just my zsh config
 ```
 
 ## Wayland fixes
-# brave-browser
+### brave-browser
 go to `brave://flags/` search for ozone and change the setting to `auto`.
 Close and relaunch the app fully (not the relaunch button). Should be fine after that.
 
