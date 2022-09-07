@@ -7,6 +7,7 @@ Feel free to use/steal anything 🙂
 ## Table of Contents
 
 - [Installation](#Installation)
+- [Wayland fixes](#wayland-fixes)
 - [Programs](#Programs)
 
 ## Installation
