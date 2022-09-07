@@ -4,10 +4,6 @@ My Dotfiles.
 
 Feel free to use/steal anything 🙂
 
-
-![Flexfiles image 1](./Flexfiles-1.png)
-![Flexfiles image 2](./Flexfiles-2.png)
-
 ## Table of Contents
 
 - [Installation](#Installation)
