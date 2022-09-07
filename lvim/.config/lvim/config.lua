@@ -8,6 +8,10 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
+-- lvim.colorscheme = "gruvbox-material"
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+lvim.colorscheme = "catppuccin"
+
 -- Settings
 vim.opt.clipboard = ""
 vim.opt.showmode = false
@@ -38,8 +42,6 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
--- lvim.colorscheme = "gruvbox-material"
-lvim.colorscheme = "onedarker"
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_palette = "mix"
 
@@ -89,6 +91,7 @@ lvim.builtin.which_key.mappings["G"] = {
   o = { "<cmd>GoPkgOutline<cr>", "Symbol outline" },
   s = { "<cmd>GoAlt<cr>", "Switch between go and test file" },
   p = { "<cmd>GoCmt<cr>", "Add placeholder comment" },
+  ["/"] = { "<cmd>GoCmt<cr>", "Generate placeholder comment" },
   m = {
     name = "Modify tags",
     a = { "<cmd>GoAddTag<cr>", "Add tag" },
@@ -501,7 +504,12 @@ local signature_cfg = {
 -- Additional Plugins
 lvim.plugins = {
   { "folke/tokyonight.nvim" },
-  { "catppuccin/nvim", as = "catppuccin" },
+  {
+    "catppuccin/nvim",
+    require("catppuccin").setup({ transparent_background = true }),
+    as = "catppuccin",
+    run = ":CatppuccinCompile"
+  },
   { "tpope/vim-surround" },
   { "sainnhe/gruvbox-material" },
   -- smart identation
@@ -599,6 +607,8 @@ lvim.plugins = {
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
+vim.cmd("autocmd bufwritepost ~/.config/kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)")
+vim.cmd("autocmd bufwritepost ~/Flexfiles/kitty/.config/kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)")
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
 --   -- enable wrap mode for json files only

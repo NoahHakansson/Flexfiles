@@ -44,7 +44,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term kitty
 set $browser brave-browser
 set $music spotify
 set $files nautilus
