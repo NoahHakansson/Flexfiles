@@ -32,8 +32,13 @@ stow zsh # Just my zsh config
 
 ## Wayland fixes
 ### brave-browser (should work on chromium based browsers)
-go to `brave://flags/` search for ozone and change the setting to `auto`.
+Go to `brave://flags/` search for ozone and change the setting to `auto`.
 Close and relaunch the app fully (not the relaunch button). Should be fine after that.
+### slack
+To fix screen sharing on Wayland start slack with `--enable-features=WebRTCPipeWireCapturer` flag.
+```
+slack --enable-features=WebRTCPipeWireCapturer`
+```
 
 ## Programs
 
