@@ -76,7 +76,7 @@ output eDP-1 scale 1.5
 # output "Ancor Communications Inc VS278 C8LMQS093350" resolution 1920x1080@60Hz position 0,0
 
 # sticky applications to certain workspace number
-assign [class="Spotify"] 9
+assign [class="Spotify" instance="spotify" title="Spotify"] 9 # spotify currently doesn't work with this D:
 assign [class="WebCord"] 8
 assign [class="Slack"] 8
 assign [class="thunderbird"] 7
