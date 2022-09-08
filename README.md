@@ -36,9 +36,8 @@ Go to `brave://flags/` search for ozone and change the setting to `auto`.
 Close and relaunch the app fully (not the relaunch button). Should be fine after that.
 ### slack
 To fix screen sharing on Wayland start slack with `--enable-features=WebRTCPipeWireCapturer` flag.
-To also fix fractional scaling add the `--ozone-platform=wayland` flag.
 ```
-slack --enable-features=WebRTCPipeWireCapturer --ozone-platform=wayland`
+slack --enable-features=WebRTCPipeWireCapturer
 ```
 
 ## Programs
