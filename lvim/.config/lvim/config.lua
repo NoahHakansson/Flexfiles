@@ -71,7 +71,7 @@ lvim.keys.insert_mode["jj"] = false
 -- edit a default keymapping
 
 -- Harpoon bindings
-lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
+lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
 -- lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
 -- lvim.keys.normal_mode["<S-l>"] = "<cmd>lua require('harpoon.ui').nav_next()<cr>"
 -- lvim.keys.normal_mode["<S-h>"] = "<cmd>lua require('harpoon.ui').nav_prev()<cr>"
