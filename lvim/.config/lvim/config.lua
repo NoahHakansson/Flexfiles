@@ -71,16 +71,18 @@ lvim.keys.insert_mode["jj"] = false
 -- edit a default keymapping
 
 -- Harpoon bindings
-lvim.keys.normal_mode["C-f"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
+lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
 -- lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
-lvim.builtin.which_key.mappings["m"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon mark file" }
 -- lvim.keys.normal_mode["<S-l>"] = "<cmd>lua require('harpoon.ui').nav_next()<cr>"
 -- lvim.keys.normal_mode["<S-h>"] = "<cmd>lua require('harpoon.ui').nav_prev()<cr>"
-lvim.builtin.which_key.mappings["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon 1" }
-lvim.builtin.which_key.mappings["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Harpoon 2" }
-lvim.builtin.which_key.mappings["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Harpoon 3" }
-lvim.builtin.which_key.mappings["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon 4" }
-lvim.builtin.which_key.mappings["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Harpoon 5" }
+lvim.builtin.which_key.mappings["h"] = {
+  name = "harpoon",
+  h = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon file (1)" },
+  j = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Harpoon file (2)" },
+  k = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Harpoon file (3)" },
+  l = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon file (4)" },
+  m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon mark file" },
+}
 
 -- go.nvim and Go bindings
 lvim.builtin.which_key.mappings["G"] = {
@@ -193,11 +195,11 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["h"] = { ":ClangdSwitchSourceHeader<CR>", "Switch Source/Header" }
-lvim.builtin.which_key.mappings["7"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" }
-lvim.builtin.which_key.vmappings["7"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
-  "Comment" }
+-- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+-- lvim.builtin.which_key.mappings["H"] = { ":ClangdSwitchSourceHeader<CR>", "Switch Source/Header" }
+-- lvim.builtin.which_key.mappings["7"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" }
+-- lvim.builtin.which_key.vmappings["7"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
+--   "Comment" }
 
 -- Search and replace
 -- lvim.builtin.which_key.mappings["r"] = {
