@@ -147,11 +147,11 @@ for_window [title="System Monitor"] resize set 900 600
     bindsym $mod+v exec $pavucontrol
     # bindsym $mod+v exec $record
 
-    ## music player (playerctl)
-    bindsym $mod+Control+Shift+p exec playerctl play-pause
-    bindsym $mod+Control+Shift+n exec playerctl next
-    bindsym $mod+Control+Shift+Up exec playerctl volume "0.05+"
-    bindsym $mod+Control+Shift+Down exec playerctl volume "0.05-"
+    ## control Spotify music player (playerctl --player=spotify)
+    bindsym $mod+Control+Shift+p exec playerctl --player=spotify play-pause
+    bindsym $mod+Control+Shift+n exec playerctl --player=spotify next
+    bindsym $mod+Control+Shift+Up exec playerctl --player=spotify volume "0.05+"
+    bindsym $mod+Control+Shift+Down exec playerctl --player=spotify volume "0.05-"
     # Arrow keys
     bindsym $mod+Left exec playerctl previous
     bindsym $mod+Right exec playerctl next
