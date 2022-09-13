@@ -393,6 +393,7 @@ linters.setup {
   { name = "revive", }, -- Golang linter
   { name = "yamllint", },
   { name = "shellcheck", },
+  { name = "zsh", },
   {
     command = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
