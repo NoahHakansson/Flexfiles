@@ -10,9 +10,8 @@ exec blueman-applet
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
 ### swayr daemon
-set $swayRdaemon $HOME/.cargo/bin/swayrd
 set $swayR $HOME/.cargo/bin/swayr
-exec $swayRdaemon
+exec $HOME/.cargo/bin/swayrd
 
 ### Clamshell Mode
 set $laptop eDP-1
