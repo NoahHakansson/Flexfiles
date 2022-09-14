@@ -9,6 +9,10 @@ exec libinput-gestures-setup autostart start
 exec blueman-applet
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
+### swayr daemon
+set $swayRdaemon $HOME/.cargo/bin/swayrd
+set $swayR $HOME/.cargo/bin/swayr
+exec $swayRdaemon
 
 ### Clamshell Mode
 set $laptop eDP-1
@@ -168,6 +172,7 @@ for_window [title="System Monitor"] resize set 900 600
 
     # Kill focused window
     bindsym $mod+q kill
+    bindsym $mod+Shift+q exec $swayR quit-window --kill
 
     # Start your launcher
     # bindsym $mod+d exec $menu
