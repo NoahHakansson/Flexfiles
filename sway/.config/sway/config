@@ -171,7 +171,11 @@ for_window [title="System Monitor"] resize set 900 600
 
     # Kill focused window
     bindsym $mod+q kill
+    # Open wofi showing all windows and force kill picked window
     bindsym $mod+Shift+q exec $swayR quit-window --kill
+
+    # Open wofi showing all windows and switch to choosen window
+    bindsym $mod+Shift+Tab exec $swayR switch-window
 
     # Start your launcher
     # bindsym $mod+d exec $menu
