@@ -12,13 +12,19 @@ an executable
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 lvim.colorscheme = "catppuccin"
 
--- Settings
+-- General Settings
+lvim.builtin.dap.active = true
+lvim.log.level = "warn"
+lvim.format_on_save = true
 vim.opt.clipboard = ""
+vim.opt.undofile = true
 vim.opt.showmode = false
 vim.opt.scrolloff = 15
 vim.opt.wrap = true
-lvim.builtin.dap.active = true
 -- vim.opt.mouse = ""
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_palette = "mix"
+
 
 -- Transparency
 lvim.transparent_window = false
@@ -37,14 +43,6 @@ local cmp = require('cmp')
 lvim.builtin.cmp.mapping["<CR>"] = cmp.mapping.confirm({ select = true })
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-
--- general
-lvim.log.level = "warn"
-lvim.format_on_save = true
-vim.g.gruvbox_material_background = "hard"
-vim.g.gruvbox_material_palette = "mix"
-
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -506,7 +504,6 @@ local signature_cfg = {
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
   {
     "catppuccin/nvim",
     require("catppuccin").setup({ transparent_background = true }),
@@ -554,6 +551,7 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  { 'kevinhwang91/nvim-bqf' },
   -- The GOAT lsp_signature
   {
     "ray-x/lsp_signature.nvim",
