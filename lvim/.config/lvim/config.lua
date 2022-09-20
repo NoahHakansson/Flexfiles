@@ -522,16 +522,19 @@ lvim.plugins = {
   { "sainnhe/gruvbox-material" },
   -- smart identation
   { "tpope/vim-sleuth" },
-  -- {"Darazaki/indent-o-matic"},
   -- Git-related plugins
   { "tpope/vim-fugitive" },
   { "ThePrimeagen/harpoon" },
   { "tpope/vim-rhubarb" },
   { "tpope/vim-obsession" },
   { "tommcdo/vim-fugitive-blame-ext" },
+  -- misc
   { "RishabhRD/popfix" },
   { "dagle/nvim-cheat.sh" },
   { "rcarriga/nvim-dap-ui" },
+  { "ojroques/nvim-bufdel" },
+  { "kevinhwang91/nvim-bqf" },
+  { "ellisonleao/glow.nvim" },
   {
     "ray-x/go.nvim",
     config = function()
@@ -551,7 +554,6 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
-  { 'kevinhwang91/nvim-bqf' },
   -- The GOAT lsp_signature
   {
     "ray-x/lsp_signature.nvim",
@@ -559,7 +561,6 @@ lvim.plugins = {
       require "lsp_signature".setup(signature_cfg)
     end
   },
-  { "ellisonleao/glow.nvim" },
   {
     "Badhi/nvim-treesitter-cpp-tools",
     requires = "nvim-treesitter/nvim-treesitter",
