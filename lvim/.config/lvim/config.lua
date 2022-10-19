@@ -376,6 +376,7 @@ require("lvim.lsp.manager").setup("marksman")
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { name = "beautysh", },
+  { name = "black", },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
@@ -391,6 +392,7 @@ linters.setup {
   { name = "revive", }, -- Golang linter
   { name = "yamllint", },
   { name = "shellcheck", },
+  { name = "flake8", },
   { name = "zsh", },
   {
     command = "eslint_d",
@@ -535,6 +537,16 @@ lvim.plugins = {
   { "ojroques/nvim-bufdel" },
   { "kevinhwang91/nvim-bqf" },
   { "ellisonleao/glow.nvim" },
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+      }
+    end
+  },
   {
     "ray-x/go.nvim",
     config = function()

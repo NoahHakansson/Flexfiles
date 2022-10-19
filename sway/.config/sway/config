@@ -7,6 +7,9 @@ exec $HOME/.cargo/bin/autotiling-rs
 exec nm-applet --indicator
 exec libinput-gestures-setup autostart start
 exec blueman-applet
+set $latitude 56.6
+set $longitude 16.3
+exec wlsunset -l $latitude -L $longitude
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
 ### swayr daemon

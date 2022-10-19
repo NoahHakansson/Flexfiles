@@ -53,27 +53,27 @@ alias m="git checkout master"
 alias s="git checkout stable"
 
 if [[ $TERM == "xterm-kitty" ]]; then
-  alias ssh="kitty +kitten ssh"
+    alias ssh="kitty +kitten ssh"
 fi
 
 case "$(uname -s)" in
 
-Darwin)
-	# echo 'Mac OS X'
-	alias ls='ls -G'
-	;;
+    Darwin)
+        # echo 'Mac OS X'
+        alias ls='ls -G'
+        ;;
 
-Linux)
-	# echo 'linux'
-	alias ls='ls --color=auto'
-	;;
+    Linux)
+        # echo 'linux'
+        alias ls='ls --color=auto'
+        ;;
 
-CYGWIN* | MINGW32* | MSYS* | MINGW*)
-	# echo 'MS Windows'
-	;;
-*)
-	# echo 'Other OS'
-	;;
+    CYGWIN* | MINGW32* | MSYS* | MINGW*)
+        # echo 'MS Windows'
+        ;;
+    *)
+        # echo 'Other OS'
+        ;;
 esac
 
 
@@ -91,8 +91,10 @@ alias vim='lvim'
 alias vi='lvim'
 
 # Quality of life
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
+
+# add your user to the docker group to avoid having to use sudo with docker commands
+# alias docker='sudo docker'
+# alias docker-compose='sudo docker-compose'
 
 # Config editing aliases
 ## Suckless
