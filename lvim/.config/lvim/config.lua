@@ -39,10 +39,10 @@ local mode = {
 lvim.builtin.lualine.sections.lualine_a = { mode }
 
 -- Fix Enter<CR> suggestion accept bug
-local cmp = require('cmp')
-lvim.builtin.cmp.mapping["<CR>"] = cmp.mapping.confirm({ select = true })
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+-- local cmp = require('cmp')
+-- lvim.builtin.cmp.mapping["<CR>"] = cmp.mapping.confirm({ select = true })
+-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -55,6 +55,9 @@ lvim.keys.visual_mode["<space>y"] = '"+y'
 lvim.keys.normal_mode["<S-q>"] = ""
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprev<CR>"
+-- vertical resize of buffer windows
+lvim.keys.normal_mode["<S-Right>"] = ":vertical resize +2px<CR>"
+lvim.keys.normal_mode["<S-Left>"] = ":vertical resize -2px<CR>"
 -- vim.cmd('vnoremap <leader>y "+y')
 -- vim.cmd("nnoremap <leader><leader> <c-^>")
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -261,7 +264,6 @@ vim.cmd("inoremap ? ?<c-g>u")
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 -- Configure builtin plugins
 lvim.builtin.alpha.active = true
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 
 lvim.builtin.nvimtree.setup.view.side = "left"
@@ -312,6 +314,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+-- TODO: manually setup TSSERVER to avoid getting double diagnostics in buffer from server and eslint_d
 
 -- ovverrided server settings
 require("lvim.lsp.manager").setup("gopls", {
@@ -322,7 +325,6 @@ require("lvim.lsp.manager").setup("gopls", {
       completeUnimported = true,
       matcher = "Fuzzy",
       diagnosticsDelay = "250ms",
-      experimentalWatchedFileDelay = "200ms",
       symbolMatcher = "fuzzy",
       buildFlags = { "-tags", "integration" },
       -- codelenses
@@ -349,8 +351,37 @@ require("lvim.lsp.manager").setup("gopls", {
   },
 })
 
+-- emmet_ls_options
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local emmet_ls_options = {
+  cmd = { vim.fn.stdpath "data" .. "/mason/bin/emmet-ls", "--stdio" },
+  capabilities = capabilities,
+  filetypes = {
+    "html",
+    "svelte",
+    "vue",
+    "typescript",
+    "javascript",
+    "javascriptreact",
+    "typescriptreact",
+    "php",
+    "xml",
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+  },
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
+}
+
 -- extra language servers
 require("lvim.lsp.manager").setup("marksman")
+require("lvim.lsp.manager").setup("emmet_ls", emmet_ls_options)
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -533,7 +564,7 @@ lvim.plugins = {
   -- misc
   { "RishabhRD/popfix" },
   { "dagle/nvim-cheat.sh" },
-  { "rcarriga/nvim-dap-ui" },
+  -- { "rcarriga/nvim-dap-ui" },
   { "ojroques/nvim-bufdel" },
   { "kevinhwang91/nvim-bqf" },
   { "ellisonleao/glow.nvim" },
@@ -597,18 +628,18 @@ lvim.plugins = {
       require("substitute").setup()
     end
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "alpha" }
-      vim.g.indent_blankline_buftype_exclude = { "terminal" }
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = false
-    end
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufRead",
+  --   setup = function()
+  --     vim.g.indentLine_enabled = 1
+  --     vim.g.indent_blankline_char = "▏"
+  --     vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "alpha" }
+  --     vim.g.indent_blankline_buftype_exclude = { "terminal" }
+  --     vim.g.indent_blankline_show_trailing_blankline_indent = false
+  --     vim.g.indent_blankline_show_first_indent_level = false
+  --   end
+  -- },
   -- half buggy colorizer
   {
     "norcalli/nvim-colorizer.lua",
