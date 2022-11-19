@@ -408,6 +408,8 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { name = "beautysh", },
   { name = "black", },
+  { name = "gofumpt", },
+  -- { name = "yamlfmt", },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
@@ -417,10 +419,11 @@ formatters.setup {
 }
 
 -- set additional linters
--- local null_ls = require "null-ls"
+local null_ls = require "null-ls"
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { name = "revive", }, -- Golang linter
+  -- { name = "golangci_lint", },
   { name = "yamllint", },
   { name = "shellcheck", },
   { name = "flake8", },
