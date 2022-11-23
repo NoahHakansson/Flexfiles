@@ -165,6 +165,20 @@ lvim.builtin.which_key.mappings["gd"] = {
   r = { "DiffviewRefresh", "refresh Diffview" },
 }
 
+-- Octo.nvim plugin
+lvim.builtin.which_key.mappings["o"] = {
+  name = "Octo (GitHub PRs/Issues)",
+  p = {
+    name = "Pull Request",
+    l = { "<cmd>Octo pr list<cr>", "List PRs", },
+    s = { "<cmd>Octo review start<cr>", "Start PR review", },
+    r = { "<cmd>Octo review resume<cr>", "Resume PR review", },
+    c = { "<cmd>Octo review commit<cr>", "Review specific commit", },
+    p = { "<cmd>Octo review submit<cr>", "Submit the review", },
+    ["/"] = { "<cmd>Octo review comments<cr>", "Review pending comments", },
+  }
+}
+
 
 -- auto hybrid line numbers
 vim.cmd([[
@@ -468,6 +482,7 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+
 -- cheat.sh plugin bind
 lvim.builtin.which_key.mappings["?"] = {
   "<cmd>Cheat<CR>", "Cheat.sh"
@@ -559,6 +574,17 @@ lvim.plugins = {
   -- smart identation
   { "tpope/vim-sleuth" },
   -- Git-related plugins
+  {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
+  },
   { "tpope/vim-fugitive" },
   { "ThePrimeagen/harpoon" },
   { "tpope/vim-rhubarb" },
