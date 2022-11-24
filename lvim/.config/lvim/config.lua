@@ -38,12 +38,6 @@ local mode = {
 }
 lvim.builtin.lualine.sections.lualine_a = { mode }
 
--- Fix Enter<CR> suggestion accept bug
--- local cmp = require('cmp')
--- lvim.builtin.cmp.mapping["<CR>"] = cmp.mapping.confirm({ select = true })
--- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
--- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -103,8 +97,8 @@ lvim.builtin.which_key.mappings["G"] = {
   },
   t = {
     name = "Test",
-    t = { "<cmd>GoTest<cr>", "go test ./... (Fail or pass, no window)" },
-    T = { "<cmd>GoTest -F<cr>", "go test ./..." },
+    T = { "<cmd>GoTest<cr>", "go test ./... (Fail or pass, no window)" },
+    t = { "<cmd>GoTest -F<cr>", "go test ./... (Opens floating window)" },
     p = { "<cmd>GoTestPkg -F<cr>", "Test package" },
     f = { "<cmd>GoTestFunc -F<cr>", "Test function" },
     c = { "<cmd>GoTestFile -F<cr>", "Test current file" },
