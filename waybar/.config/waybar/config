@@ -38,11 +38,11 @@
     },
     "custom/spotify": {
         "exec": "playerctl --player=spotify metadata --format '{{title}} - {{artist}}'",
+        "interval": 5,
         "format": "{} ",
-        "return-type": "string",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "on-click": "playerctl --player=spotify play-pause",
+        "on-scroll-up": "playerctl --player=spotify next",
+        "on-scroll-down": "playerctl --player=spotify previous"
     },
     "idle_inhibitor": {
         "format": "{icon}",
