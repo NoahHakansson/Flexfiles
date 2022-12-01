@@ -83,9 +83,9 @@ autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 # bindkey '^I' fzf_completion
 
-### caps as esc and key repeat
-xset r rate 300 80
-setxkbmap -option caps:escape
+### caps as esc and key repeat (Don't work run on wayland)
+# xset r rate 300 80
+# setxkbmap -option caps:escape
 
 # Environment variables set everywhere
 export EDITOR="lvim"
