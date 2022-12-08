@@ -275,6 +275,9 @@ vim.cmd("inoremap ? ?<c-g>u")
 lvim.builtin.alpha.active = true
 lvim.builtin.terminal.active = true
 
+-- add main.go as a glob pattern match to find go project root and set CWD to it.
+table.insert(lvim.builtin.project.patterns, "main.go")
+
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.show_icons.git = 0
 
@@ -432,6 +435,7 @@ local null_ls = require "null-ls"
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { name = "revive", }, -- Golang linter
+  -- { name = "staticcheck", }, -- Golang linter
   -- { name = "golangci_lint", },
   { name = "yamllint", },
   { name = "shellcheck", },
