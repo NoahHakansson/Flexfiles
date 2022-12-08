@@ -294,6 +294,7 @@ for_window [title="System Monitor"] resize set 900 600
     # Make the current focus fullscreen
     # bindsym $mod+f fullscreen
 
+    # screenshot
     bindsym $mod+Ctrl+p exec grim -g "$(slurp)" - | swappy -f - 
 
     # Toggle the current focused window between tiling and floating mode
