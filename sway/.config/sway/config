@@ -162,9 +162,11 @@ for_window [title="System Monitor"] resize set 900 600
     # Arrow keys
     bindsym $mod+Left exec playerctl previous
     bindsym $mod+Right exec playerctl next
-    #volume
+    # volume
     bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%
     bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%
+    # clipman (clipboard manager)
+    bindsym $mod+c exec clipman pick --tool wofi -T'--prompt="Clipboard history" -i'
 
 
 #
