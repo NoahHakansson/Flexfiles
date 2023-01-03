@@ -61,7 +61,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a %e %b %R, Week %V}",
+        "format": "{:%a%e %b %Y %R, Week %V}",
         "on-click": "gnome-calendar"
     },
     "cpu": {
@@ -75,7 +75,7 @@
     },
     "temperature": {
         "hwmon-path": "/tmp/temp-path",
-        "critical-threshold": 80,
+        "critical-threshold": 75,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": [""]

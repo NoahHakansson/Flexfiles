@@ -99,22 +99,40 @@ window#waybar.empty {
     padding: 0 8px;
     /* border-top: 3px solid rgba(217, 216, 216, 0.5); */
 }
+#custom-spotify {
+    color: #1DB954;
+}
+#battery {
+    padding-top: 3px;
+    border-bottom: 3px solid #32f23f;
+}
 
 /* #clock {
     margin:     0px 16px 0px 10px;
     min-width:  140px;
 } */
 
+#temperature.critical {
+    color: rgba(238, 46, 36, 1);
+    padding-top: 3px;
+    border-bottom: 3px solid rgba(238, 46, 36, 1);
+}
+
 #battery.warning {
     color: rgba(255, 210, 4, 1);
+    padding-top: 3px;
+    border-bottom: 3px solid rgba(255, 210, 4, 1);
 }
 
 #battery.critical {
     color: rgba(238, 46, 36, 1);
+    padding-top: 3px;
+    border-bottom: 3px solid rgba(238, 46, 36, 1);
 }
 
 #battery.charging {
-    color: rgba(217, 216, 216, 1);
+    padding-top: 3px;
+    border-bottom: 3px solid #32f23f;
 }
 
 #custom-storage.warning {
