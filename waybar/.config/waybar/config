@@ -39,18 +39,20 @@
     "custom/spotify": {
         "exec": "playerctl --player=spotify metadata --format '{{title}} - {{artist}}'",
         "interval": 5,
+        "signal": 6,
         "format": "{} ",
         "on-click": "playerctl --player=spotify play-pause",
-        "on-click-right": "playerctl --player=spotify next",
-        "on-click-middle": "playerctl --player=spotify previous",
+        /* reloads module with pkill signal (sleep needed to work) */
+        "on-click-right": "playerctl --player=spotify next && sleep .2 && pkill -RTMIN+6 waybar",
+        "on-click-middle": "playerctl --player=spotify previous && sleep .2 && pkill -RTMIN+6 waybar",
         "on-scroll-up": "playerctl --player=spotify volume '0.05+'",
         "on-scroll-down": "playerctl --player=spotify volume '0.05-'"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "☕",
-            "deactivated": "💤"
+            "activated": "💤",
+            "deactivated": "☕"
         }
     },
     "tray": {
