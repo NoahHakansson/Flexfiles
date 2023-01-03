@@ -15,11 +15,11 @@ window#waybar {
     text-shadow: none;
     transition-duration: 0s;
     color: rgba(217, 216, 216, 1);
-    background: rgba(0, 0, 0, 0.87);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 window#waybar.solo {
-    background: rgb(35, 31, 32);
+    /* background: rgb(35, 31, 32); */
     /* font-family: "Ubuntu Medium";
     font-size: 15px; */
 }
@@ -34,6 +34,7 @@ window#waybar.empty {
 
 #workspaces button {
     padding: 0 8px;
+    padding-top: 3px;
     color: rgba(217, 216, 216, 0.4);
 }
 
@@ -42,6 +43,7 @@ window#waybar.empty {
 }
 
 #workspaces button.focused {
+    padding-top: 0px;
     border-top: 3px solid rgba(217, 216, 216, 1);
     /* border-bottom: 3px solid rgba(217, 216, 216, 1); */
     /* border: 3px solid rgba(217, 216, 216, 0.5); */
