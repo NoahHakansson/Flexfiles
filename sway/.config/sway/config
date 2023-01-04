@@ -58,7 +58,7 @@ set $email thunderbird
 set $slack slack --enable-features=WebRTCPipeWireCapturer
 set $pavucontrol pavucontrol
 
-set $menu wofi --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
+set $menu wofi --width 600 --height 300 --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
 # set $record wf-recorder --audio --file=$HOME/Video/recordings/recording_with_audio.mp4
 
 
@@ -141,6 +141,7 @@ input "type:pointer" {
 for_window [title="Volume Control"] floating enable, resize set 900 600
 for_window [title="Bluetooth Devices"] floating enable, resize set 900 600
 for_window [title="Calendar"] floating enable, resize set 900 600
+for_window [title="Clocks"] floating enable
 for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
 
