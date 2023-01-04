@@ -129,23 +129,29 @@ input "type:pointer" {
     pointer_accel 0.6
 }
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
+# You can get the names of your inputs by running:
+    # swaymsg -t get_inputs
+# You can list all running programs titles, classnames, etc..
+    # swaymsg -t get_tree
+# Or search for a specific program with grep:
+    # swaymsg -t get_tree | grep "Insomnia"
 
 ### special window rules
-#
 # set windows to always be floating
-#
-for_window [title="Volume Control"] floating enable
-for_window [title="Volume Control"] resize set 900 600
-for_window [title="Bluetooth Devices"] floating enable
-for_window [title="Bluetooth Devices"] resize set 900 600
-for_window [title="Calendar"] floating enable
-for_window [title="Calendar"] resize set 900 600
-for_window [title="System Monitor"] floating enable
-for_window [title="System Monitor"] resize set 900 600
+for_window [title="Volume Control"] floating enable, resize set 900 600
+for_window [title="Bluetooth Devices"] floating enable, resize set 900 600
+for_window [title="Calendar"] floating enable, resize set 900 600
+for_window [title="System Monitor"] floating enable, resize set 900 600
+for_window [title="btop"] floating enable, resize set 1600 900
+
 # float firefox bookmark, etc... window
 for_window [title="Library"] floating enable
 for_window [title="Library"] resize set 1400 900
+
+# move to scratchpad on spawn
+for_window [class="Insomnia"] move scratchpad
+for_window [title="Scratchpad"] move scratchpad
+
 
 ### Key bindings
 
@@ -177,6 +183,8 @@ for_window [title="Library"] resize set 1400 900
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    # Start a terminal in the scratchpad
+    bindsym $mod+Ctrl+minus exec $term -T "Scratchpad"
 
     # Kill focused window
     bindsym $mod+q kill

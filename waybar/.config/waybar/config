@@ -67,18 +67,19 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false,
-        "on-click": "gnome-system-monitor"
+        "on-click": "kitty -T 'btop' sh -c btop"
     },
     "memory": {
         "format": "{}% ",
-        "on-click": "gnome-system-monitor"
+        "on-click": "kitty -T 'btop' sh -c btop"
     },
     "temperature": {
         "hwmon-path": "/tmp/temp-path",
         "critical-threshold": 75,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": [""]
+        "format-icons": [""],
+        "on-click": "kitty -T 'btop' sh -c btop"
     },
     "backlight": {
         // "device": "acpi_video1",
