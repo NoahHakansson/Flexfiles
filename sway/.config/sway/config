@@ -10,6 +10,8 @@ exec blueman-applet
 set $latitude 56.6
 set $longitude 16.3
 exec wlsunset -l $latitude -L $longitude
+# WCP - Wayland Control Panel 'https://github.com/milgra/wcp'
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
 ### swayr daemon
@@ -142,6 +144,7 @@ for_window [title="Volume Control"] floating enable, resize set 900 600
 for_window [title="Bluetooth Devices"] floating enable, resize set 900 600
 for_window [title="Calendar"] floating enable, resize set 900 600
 for_window [title="Clocks"] floating enable
+for_window [title="Zoom"] floating enable, resize set 1600 900
 for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
 
