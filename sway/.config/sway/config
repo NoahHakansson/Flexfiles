@@ -11,7 +11,7 @@ set $latitude 56.6
 set $longitude 16.3
 exec wlsunset -l $latitude -L $longitude
 # WCP - Wayland Control Panel 'https://github.com/milgra/wcp'
-exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -a rt -m 5
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
 ### swayr daemon
