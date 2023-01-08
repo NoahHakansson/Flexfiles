@@ -7,7 +7,8 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/spotify", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "temperature", "clock", "idle_inhibitor", "tray"],
+    "modules-right": ["custom/spotify", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "temperature", "clock", "custom/wcp", "idle_inhibitor", "tray"],
+    //
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -36,6 +37,12 @@
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+    "custom/wcp": {
+        "format": "",
+        "interval": "once",
+        "on-click": "echo 2 > /tmp/wcp",
+        "tooltip": false,
+    },
     "custom/spotify": {
         "exec": "playerctl --player=spotify metadata --format '{{title}} - {{artist}}'",
         "interval": 5,
@@ -56,8 +63,8 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        // "icon-size": 18,
+        "spacing": 5
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",

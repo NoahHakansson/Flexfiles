@@ -95,6 +95,7 @@ window#waybar.empty {
 #custom-cpu_speed,
 #custom-powermenu,
 #custom-spotify,
+#custom-wcp,
 #custom-weather,
 #custom-mail,
 #custom-media {
@@ -104,6 +105,12 @@ window#waybar.empty {
 }
 #custom-spotify {
     color: #1DB954;
+}
+#idle_inhibitor,
+#custom-wcp {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0 8px;
 }
 #battery {
     padding-top: 3px;
