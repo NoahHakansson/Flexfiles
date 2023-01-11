@@ -68,7 +68,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a%e %b %Y %R, Week %V}",
+        "format": "{:%a %e %b %Y %R, Week %V}",
         "on-click": "gnome-calendar"
     },
     "cpu": {
