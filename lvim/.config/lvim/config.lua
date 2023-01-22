@@ -186,7 +186,6 @@ vim.cmd([[
 :augroup END
 ]])
 
--- Bind vim fugitive to which_key <leader>gs
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
@@ -205,7 +204,6 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["H"] = { ":ClangdSwitchSourceHeader<CR>", "Switch Source/Header" }
 -- lvim.builtin.which_key.mappings["7"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" }
 -- lvim.builtin.which_key.vmappings["7"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
@@ -557,12 +555,12 @@ lvim.plugins = {
   {
     "catppuccin/nvim",
     require("catppuccin").setup({ transparent_background = true }),
-    as = "catppuccin",
-    run = ":CatppuccinCompile"
+    name = "catppuccin",
+    build = ":CatppuccinCompile"
   },
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
@@ -575,10 +573,10 @@ lvim.plugins = {
   -- Git-related plugins
   {
     'pwntester/octo.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require "octo".setup()
@@ -598,7 +596,7 @@ lvim.plugins = {
   { "ellisonleao/glow.nvim" },
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {
         -- your configuration comes here
@@ -613,7 +611,7 @@ lvim.plugins = {
         comment_placeholder = '',
       })
     end,
-    requires = "ray-x/guihua.lua",
+    dependencies = "ray-x/guihua.lua",
   },
   {
     "sindrets/diffview.nvim",
@@ -634,21 +632,14 @@ lvim.plugins = {
   },
   {
     "Badhi/nvim-treesitter-cpp-tools",
-    requires = "nvim-treesitter/nvim-treesitter",
+    dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
     "danymat/neogen",
     config = function()
       require('neogen').setup()
     end,
-    requires = "nvim-treesitter/nvim-treesitter",
-  },
-  {
-    "nvim-telescope/telescope-project.nvim",
-    event = "BufWinEnter",
-    setup = function()
-      vim.cmd [[packadd telescope.nvim]]
-    end,
+    dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
     "gbprod/substitute.nvim",

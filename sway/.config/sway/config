@@ -85,7 +85,7 @@ output eDP-1 scale 1.5
 
 # sticky applications to certain workspace number
 assign [class="Spotify" instance="spotify" title="Spotify"] 9 # spotify currently doesn't work with this D:
-assign [class="WebCord"] 8
+assign [class="WebCord" title="WebCord" instance="WebCord"] 8
 assign [class="Slack"] 8
 assign [class="Signal"] 8
 assign [class="thunderbird"] 7
