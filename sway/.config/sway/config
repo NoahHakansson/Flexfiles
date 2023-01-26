@@ -58,6 +58,7 @@ set $music spotify
 set $files nautilus
 set $email thunderbird
 set $slack slack --enable-features=WebRTCPipeWireCapturer
+set $webcord webcord --enable-features=WebRTCPipeWireCapturer --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $pavucontrol pavucontrol
 
 set $menu wofi --width 600 --height 300 --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
@@ -84,7 +85,8 @@ output eDP-1 scale 1.5
 # output "Ancor Communications Inc VS278 C8LMQS093350" resolution 1920x1080@60Hz position 0,0
 
 # sticky applications to certain workspace number
-assign [class="Spotify" instance="spotify" title="Spotify"] 9 # spotify currently doesn't work with this D:
+# spotify currently doesn't work with this D:
+assign [class="Spotify" instance="spotify" title="Spotify"] 9
 assign [class="WebCord" title="WebCord" instance="WebCord"] 8
 assign [class="Slack"] 8
 assign [class="Signal"] 8
