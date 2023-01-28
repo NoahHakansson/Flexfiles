@@ -87,7 +87,7 @@ output eDP-1 scale 1.5
 # sticky applications to certain workspace number
 # spotify currently doesn't work with this D:
 assign [class="Spotify" instance="spotify" title="Spotify"] 9
-assign [class="WebCord" title="WebCord" instance="WebCord"] 8
+assign [app_id="WebCord" class="WebCord" title="WebCord" instance="WebCord"] 8
 assign [class="Slack"] 8
 assign [class="Signal"] 8
 assign [class="thunderbird"] 7
@@ -164,7 +164,7 @@ for_window [title="Scratchpad"] move scratchpad
     # exec programs
     bindsym $mod+w exec $browser
     bindsym $mod+f exec $files
-    bindsym $mod+s exec $slack
+    # bindsym $mod+s exec $slack
     bindsym $mod+e exec $email
     bindsym $mod+v exec $pavucontrol
     # bindsym $mod+v exec $record
@@ -355,6 +355,10 @@ mode "resize" {
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
 
+    # resize 2 windows 50/50 and then set focused window to a nice 75/25 ish size
+    bindsym g floating toggle, floating toggle, resize grow width 570px
+    # set 2 window split 50/50
+    bindsym e floating toggle, floating toggle
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
