@@ -16,6 +16,7 @@ lvim.colorscheme = "catppuccin"
 lvim.builtin.dap.active = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
+vim.opt.spelllang = "en"
 vim.opt.clipboard = ""
 vim.opt.undofile = true
 vim.opt.showmode = false
@@ -24,6 +25,12 @@ vim.opt.wrap = true
 -- vim.opt.mouse = ""
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_palette = "mix"
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md" },
+  -- enable spell checking only for markdown files
+  command = "setlocal spell spelllang=en_us",
+})
 
 
 -- Transparency
