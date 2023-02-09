@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/spotify", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "temperature", "clock", "custom/wcp", "idle_inhibitor", "tray"],
+    "modules-right": ["custom/spotify", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "temperature", "clock", "idle_inhibitor", "tray", "custom/notification"],
     //
     // Modules configuration
     // "sway/workspaces": {
@@ -36,6 +36,22 @@
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
     "custom/wcp": {
         "format": "",

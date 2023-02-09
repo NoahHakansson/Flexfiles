@@ -95,6 +95,7 @@ window#waybar.empty {
 #custom-cpu_speed,
 #custom-powermenu,
 #custom-spotify,
+#custom-notification,
 #custom-wcp,
 #custom-weather,
 #custom-mail,
@@ -103,6 +104,14 @@ window#waybar.empty {
     padding: 0 8px;
     /* border-top: 3px solid rgba(217, 216, 216, 0.5); */
 }
+
+#custom-notification {
+    margin-right: 15px;
+    margin-left: 5px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
 #custom-spotify {
     color: #1DB954;
 }

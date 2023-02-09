@@ -11,12 +11,16 @@ set $latitude 56.6
 set $longitude 16.3
 exec wlsunset -l $latitude -L $longitude
 # WCP - Wayland Control Panel 'https://github.com/milgra/wcp'
-exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -a rt -m 5
+# exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -a rt -m 5
 ### clipboard
 exec wl-paste -t text --watch clipman store --no-persist
 ### swayr daemon
 set $swayR $HOME/.cargo/bin/swayr
 exec $HOME/.cargo/bin/swayrd
+
+### Sway Notification Center
+# Notification Daemon
+exec swaync
 
 ### Clamshell Mode
 set $laptop eDP-1
@@ -30,7 +34,6 @@ exec_always $HOME/.config/waybar/find-hwmon.sh
 
 ### use xwayland 
 xwayland enable
-exec mako
 
 ### set dark theme
 exec {
@@ -182,6 +185,9 @@ for_window [title="Scratchpad"] move scratchpad
     bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%
     # clipman (clipboard manager)
     bindsym $mod+c exec clipman pick --tool wofi -T'--prompt="Clipboard history" -i'
+
+    # Toggle control center (Sway Notification Center)
+    bindsym $mod+Shift+n exec swaync-client -t -sw
 
 
 #
