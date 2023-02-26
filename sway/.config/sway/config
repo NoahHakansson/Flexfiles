@@ -149,6 +149,7 @@ for_window [title="Volume Control"] floating enable, resize set 900 600
 for_window [title="Bluetooth Devices"] floating enable, resize set 900 600
 for_window [title="Calendar"] floating enable, resize set 900 600
 for_window [title="Clocks"] floating enable
+for_window [app_id="Nautilus"] floating enable, resize 900 600
 for_window [title="Zoom"] floating enable, resize set 1600 900
 for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
@@ -167,10 +168,8 @@ for_window [title="Scratchpad"] move scratchpad
     # exec programs
     bindsym $mod+w exec $browser
     bindsym $mod+f exec $files
-    # bindsym $mod+s exec $slack
-    bindsym $mod+e exec $email
+    # bindsym $mod+e exec $email
     bindsym $mod+v exec $pavucontrol
-    # bindsym $mod+v exec $record
 
     ## control Spotify music player (playerctl --player=spotify)
     bindsym $mod+Control+Shift+p exec playerctl --player=spotify play-pause
@@ -203,8 +202,12 @@ for_window [title="Scratchpad"] move scratchpad
     # Open wofi showing all windows and force kill picked window
     bindsym $mod+Shift+q exec $swayR quit-window --kill
 
+    ## swayr commands
     # Open wofi showing all windows and switch to choosen window
     bindsym $mod+Shift+Tab exec $swayR switch-window
+    bindsym $mod+s exec $swayR switch-window
+    bindsym $mod+Shift+s exec $swayR steal-window
+    bindsym $mod+u exec $swayR switch-to-urgent-or-lru-window
 
     # Start your launcher
     # bindsym $mod+d exec $menu
@@ -311,10 +314,12 @@ for_window [title="Scratchpad"] move scratchpad
     # bindsym $mod+b splith
     # bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
+    ### Switch the current container between different layout styles
+    # Toggle between tabbed and tiled layout using "swayr"
+    bindsym $mod+t exec $swayR toggle-tab-shuffle-tile-workspace exclude-floating || $swayR nop
     # bindsym $mod+s layout stacking
-    # bindsym $mod+w layout tabbed
-    bindsym $mod+t layout toggle split
+    # bindsym $mod+t layout tabbed
+    # bindsym $mod+t layout toggle split
 
     # Make the current focus fullscreen
     # bindsym $mod+f fullscreen
@@ -361,7 +366,8 @@ mode "resize" {
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
 
-    # resize 2 windows 50/50 and then set focused window to a nice 75/25 ish size
+    # resize 2 windows 50%/50% and then set focused window to 70% and other to 30% ish size
+    # (On a 1440p ultrawide monitor)
     bindsym g floating toggle, floating toggle, resize grow width 570px
     # set 2 window split 50/50
     bindsym e floating toggle, floating toggle
