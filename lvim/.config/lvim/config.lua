@@ -425,7 +425,15 @@ formatters.setup({
 	{ name = "gofumpt" },
 	{ name = "stylua" },
 	{ name = "eslint_d" },
-	{ name = "prettier" },
+	{
+		name = "prettier",
+		---@usage arguments to pass to the formatter
+		-- these cannot contain whitespace
+		-- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
+		-- args = { "--print-width", "100" },
+		---@usage only start in these filetypes, by default it will attach to all filetypes it supports
+		filetypes = { "markdown" },
+	},
 	-- { name = "isort", },
 	-- { name = "yamlfmt", },
 })
