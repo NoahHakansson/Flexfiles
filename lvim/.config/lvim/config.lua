@@ -59,8 +59,6 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- vertical resize of buffer windows
 lvim.keys.normal_mode["<S-Right>"] = ":vertical resize +2px<CR>"
 lvim.keys.normal_mode["<S-Left>"] = ":vertical resize -2px<CR>"
--- vim.cmd('vnoremap <leader>y "+y')
--- vim.cmd("nnoremap <leader><leader> <c-^>")
 -- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-s>"] = false
@@ -72,11 +70,16 @@ lvim.keys.insert_mode["kj"] = false
 lvim.keys.insert_mode["jj"] = false
 -- edit a default keymapping
 
--- Harpoon bindings
+-- ### Harpoon bindings ###
+-- harpoon toogle quick menu
 lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
--- lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
--- lvim.keys.normal_mode["<S-l>"] = "<cmd>lua require('harpoon.ui').nav_next()<cr>"
--- lvim.keys.normal_mode["<S-h>"] = "<cmd>lua require('harpoon.ui').nav_prev()<cr>"
+-- harpoon add file
+lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
+-- harpoon switch to file one
+lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
+-- harpoon switch to file two
+lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
+-- harpoon which key mappings
 lvim.builtin.which_key.mappings["h"] = {
 	name = "harpoon",
 	h = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon file (1)" },
@@ -231,21 +234,6 @@ lvim.builtin.gitsigns.opts.signs.changedelete.text = "~"
 --
 -- Turn off highlight when pressing Esc
 vim.cmd("nmap <silent> <Esc> :noh <CR>")
--- Remaps for swedish keyboard layout.
--- Normal + (visual+select) + operator pending mode
-vim.cmd("map § $")
--- Fix alt to function like altGr for important keys.
--- Normal + (visual+select) + operator pending mode
-vim.cmd("map <M-0> }")
-vim.cmd("map <M-7> {")
-vim.cmd("map <M-9> ]")
-vim.cmd("map <M-8> [")
--- Insert + command-line mode
-vim.cmd("map! <M-0> }")
-vim.cmd("map! <M-7> {")
-vim.cmd("map! <M-9> ]")
-vim.cmd("map! <M-8> [")
-
 -- Quality of life rebinds
 -- Center next search
 vim.cmd("nnoremap n nzzzv")
@@ -487,6 +475,13 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["?"] = {
 	"<cmd>Cheat<CR>",
 	"Cheat.sh",
+}
+
+-- undotree whick key bind
+lvim.builtin.which_key.mappings["u"] = {
+	-- toggle undotree and focus on it
+	"<cmd>UndotreeToggle | UndotreeFocus<CR>",
+	"Undo Tree",
 }
 
 -- unbind <M-x> in insert mode
