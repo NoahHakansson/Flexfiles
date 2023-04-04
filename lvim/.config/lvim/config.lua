@@ -558,9 +558,12 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"JellyApple102/flote.nvim",
+		"NoahHakansson/flote.nvim",
 		config = function()
-			require("flote").setup()
+			require("flote").setup({
+				style = "",
+				border = "single",
+			})
 		end,
 	},
 	{ "mbbill/undotree" },
