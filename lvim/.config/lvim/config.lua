@@ -562,6 +562,40 @@ lvim.plugins = {
 			})
 		end,
 	},
+	{
+		"JellyApple102/flote.nvim",
+		config = function()
+			require("flote").setup()
+		end,
+	},
+	{ "mbbill/undotree" },
+	-- Github copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					debounce = 75,
+					keymap = {
+						accept = "<M-b>",
+						accept_word = false,
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
 	{ "sainnhe/gruvbox-material" },
 	-- smart identation
 	{ "tpope/vim-sleuth" },
