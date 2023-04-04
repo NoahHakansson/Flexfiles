@@ -153,6 +153,7 @@ for_window [app_id="Nautilus"] floating enable, resize 900 600
 for_window [title="Zoom"] floating enable, resize set 1600 900
 for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
+for_window [app_id="com.obsproject.Studio"] floating enable, resize set 1600 900
 
 # float firefox bookmark, etc... window
 for_window [title="Library"] floating enable
