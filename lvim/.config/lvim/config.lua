@@ -75,21 +75,16 @@ lvim.keys.insert_mode["jj"] = false
 lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
 -- harpoon add file
 lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
+lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon add file" }
 -- harpoon switch to file one
 lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
 -- harpoon switch to file two
 lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
--- harpoon which key mappings
-lvim.builtin.which_key.mappings["h"] = {
-	name = "harpoon",
-	h = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon file (1)" },
-	j = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Harpoon file (2)" },
-	k = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Harpoon file (3)" },
-	l = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon file (4)" },
-	m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon mark file" },
-}
 
--- go.nvim and Go bindings
+-- ### Flote bindings ###
+lvim.builtin.which_key.mappings["F"] = { "<cmd>Flote<CR>", "Flote project notes" }
+
+-- ### go.nvim and Go bindings ###
 lvim.builtin.which_key.mappings["G"] = {
 	name = "GO/Golang",
 	r = { "<cmd>GoRun -F<cr>", "`go run .`(In floating window)" },
@@ -145,6 +140,7 @@ lvim.builtin.which_key.mappings["g"] = {
 	r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 	R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 	f = { "<cmd>G<cr>", "Fugitive" },
+	w = { "<cmd>GBrowse<cr>", "Open file in browser" },
 	u = {
 		"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 		"Undo Stage Hunk",
@@ -567,6 +563,26 @@ lvim.plugins = {
 		end,
 	},
 	{ "mbbill/undotree" },
+	-- dim highlighting of unused functions, variables, parameters and more
+	-- {
+	-- 	"zbirenbaum/neodim",
+	-- 	event = "LspAttach",
+	-- 	config = function()
+	-- 		require("neodim").setup({
+	-- 			alpha = 0.75,
+	-- 			blend_color = "#000000",
+	-- 			update_in_insert = {
+	-- 				enable = true,
+	-- 				delay = 100,
+	-- 			},
+	-- 			hide = {
+	-- 				virtual_text = false,
+	-- 				signs = false,
+	-- 				underline = false,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	-- Github copilot
 	{
 		"zbirenbaum/copilot.lua",
