@@ -473,11 +473,17 @@ lvim.builtin.which_key.mappings["?"] = {
 	"Cheat.sh",
 }
 
--- undotree whick key bind
+-- undotree which key bind
 lvim.builtin.which_key.mappings["u"] = {
 	-- toggle undotree and focus on it
 	"<cmd>UndotreeToggle | UndotreeFocus<CR>",
 	"Undo Tree",
+}
+
+-- neoclip which key bind
+lvim.builtin.which_key.mappings['"'] = {
+	"<cmd>lua require('telescope').extensions.neoclip.default()<CR>",
+	"Neoclip",
 }
 
 -- unbind <M-x> in insert mode
@@ -528,13 +534,6 @@ local signature_cfg = {
 	select_signature_key = nil, -- cycle to next signature, e.g. '<M-n>' function overloading
 	move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
 }
-
--- load telescope extensions
--- lvim.builtin.telescope.on_config_done = function(telescope)
--- pcall(telescope.load_extension, "frecency")
--- pcall(telescope.load_extension, "neoclip")
--- any other extensions loading
--- end
 
 -- Additional Plugins
 lvim.plugins = {
@@ -633,6 +632,46 @@ lvim.plugins = {
 	-- misc
 	{ "RishabhRD/popfix" },
 	{ "dagle/nvim-cheat.sh" },
+	{
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		config = function()
+			require("neoclip").setup({
+				keys = {
+					telescope = {
+						i = {
+							select = "<cr>",
+							paste = "<c-p>",
+							paste_behind = "<c-b>",
+							replay = "<c-q>", -- replay a macro
+							delete = "<c-d>", -- delete an entry
+							edit = "<c-e>", -- edit an entry
+							custom = {},
+						},
+						n = {
+							select = "<cr>",
+							paste = "p",
+							--- It is possible to map to more than one key.
+							-- paste = { 'p', '<c-p>' },
+							paste_behind = "P",
+							replay = "q",
+							delete = "d",
+							edit = "e",
+							custom = {},
+						},
+					},
+				},
+			})
+		end,
+	},
 	-- { "rcarriga/nvim-dap-ui" },
 	{ "ojroques/nvim-bufdel" },
 	{ "kevinhwang91/nvim-bqf" },
@@ -655,6 +694,19 @@ lvim.plugins = {
 			})
 		end,
 		dependencies = "ray-x/guihua.lua",
+	},
+	-- lsp navigator
+	{
+		"ray-x/navigator.lua",
+		dependencies = {
+			{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+			{ "neovim/nvim-lspconfig" },
+		},
+		-- config = function()
+		-- 	require("navigator").setup({
+		-- 		mason = true,
+		-- 	})
+		-- end,
 	},
 	{
 		"sindrets/diffview.nvim",
