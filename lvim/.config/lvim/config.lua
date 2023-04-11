@@ -81,8 +81,15 @@ lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>
 -- harpoon switch to file two
 lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
 
--- ### Flote bindings ###
-lvim.builtin.which_key.mappings["F"] = { "<cmd>Flote<CR>", "Flote project notes" }
+-- ### Flote project notes bindings ###
+lvim.builtin.which_key.mappings["n"] = { "<cmd>Flote<CR>", "Flote project notes" }
+
+-- ### Markdown preview bindings ###
+lvim.builtin.which_key.mappings["m"] = {
+	name = "Markdown preview",
+	m = { "<cmd>MarkdownPreview<CR>", "Start Markdown preview" },
+	s = { "<cmd>MarkdownPreviewStop<CR>", "Stop markdown preview" },
+}
 
 -- ### go.nvim and Go bindings ###
 lvim.builtin.which_key.mappings["G"] = {
