@@ -763,18 +763,18 @@ lvim.plugins = {
 		dependencies = "ray-x/guihua.lua",
 	},
 	-- lsp navigator
-	{
-		"ray-x/navigator.lua",
-		dependencies = {
-			{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
-			{ "neovim/nvim-lspconfig" },
-		},
-		-- config = function()
-		-- 	require("navigator").setup({
-		-- 		mason = true,
-		-- 	})
-		-- end,
-	},
+	-- {
+	-- 	"ray-x/navigator.lua",
+	-- 	dependencies = {
+	-- 		{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+	-- 		{ "neovim/nvim-lspconfig" },
+	-- 	},
+	-- 	-- config = function()
+	-- 	-- 	require("navigator").setup({
+	-- 	-- 		mason = true,
+	-- 	-- 	})
+	-- 	-- end,
+	-- },
 	{
 		"sindrets/diffview.nvim",
 		event = "BufRead",
@@ -826,6 +826,14 @@ lvim.plugins = {
 			})
 		end,
 	},
+	-- ### random uselss things, like a tetris game in neovim ###
+	-- nvim-tetris
+	{ "alec-gibson/nvim-tetris" },
+	-- cellular-automaton animations
+	{ "eandrju/cellular-automaton.nvim" },
+	-- vim-be-good get better at vim navigation
+	{ "ThePrimeagen/vim-be-good" },
+	--- ### end random uselss things
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
