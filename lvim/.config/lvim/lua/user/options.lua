@@ -27,7 +27,7 @@ lvim.builtin.gitsigns.opts.signs.delete.text = "-"
 lvim.builtin.gitsigns.opts.signs.topdelete.text = "-"
 lvim.builtin.gitsigns.opts.signs.changedelete.text = "~"
 -- alpha dashboard
-lvim.builtin.alpha.active = true
+lvim.builtin.alpha.active = false
 lvim.builtin.alpha.mode = "dashboard"
 -- set to false to disable floating terminal
 lvim.builtin.terminal.active = true

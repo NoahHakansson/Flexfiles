@@ -38,6 +38,18 @@ lvim.plugins = {
 	-- 		})
 	-- 	end,
 	-- },
+	{
+		"jose-elias-alvarez/typescript.nvim",
+		config = function()
+			require("typescript").setup({
+				disable_commands = false, -- prevent the plugin from creating Vim commands
+				debug = false, -- enable debug logging for commands
+				go_to_source_definition = {
+					fallback = true, -- fall back to standard LSP definition on failure
+				},
+			})
+		end,
+	},
 	-- Github copilot
 	{
 		"zbirenbaum/copilot.lua",
@@ -46,6 +58,10 @@ lvim.plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 	{ "sainnhe/gruvbox-material" },
@@ -134,10 +150,6 @@ lvim.plugins = {
 	},
 	-- end Git-related plugins
 	-- {"p00f/nvim-ts-rainbow"},
-	{
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
-	},
 	-- The GOAT lsp_signature
 	{ "ray-x/lsp_signature.nvim" },
 	{

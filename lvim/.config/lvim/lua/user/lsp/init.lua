@@ -32,6 +32,7 @@ require("user.lsp.languages.marksman")
 
 -- servers to configure manually
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
 -- TODO: manually setup TSSERVER to avoid getting double diagnostics in buffer from server and eslint_d
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)

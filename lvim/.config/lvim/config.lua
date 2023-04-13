@@ -16,6 +16,7 @@ reload("user.neoclip")
 reload("user.scrollbar")
 reload("user.colorizer")
 reload("user.flote")
+reload("user.bqf")
 --[[
 lvim is the global options object
 

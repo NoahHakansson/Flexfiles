@@ -40,6 +40,9 @@ vim.cmd("inoremap . .<c-g>u")
 vim.cmd("inoremap ! !<c-g>u")
 vim.cmd("inoremap ? ?<c-g>u")
 
+-- rebind ToggleTerminal Terminal
+lvim.builtin.terminal.open_mapping = [[<c-x>]]
+
 -- ### Harpoon bindings ###
 -- harpoon toogle quick menu
 lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
@@ -105,9 +108,6 @@ lvim.builtin.which_key.mappings["G"] = {
 	},
 }
 
--- rebind ToggleTerminal Terminal
-lvim.builtin.terminal.open_mapping = [[<c-x>]]
-
 -- Git bindings
 lvim.builtin.which_key.mappings["g"] = {
 	name = "Git",
@@ -163,16 +163,8 @@ vim.api.nvim_set_keymap("n", "ss", "<cmd>lua require('substitute').line()<cr>", 
 vim.api.nvim_set_keymap("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
 
--- Trouble.nvim plugin
-lvim.builtin.which_key.mappings["t"] = {
-	name = "Diagnostics",
-	t = { "<cmd>TroubleToggle<cr>", "trouble" },
-	w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-	d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-	q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-	l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-	r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-}
+-- todo-comments.nvim plugin
+lvim.builtin.which_key.mappings["t"] = { "<cmd>TodoTelescope<cr>", "Todo Comments" }
 
 -- cheat.sh plugin bind
 lvim.builtin.which_key.mappings["?"] = {
