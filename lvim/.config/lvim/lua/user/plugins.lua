@@ -16,6 +16,7 @@ lvim.plugins = {
 			})
 		end,
 	},
+	{ "folke/zen-mode.nvim" },
 	{ "JellyApple102/flote.nvim" },
 	{ "mbbill/undotree" },
 	-- dim highlighting of unused functions, variables, parameters and more

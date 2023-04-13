@@ -57,6 +57,9 @@ lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>
 -- ### Flote project notes bindings ###
 lvim.builtin.which_key.mappings["n"] = { "<cmd>Flote<CR>", "Flote project notes" }
 
+-- ### zen mode bindings ###
+lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen mode" }
+
 -- ### Markdown preview bindings ###
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Markdown preview",

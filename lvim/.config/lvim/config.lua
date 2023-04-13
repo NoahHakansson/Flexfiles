@@ -17,6 +17,7 @@ reload("user.scrollbar")
 reload("user.colorizer")
 reload("user.flote")
 reload("user.bqf")
+reload("user.zen-mode")
 --[[
 lvim is the global options object
 
