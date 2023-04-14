@@ -16,9 +16,9 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "folke/zen-mode.nvim" },
-	{ "JellyApple102/flote.nvim" },
-	{ "mbbill/undotree" },
+	{ "folke/zen-mode.nvim", event = "VeryLazy" },
+	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
+	{ "mbbill/undotree", event = "VeryLazy" },
 	-- dim highlighting of unused functions, variables, parameters and more
 	-- {
 	-- 	"zbirenbaum/neodim",
@@ -76,6 +76,7 @@ lvim.plugins = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
+		event = "VeryLazy",
 		config = function()
 			require("octo").setup()
 		end,
@@ -83,20 +84,23 @@ lvim.plugins = {
 	{ "tpope/vim-fugitive" },
 	{ "ThePrimeagen/harpoon" },
 	{ "tpope/vim-rhubarb" },
-	{ "tpope/vim-obsession" },
+	-- { "tpope/vim-obsession" }, -- basic session management
+	{ "olimorris/persisted.nvim", lazy = false }, -- better session management with git branch support
 	{ "tommcdo/vim-fugitive-blame-ext" },
 	{ "petertriho/nvim-scrollbar" },
 	-- misc
 	{ "RishabhRD/popfix" },
-	{ "dagle/nvim-cheat.sh" },
+	{ "dagle/nvim-cheat.sh", event = "VeryLazy" },
 	{
 		"iamcco/markdown-preview.nvim",
+		event = "VeryLazy",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
+		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-telescope/telescope.nvim" },
 		},
@@ -111,10 +115,10 @@ lvim.plugins = {
 	-- { "rcarriga/nvim-dap-ui" },
 	{ "ojroques/nvim-bufdel" },
 	{ "kevinhwang91/nvim-bqf" },
-	{ "ellisonleao/glow.nvim" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("todo-comments").setup({
 				-- your configuration comes here
@@ -176,10 +180,10 @@ lvim.plugins = {
 	-- ### Random uselss things, like a tetris game in neovim ###
 	-- ###
 	-- nvim-tetris
-	{ "alec-gibson/nvim-tetris" },
+	{ "alec-gibson/nvim-tetris", event = "VeryLazy" },
 	-- cellular-automaton animations
-	{ "eandrju/cellular-automaton.nvim" },
+	{ "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
 	-- vim-be-good get better at vim navigation
-	{ "ThePrimeagen/vim-be-good" },
+	{ "ThePrimeagen/vim-be-good", event = "VeryLazy" },
 	--- ### end random uselss things
 }

@@ -22,3 +22,7 @@ lvim.builtin.telescope.defaults.mappings = {
 		["p"] = actions.cycle_history_prev,
 	},
 }
+
+-- load telescope extensions
+local _, telescope = pcall(require, "telescope")
+telescope.load_extension("persisted")

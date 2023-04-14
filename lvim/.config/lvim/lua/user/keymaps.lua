@@ -54,11 +54,14 @@ lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>
 -- harpoon switch to file two
 lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
 
--- ### Flote project notes bindings ###
+-- ### flote.nvim project notes bindings ###
 lvim.builtin.which_key.mappings["n"] = { "<cmd>Flote<CR>", "Flote project notes" }
 
--- ### zen mode bindings ###
+-- ### zen-mode.nvim bindings ###
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen mode" }
+
+-- ### persisted.nvim bindings ###
+lvim.builtin.which_key.mappings["S"] = { "<cmd>Telescope persisted<CR>", "Show sessions in Telescope" }
 
 -- ### Markdown preview bindings ###
 lvim.builtin.which_key.mappings["m"] = {
