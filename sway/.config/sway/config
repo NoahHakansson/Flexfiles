@@ -100,14 +100,14 @@ assign [class="thunderbird"] 7
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 600 'swaymsg "output * dpms off"' \
-        timeout 900 'swaylock --grace 5 -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
+        timeout 600 'swaylock --grace 5 -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
+        timeout 900 'swaymsg "output * dpms off"' \
         timeout 1200 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"' \
         before-sleep 'swaylock -f -c 000000 --indicator --image $HOME/walls/dball.png --effect-blur 7x5' \
 #
-# This will turn off your displays after 10 mins,
-# lock your computer after 15 mins,
+# lock your computer after 10 mins,
+# This will turn off your displays after 15 mins,
 # and suspend your computer after 20 mins of inactivity.
 # Will turn your screens back on when resumed.
 # It will also lock your screen before your computer goes to sleep.
