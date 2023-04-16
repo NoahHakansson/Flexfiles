@@ -2,8 +2,12 @@
 -- persisted.nvim is a plugin for managing sessions in Neovim.
 -- It is a fork of persistence.nvim with some additional features and GIT branch support.
 --
+local ok, persisted = pcall(require, "persisted")
+if not ok then
+	return
+end
 
-require("persisted").setup({
+persisted.setup({
 	save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- directory where session files are saved: Resolves to ~/.local/share/nvim/sessions/
 	silent = false, -- silent nvim message when sourcing session file
 	use_git_branch = true, -- create session files based on the branch of the git enabled repository

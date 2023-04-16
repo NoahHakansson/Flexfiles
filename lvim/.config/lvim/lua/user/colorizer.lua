@@ -1,7 +1,13 @@
 --
 -- colorizer.nvim setup config
 --
-require("colorizer").setup({ "*" }, {
+
+local ok, colorizer = pcall(require, "colorizer")
+if not ok then
+	return
+end
+
+colorizer.setup({ "*" }, {
 	RGB = true, -- #RGB hex codes
 	RRGGBB = true, -- #RRGGBB hex codes
 	RRGGBBAA = true, -- #RRGGBBAA hex codes

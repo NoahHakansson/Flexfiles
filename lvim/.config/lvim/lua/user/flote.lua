@@ -1,7 +1,13 @@
 --
 -- flote.nvim setup config
 --
-require("flote").setup({
+
+local ok, flote = pcall(require, "flote")
+if not ok then
+	return
+end
+
+flote.setup({
 	q_to_quit = true,
 	window_style = "",
 	window_border = "single",

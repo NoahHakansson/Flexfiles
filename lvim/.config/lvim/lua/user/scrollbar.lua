@@ -1,7 +1,13 @@
 --
 -- scrollbar.nvim setup config
 --
-require("scrollbar").setup({
+
+local ok, scrollbar = pcall(require, "scrollbar")
+if not ok then
+	return
+end
+
+scrollbar.setup({
 	show = true,
 	show_in_active_only = false,
 	set_highlights = true,

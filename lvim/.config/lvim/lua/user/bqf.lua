@@ -1,8 +1,12 @@
 --
 -- nvim-bqf is a plugin that provides a better quickfix window for Neovim.
 --
+local ok, bqf = pcall(require, "bqf")
+if not ok then
+	return
+end
 
-require("bqf").setup({
+bqf.setup({
 	auto_enable = true,
 	magic_window = true,
 	auto_resize_height = false,

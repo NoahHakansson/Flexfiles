@@ -1,7 +1,13 @@
 --
 -- fidget.nvim setup config
 --
-require("fidget").setup({
+
+local ok, fidget = pcall(require, "fidget")
+if not ok then
+	return
+end
+
+fidget.setup({
 	text = {
 		spinner = "pipe", -- animation shown when tasks are ongoing
 		done = "✔", -- character shown when all tasks are complete
