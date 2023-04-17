@@ -17,7 +17,7 @@ scrollbar.setup({
 	throttle_ms = 100,
 	handle = {
 		text = " ",
-		blend = 20, -- Integer between 0 and 100. 0 for fully transparent, 100 for fully opaque. (default: 30)
+		blend = 25, -- Integer between 0 and 100. 0 for fully transparent, 100 for fully opaque. (default: 30)
 		color = "#2E324A",
 		highlight = "CursorColumn",
 		hide_if_all_visible = true, -- Hides handle if all lines are visible
