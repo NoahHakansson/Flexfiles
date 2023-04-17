@@ -17,6 +17,7 @@ lvim.plugins = {
 		end,
 	},
 	-- { "lvimuser/lsp-inlayhints.nvim" }, -- TODO: this is not working
+	{ "monaqa/dial.nvim" },
 	{ "folke/zen-mode.nvim", event = "VeryLazy" },
 	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
 	{ "mbbill/undotree", event = "VeryLazy" },

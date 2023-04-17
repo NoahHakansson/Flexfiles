@@ -41,7 +41,7 @@ vim.cmd("inoremap ! !<c-g>u")
 vim.cmd("inoremap ? ?<c-g>u")
 
 -- rebind ToggleTerminal Terminal
-lvim.builtin.terminal.open_mapping = [[<c-x>]]
+-- lvim.builtin.terminal.open_mapping = [[<c-x>]]
 
 -- ### Harpoon bindings ###
 -- harpoon toogle quick menu
