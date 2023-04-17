@@ -12,15 +12,17 @@ persisted.setup({
 	silent = false, -- silent nvim message when sourcing session file
 	use_git_branch = true, -- create session files based on the branch of the git enabled repository
 	autosave = true, -- automatically save session files when exiting Neovim
-	-- should_autosave = function() -- function to determine if a session should be autosaved
-	-- 	-- do not autosave if the current filetype is ""(empty buffer), NvimTree or alpha
-	-- 	if vim.bo.filetype == "" or vim.bo.filetype == "NvimTree" or vim.bo.filetype == "alpha" then
-	-- 		return false
-	-- 	end
-	-- 	return true
-	-- end,
+	should_autosave = function() -- function to determine if a session should be autosaved
+		-- do not autosave if the current filetype is ""(empty buffer), NvimTree or alpha
+		if vim.bo.filetype == "" or vim.bo.filetype == "NvimTree" or vim.bo.filetype == "alpha" then
+			return false
+		end
+		return true
+	end,
 	autoload = true, -- automatically load the session for the cwd on Neovim startup
-	on_autoload_no_session = nil, -- function to run when `autoload = true` but there is no session to load
+	on_autoload_no_session = function() -- function to run when `autoload = true` but there is no session to load
+		pcall(vim.cmd, "Telescope git_files")
+	end,
 	follow_cwd = true, -- change session file name to match current working directory if it changes
 	allowed_dirs = {
 		"~/Flexfiles",
