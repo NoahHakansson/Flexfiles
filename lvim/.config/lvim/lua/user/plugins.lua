@@ -180,7 +180,7 @@ lvim.plugins = {
 		end,
 	},
 	-- half buggy colorizer (May require running ':ColorizerReloadAllBuffers' if it bugs out.)
-	{ "norcalli/nvim-colorizer.lua" },
+	{ "NvChad/nvim-colorizer.lua" },
 	-- ###
 	-- ### Random uselss things, like a tetris game in neovim ###
 	-- ###
