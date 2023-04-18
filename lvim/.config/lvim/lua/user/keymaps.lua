@@ -63,6 +63,13 @@ lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen mode" }
 -- ### persisted.nvim bindings ###
 lvim.builtin.which_key.mappings["S"] = { "<cmd>Telescope persisted<CR>", "Show sessions in Telescope" }
 
+-- ### leap.nvim bindings ###
+-- only bind leap in normal mode (keeps operator pending mode working as normal f/F)
+vim.keymap.set({ "n" }, "f", "<Plug>(leap-forward-to)")
+vim.keymap.set({ "n" }, "F", "<Plug>(leap-backward-to)")
+-- vim.keymap.set({'n'}, ']', '<Plug>(leap-forward-to)')
+-- vim.keymap.set({'n'}, '[', '<Plug>(leap-backward-to)')
+
 -- ### Markdown preview bindings ###
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Markdown preview",
