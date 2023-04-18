@@ -17,6 +17,7 @@ lvim.plugins = {
 		end,
 	},
 	-- { "lvimuser/lsp-inlayhints.nvim" }, -- TODO: this is not working
+	{ "leoluz/nvim-dap-go" },
 	{ "tpope/vim-repeat" },
 	{ "ggandor/leap.nvim" },
 	{ "monaqa/dial.nvim" },
