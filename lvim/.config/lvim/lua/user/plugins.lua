@@ -20,6 +20,7 @@ lvim.plugins = {
 	{ "tpope/vim-repeat" },
 	{ "ggandor/leap.nvim" },
 	{ "monaqa/dial.nvim" },
+	{ "stevearc/dressing.nvim" },
 	{ "folke/zen-mode.nvim", event = "VeryLazy" },
 	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
 	{ "mbbill/undotree", event = "VeryLazy" },

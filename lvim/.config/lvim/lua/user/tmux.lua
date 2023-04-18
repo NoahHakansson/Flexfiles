@@ -32,6 +32,7 @@ tmux.setup({
 		sync_clipboard = true,
 
 		-- synchronizes registers *, +, unnamed, and 0 till 9 with tmux buffers.
+		-- disabling sync_registers will only redirect the * and + registers.
 		sync_registers = true,
 
 		-- syncs deletes with tmux clipboard as well, it is adviced to
