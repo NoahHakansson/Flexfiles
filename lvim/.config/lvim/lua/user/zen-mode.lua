@@ -57,14 +57,4 @@ zen_mode.setup({
 		-- 	font = "14", -- font size
 		-- },
 	},
-	-- callback where you can add custom code when the Zen window opens
-	on_open = function(win)
-		-- vim.cmd("silent !swaymsg fullscreen")
-		vim.fn.system("swaymsg fullscreen enable")
-	end,
-	-- callback where you can add custom code when the Zen window closes
-	on_close = function()
-		-- vim.cmd("silent !swaymsg fullscreen disable")
-		vim.fn.system("swaymsg fullscreen disable")
-	end,
 })

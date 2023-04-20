@@ -4,6 +4,8 @@
 lvim.plugins = {
 	{
 		"catppuccin/nvim",
+		lazy = false,
+		priority = 1000,
 		name = "catppuccin",
 		build = ":CatppuccinCompile",
 	},
@@ -17,34 +19,17 @@ lvim.plugins = {
 		end,
 	},
 	-- { "lvimuser/lsp-inlayhints.nvim" }, -- TODO: this is not working
-	{ "leoluz/nvim-dap-go" },
+	{ "NvChad/nvim-colorizer.lua" },
+	{
+		"leoluz/nvim-dap-go",
+		ft = { "go", "gomod" },
+	},
 	{ "tpope/vim-repeat" },
-	{ "ggandor/leap.nvim" },
 	{ "monaqa/dial.nvim" },
-	{ "stevearc/dressing.nvim" },
-	{ "folke/zen-mode.nvim", event = "VeryLazy" },
+	{ "stevearc/dressing.nvim", event = "VeryLazy" },
+	{ "folke/zen-mode.nvim", cmd = "ZenMode" },
 	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
 	{ "mbbill/undotree", event = "VeryLazy" },
-	-- dim highlighting of unused functions, variables, parameters and more
-	-- {
-	-- 	"zbirenbaum/neodim",
-	-- 	event = "LspAttach",
-	-- 	config = function()
-	-- 		require("neodim").setup({
-	-- 			alpha = 0.75,
-	-- 			blend_color = "#000000",
-	-- 			update_in_insert = {
-	-- 				enable = true,
-	-- 				delay = 100,
-	-- 			},
-	-- 			hide = {
-	-- 				virtual_text = false,
-	-- 				signs = false,
-	-- 				underline = false,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"jose-elias-alvarez/typescript.nvim",
 		config = function()
@@ -71,42 +56,53 @@ lvim.plugins = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
-	{ "sainnhe/gruvbox-material" },
+	-- { "sainnhe/gruvbox-material" },
 	-- smart identation
 	{ "tpope/vim-sleuth" },
 	-- Git-related plugins
 	{
 		"pwntester/octo.nvim",
+		cmd = "Octo",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-		event = "VeryLazy",
 		config = function()
 			require("octo").setup()
 		end,
 	},
-	{ "tpope/vim-fugitive" },
+	{
+		"tpope/vim-fugitive",
+		cmd = { "G", "GBrowse" },
+	},
 	{ "ThePrimeagen/harpoon" },
 	{ "tpope/vim-rhubarb" },
 	-- { "tpope/vim-obsession" }, -- basic session management
-	{ "olimorris/persisted.nvim", lazy = false }, -- better session management with git branch support
-	{ "tommcdo/vim-fugitive-blame-ext" },
+	{ "olimorris/persisted.nvim" }, -- better session management with git branch support
+	{
+		"tommcdo/vim-fugitive-blame-ext",
+		dependencies = "tpope/vim-fugitive",
+	},
 	{ "petertriho/nvim-scrollbar" },
 	-- misc
 	{ "RishabhRD/popfix" },
-	{ "dagle/nvim-cheat.sh", event = "VeryLazy" },
+	{ "dagle/nvim-cheat.sh", cmd = "Cheat" },
 	{
 		"iamcco/markdown-preview.nvim",
-		event = "VeryLazy",
+		ft = "markdown",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
-		event = "VeryLazy",
+		init = function()
+			vim.api.nvim_create_user_command("NeoclipOpen", function()
+				require("telescope").extensions.neoclip.default()
+			end, {})
+		end,
+		cmd = "NeoclipOpen",
 		dependencies = {
 			{ "nvim-telescope/telescope.nvim" },
 		},
@@ -117,14 +113,14 @@ lvim.plugins = {
 	-- as well as copy from neovim in on tmux pane or session to another
 	-- Also allows navigation with C-hjkl between tmux panes and neovim splits
 	-- Also allows you to resize neovim and tmux splits with Alt-hjkl (disabled by me)
-	{ "aserowy/tmux.nvim" },
+	{ "aserowy/tmux.nvim", lazy = true },
 	-- { "rcarriga/nvim-dap-ui" },
-	{ "ojroques/nvim-bufdel" },
-	{ "kevinhwang91/nvim-bqf" },
+	-- { "ojroques/nvim-bufdel" }, -- better buffer deletion, delete buffers without closing windows
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
-		event = "VeryLazy",
+		cmd = { "TodoTelescope", "TodoQuickFix" },
 		config = function()
 			require("todo-comments").setup({
 				-- your configuration comes here
@@ -134,12 +130,17 @@ lvim.plugins = {
 	},
 	{
 		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		ft = { "go", "gomod" },
 		config = function()
 			require("go").setup({
 				comment_placeholder = "",
 			})
 		end,
-		dependencies = "ray-x/guihua.lua",
 	},
 	{ "j-hui/fidget.nvim" },
 	-- lsp navigator
@@ -169,6 +170,7 @@ lvim.plugins = {
 	},
 	{
 		"danymat/neogen",
+		cmd = "Neogen",
 		config = function()
 			require("neogen").setup()
 		end,
@@ -180,16 +182,23 @@ lvim.plugins = {
 			require("substitute").setup()
 		end,
 	},
-	-- half buggy colorizer (May require running ':ColorizerReloadAllBuffers' if it bugs out.)
-	{ "NvChad/nvim-colorizer.lua" },
 	-- ###
 	-- ### Random uselss things, like a tetris game in neovim ###
 	-- ###
 	-- nvim-tetris
-	{ "alec-gibson/nvim-tetris", event = "VeryLazy" },
+	{
+		"alec-gibson/nvim-tetris",
+		cmd = "Tetris",
+	},
 	-- cellular-automaton animations
-	{ "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
+	{
+		"eandrju/cellular-automaton.nvim",
+		cmd = "CellularAutomaton",
+	},
 	-- vim-be-good get better at vim navigation
-	{ "ThePrimeagen/vim-be-good", event = "VeryLazy" },
+	{
+		"ThePrimeagen/vim-be-good",
+		cmd = "VimBeGood",
+	},
 	--- ### end random uselss things
 }
