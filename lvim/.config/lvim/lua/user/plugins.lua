@@ -32,6 +32,9 @@ lvim.plugins = {
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{
 		"jose-elias-alvarez/typescript.nvim",
+		dependencies = "neovim/nvim-lspconfig",
+		-- only load on javascript and typescript files
+		ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 		config = function()
 			require("typescript").setup({
 				disable_commands = false, -- prevent the plugin from creating Vim commands
