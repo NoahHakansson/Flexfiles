@@ -7,6 +7,7 @@ if not ok then
 	return
 end
 
+-- Copilot setup
 copilot.setup({
 	suggestion = {
 		enabled = true,
@@ -14,11 +15,11 @@ copilot.setup({
 		debounce = 75,
 		keymap = {
 			accept = "<M-b>",
-			accept_word = false,
-			accept_line = false,
-			next = "<M-]>",
-			prev = "<M-[>",
-			dismiss = "<C-]>",
+			accept_word = "<M-w>",
+			accept_line = "<M-a>",
+			next = "<c-j>",
+			prev = "<c-k>",
+			dismiss = "<C-d>",
 		},
 	},
 })
