@@ -38,21 +38,14 @@ lvim.plugins = {
 	-- leap and flit
 	{
 		"ggandor/leap.nvim",
+		lazy = true,
 		event = "VeryLazy",
-		config = function()
-			require("leap").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
 	},
 	{
 		"ggandor/flit.nvim",
+		lazy = true,
 		event = "VeryLazy",
-		config = function()
-			require("flit").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
+		dependencies = "ggandor/leap.nvim",
 	},
 	{
 		"jose-elias-alvarez/typescript.nvim",

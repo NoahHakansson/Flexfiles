@@ -2,6 +2,13 @@
 -- leap.nvim is a plugin for fast cursor movement in Neovim.
 --
 
+local ok, leap = pcall(require, "leap")
+if not ok then
+	return
+end
+
+leap.setup()
+
 -- ==============================================================================
 -- CUSTOM MAPPINGS                                           *leap-custom-mappings*
 
