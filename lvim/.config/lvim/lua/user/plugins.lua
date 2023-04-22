@@ -35,6 +35,25 @@ lvim.plugins = {
 	{ "folke/zen-mode.nvim", cmd = "ZenMode" },
 	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
 	{ "mbbill/undotree", event = "VeryLazy" },
+	-- leap and flit
+	{
+		"ggandor/leap.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("leap").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"ggandor/flit.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("flit").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 	{
 		"jose-elias-alvarez/typescript.nvim",
 		dependencies = "neovim/nvim-lspconfig",
