@@ -7,7 +7,9 @@ if not ok then
 	return
 end
 
-leap.setup()
+leap.setup({
+	-- configuration options
+})
 
 -- ==============================================================================
 -- CUSTOM MAPPINGS                                           *leap-custom-mappings*

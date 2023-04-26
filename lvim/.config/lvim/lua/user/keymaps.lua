@@ -61,7 +61,12 @@ lvim.builtin.which_key.mappings["n"] = { "<cmd>Flote<CR>", "Flote project notes"
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen mode" }
 
 -- ### persisted.nvim bindings ###
-lvim.builtin.which_key.mappings["S"] = { "<cmd>Telescope persisted<CR>", "Show sessions in Telescope" }
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope persisted<CR>", "Show sessions in Telescope" }
+
+-- ### spectre.nvim bindings ###
+lvim.builtin.which_key.mappings["S"] = { "<cmd>lua require('spectre').open()<CR>", "Spectre Open" }
+lvim.builtin.which_key.mappings["sw"] =
+	{ "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Spectre search current word" }
 
 -- ### Markdown preview bindings ###
 lvim.builtin.which_key.mappings["m"] = {

@@ -47,27 +47,17 @@ lvim.plugins = {
 		event = "VeryLazy",
 		dependencies = "ggandor/leap.nvim",
 	},
+	{ -- search/replace in multiple files
+		"nvim-pack/nvim-spectre",
+		dependencies = "nvim-lua/plenary.nvim",
+		lazy = true,
+		event = "VeryLazy",
+	},
 	{
 		"jose-elias-alvarez/typescript.nvim",
 		dependencies = "neovim/nvim-lspconfig",
 		-- only load on javascript and typescript files
 		ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-		config = function()
-			require("typescript").setup({
-				disable_commands = false, -- prevent the plugin from creating Vim commands
-				debug = false, -- enable debug logging for commands
-				go_to_source_definition = {
-					fallback = true, -- fall back to standard LSP definition on failure
-				},
-				server = {
-					init_options = {
-						preferences = {
-							importModuleSpecifierPreference = "project-relative",
-						},
-					},
-				},
-			})
-		end,
 	},
 	-- Github copilot
 	{
