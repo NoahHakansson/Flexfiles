@@ -49,11 +49,12 @@ lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_me
 -- harpoon add file
 lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
 lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon add file" }
--- harpoon switch to file one
+-- harpoon quick switch to files
 lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
--- harpoon switch to file two
 lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
+lvim.keys.normal_mode["<M-u>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
 
+-- ###
 -- ### flote.nvim project notes bindings ###
 lvim.builtin.which_key.mappings["n"] = { "<cmd>Flote<CR>", "Flote project notes" }
 
