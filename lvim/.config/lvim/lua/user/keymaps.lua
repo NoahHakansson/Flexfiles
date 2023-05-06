@@ -27,13 +27,13 @@ lvim.keys.insert_mode["jj"] = false
 --
 -- Nice quality of life vim binds
 --
--- Turn off highlight when pressing Esc
 -- TODO: change to neovim keybinds
-vim.cmd("nmap <silent> <Esc> :noh <CR>")
+-- Turn off highlight when pressing Esc
+vim.api.nvim_set_keymap("n", "<Esc>", "<cmd>noh <CR>", { noremap = false, silent = true })
 -- Quality of life rebinds
--- Center next search
-vim.cmd("nnoremap n nzzzv")
-vim.cmd("nnoremap N Nzzzv")
+-- Center next/previous search
+vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
 -- create undo step at following seperators
 vim.cmd("inoremap , ,<c-g>u")
 vim.cmd("inoremap . .<c-g>u")
