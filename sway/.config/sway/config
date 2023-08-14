@@ -156,6 +156,7 @@ for_window [title="Zoom"] floating enable, resize set 1600 900
 for_window [title="Zoom Cloud Meetings"] floating enable, resize set 1600 900
 for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
+for_window [class="1Password"] floating enable, resize set 1600 900
 for_window [app_id="com.obsproject.Studio"] floating enable, resize set 1600 900
 
 # float firefox bookmark, etc... window

@@ -117,6 +117,7 @@
             "warning": 30,
             "critical": 15
         },
+        "design-capacity": false,
         "tooltip": true,
         "tooltip-format": "{timeTo} \nPower: {power}",
         "format": "{capacity}% {icon}",

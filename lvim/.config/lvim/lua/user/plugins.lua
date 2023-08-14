@@ -21,6 +21,14 @@ lvim.plugins = {
 		end,
 	},
 	{
+		"sustech-data/wildfire.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("wildfire").setup()
+		end,
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		lazy = true,
 		event = "VeryLazy",
@@ -195,7 +203,7 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "j-hui/fidget.nvim", event = "VeryLazy" },
+	{ "j-hui/fidget.nvim", event = "VeryLazy", version = "legacy" },
 	-- lsp navigator
 	-- {
 	-- 	"ray-x/navigator.lua",
