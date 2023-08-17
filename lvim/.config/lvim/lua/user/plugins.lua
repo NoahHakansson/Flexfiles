@@ -61,12 +61,18 @@ lvim.plugins = {
 		lazy = true,
 		event = "VeryLazy",
 	},
+	-- Fix TSSERVER ...
 	{
-		"jose-elias-alvarez/typescript.nvim",
-		dependencies = "neovim/nvim-lspconfig",
-		-- only load on javascript and typescript files
-		ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
+	-- {
+	-- 	"jose-elias-alvarez/typescript.nvim",
+	-- 	dependencies = "neovim/nvim-lspconfig",
+	-- 	-- only load on javascript and typescript files
+	-- 	ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+	--- TODO: manually setup TSSERVER to avoid getting double diagnostics in buffer from server and eslint_d},
 	-- Github copilot
 	{
 		"zbirenbaum/copilot.lua",
