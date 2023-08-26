@@ -26,10 +26,10 @@ ts_tools.setup({
 		-- memory limit in megabytes or "auto"(basically no limit)
 		tsserver_max_memory = "auto",
 		-- described below
-		tsserver_format_options = {
-			importModuleSpecifierPreference = "project-relative",
+		tsserver_format_options = {},
+		tsserver_file_preferences = {
+			-- importModuleSpecifierPreference = "project-relative",
 		},
-		tsserver_file_preferences = {},
 		-- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
 		complete_function_calls = false,
 	},
