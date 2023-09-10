@@ -1,7 +1,7 @@
 require("user.lsp.languages.golang")
 require("user.lsp.languages.emmet")
 require("user.lsp.languages.marksman")
-require("user.lsp.languages.eslint-lsp")
+-- require("user.lsp.languages.eslint-lsp")
 --
 -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 --
@@ -43,7 +43,7 @@ formatters.setup({
 	{ name = "autopep8" },
 	{ name = "gofumpt" },
 	{ name = "stylua" },
-	-- { name = "eslint_d" },
+	{ name = "eslint_d" },
 	{
 		name = "prettier",
 		---@usage arguments to pass to the formatter
@@ -66,7 +66,7 @@ linters.setup({
 	{ name = "yamllint" },
 	{ name = "shellcheck" },
 	{ name = "zsh" },
-	-- { name = "eslint_d" },
+	{ name = "eslint_d" },
 })
 
 local code_actions = require("lvim.lsp.null-ls.code_actions")

@@ -55,25 +55,12 @@ lvim.plugins = {
 		event = "VeryLazy",
 		dependencies = "ggandor/leap.nvim",
 	},
-	{ -- search/replace in multiple files
-		"nvim-pack/nvim-spectre",
-		dependencies = "nvim-lua/plenary.nvim",
-		lazy = true,
-		event = "VeryLazy",
-	},
 	-- Fix TSSERVER ...
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
-	-- {
-	-- 	"jose-elias-alvarez/typescript.nvim",
-	-- 	dependencies = "neovim/nvim-lspconfig",
-	-- 	-- only load on javascript and typescript files
-	-- 	ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-	--- TODO: manually setup TSSERVER to avoid getting double diagnostics in buffer from server and eslint_d},
-	-- Github copilot
 	{
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
@@ -89,6 +76,33 @@ lvim.plugins = {
 		lazy = true,
 		event = "BufRead",
 		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"cshuaimin/ssr.nvim",
+		lazy = true,
+		-- Calling setup is optional.
+		config = function()
+			require("ssr").setup({
+				border = "rounded",
+				min_width = 50,
+				min_height = 5,
+				max_width = 120,
+				max_height = 25,
+				keymaps = {
+					close = "q",
+					next_match = "n",
+					prev_match = "N",
+					replace_confirm = "<cr>",
+					replace_all = "<leader><cr>",
+				},
+			})
+		end,
+	},
+	{ "kosayoda/nvim-lightbulb" },
+	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
 	},
 	-- { "sainnhe/gruvbox-material" },
 	-- smart identation

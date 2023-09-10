@@ -48,7 +48,7 @@ vim.cmd("inoremap ? ?<c-g>u")
 lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"
 -- harpoon add file
 lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('harpoon.mark').add_file()<cr>"
-lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon add file" }
+-- lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon add file" }
 -- harpoon quick switch to files
 lvim.keys.normal_mode["<M-j>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
 lvim.keys.normal_mode["<M-k>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
@@ -64,17 +64,17 @@ lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen mode" }
 -- ### persisted.nvim bindings ###
 lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope persisted<CR>", "Show sessions in Telescope" }
 
--- ### spectre.nvim bindings ###
-lvim.builtin.which_key.mappings["S"] = { "<cmd>lua require('spectre').open()<CR>", "Spectre Open" }
-lvim.builtin.which_key.mappings["sw"] =
-	{ "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Spectre search current word" }
-
 -- ### Markdown preview bindings ###
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Markdown preview",
 	m = { "<cmd>MarkdownPreview<CR>", "Start Markdown preview" },
 	s = { "<cmd>MarkdownPreviewStop<CR>", "Stop markdown preview" },
 }
+
+-- ### ssr.nvim bindings ###
+lvim.builtin.which_key.mappings["sr"] = { "<cmd>lua require('ssr').open()<cr>", "Structural search and replace" }
+-- ### nvim-code-action-menu bindings ###
+lvim.builtin.which_key.mappings["a"] = { "<cmd>CodeActionMenu<CR>", "Code action menu" }
 
 -- ### go.nvim and Go bindings ###
 lvim.builtin.which_key.mappings["G"] = {
