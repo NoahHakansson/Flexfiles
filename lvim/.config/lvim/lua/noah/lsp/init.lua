@@ -1,6 +1,6 @@
-require("user.lsp.languages.golang")
-require("user.lsp.languages.emmet")
-require("user.lsp.languages.marksman")
+require("noah.lsp.languages.golang")
+require("noah.lsp.languages.emmet")
+require("noah.lsp.languages.marksman")
 -- require("user.lsp.languages.eslint-lsp")
 --
 -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
@@ -38,41 +38,41 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" }
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-	{ name = "beautysh" },
-	-- { name = "black", },
-	{ name = "autopep8" },
-	{ name = "gofumpt" },
-	{ name = "stylua" },
-	{ name = "eslint_d" },
-	{
-		name = "prettier",
-		---@usage arguments to pass to the formatter
-		-- these cannot contain whitespace
-		-- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
-		-- args = { "--print-width", "100" },
-		---@usage only start in these filetypes, by default it will attach to all filetypes it supports
-		filetypes = { "markdown" },
-	},
-	-- { name = "isort", },
-	-- { name = "yamlfmt", },
+  { name = "beautysh" },
+  -- { name = "black", },
+  { name = "autopep8" },
+  { name = "gofumpt" },
+  { name = "stylua" },
+  { name = "eslint_d" },
+  {
+    name = "prettier",
+    ---@usage arguments to pass to the formatter
+    -- these cannot contain whitespace
+    -- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
+    -- args = { "--print-width", "100" },
+    ---@usage only start in these filetypes, by default it will attach to all filetypes it supports
+    filetypes = { "markdown" },
+  },
+  -- { name = "isort", },
+  -- { name = "yamlfmt", },
 })
 
 -- set additional linters
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-	{ name = "revive" }, -- Golang linter
-	-- { name = "staticcheck", }, -- Golang linter
-	-- { name = "golangci_lint", },
-	{ name = "yamllint" },
-	{ name = "shellcheck" },
-	{ name = "zsh" },
-	{ name = "eslint_d" },
+  { name = "revive" }, -- Golang linter
+  -- { name = "staticcheck", }, -- Golang linter
+  -- { name = "golangci_lint", },
+  { name = "yamllint" },
+  { name = "shellcheck" },
+  { name = "zsh" },
+  { name = "eslint_d" },
 })
 
 local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
-	{
-		exe = "eslint_d",
-		filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-	},
+  {
+    exe = "eslint_d",
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  },
 })

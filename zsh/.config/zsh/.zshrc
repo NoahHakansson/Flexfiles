@@ -107,3 +107,6 @@ fi
 # fnm
 export PATH=/home/noah/.fnm:$PATH
 eval "`fnm env`"
+
+# bun completions
+[ -s "/home/noah/.bun/_bun" ] && source "/home/noah/.bun/_bun"

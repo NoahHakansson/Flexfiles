@@ -166,12 +166,16 @@ for_window [title="Library"] resize set 1400 900
 # move to scratchpad on spawn
 for_window [class="Insomnia"] move scratchpad
 for_window [title="Scratchpad"] move scratchpad
+for_window [title="Scratchpad"] mark spad
+for_window [title="Scratch-browser"] move scratchpad
+for_window [title="Scratch-browser"] mark sbrowser
 
 
 ### Key bindings
 
     # exec programs
     bindsym $mod+w exec $browser
+    bindsym $mod+Control+w exec $browser --new-window --class 'Scratch-browser' --window-name 'Scratch-browser'
     bindsym $mod+f exec $files
     # bindsym $mod+e exec $email
     bindsym $mod+v exec $pavucontrol
@@ -200,7 +204,7 @@ for_window [title="Scratchpad"] move scratchpad
     # Start a terminal
     bindsym $mod+Return exec $term
     # Start a terminal in the scratchpad
-    bindsym $mod+Ctrl+backspace exec $term -T "Scratchpad"
+    bindsym $mod+Ctrl+backspace exec $term --title "Scratchpad" --class "Scratchpad"
 
     # Kill focused window
     bindsym $mod+q kill
@@ -320,8 +324,6 @@ for_window [title="Scratchpad"] move scratchpad
     # bindsym $mod+v splitv
 
     ### Switch the current container between different layout styles
-    # Toggle between tabbed and tiled layout using "swayr"
-    bindsym $mod+t exec $swayR toggle-tab-shuffle-tile-workspace exclude-floating || $swayR nop
     # bindsym $mod+s layout stacking
     # bindsym $mod+t layout tabbed
     # bindsym $mod+t layout toggle split
@@ -338,6 +340,7 @@ for_window [title="Scratchpad"] move scratchpad
     # Swap focus between the tiling area and the floating area
     bindsym $mod+Shift+Space focus mode_toggle
 
+
     # Move focus to the parent container
     # bindsym $mod+a focus parent
 #
@@ -351,7 +354,12 @@ for_window [title="Scratchpad"] move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+backspace scratchpad show
+    # bindsym $mod+backspace scratchpad show
+
+    # focus the scratchpad terminal
+    bindsym $mod+t [con_mark="spad"] scratchpad show
+    # focus the scratchpad browser
+    bindsym $mod+backspace [title="Scratchbrowser"] scratchpad show
 #
 # Resizing containers:
 #

@@ -27,6 +27,11 @@ lvim.keys.insert_mode["jj"] = false
 --
 -- Nice quality of life vim binds
 --
+
+-- magical base 64 encoding/decoding
+lvim.keys.normal_mode["<M-e>"] = 'viWy:let @"=system("base64 -w0", @")<cr>gvP'
+lvim.keys.normal_mode["<M-d>"] = 'viWy:let @"=system("base64 -d", @")<cr>gvP'
+
 -- TODO: change to neovim keybinds
 -- Turn off highlight when pressing Esc
 vim.api.nvim_set_keymap("n", "<Esc>", "<cmd>noh <CR>", { noremap = false, silent = true })
@@ -72,7 +77,7 @@ lvim.builtin.which_key.mappings["m"] = {
 }
 
 -- ### ssr.nvim bindings ###
-lvim.builtin.which_key.mappings["sr"] = { "<cmd>lua require('ssr').open()<cr>", "Structural search and replace" }
+lvim.builtin.which_key.mappings["r"] = { "<cmd>lua require('ssr').open()<cr>", "Structural search and replace" }
 -- ### nvim-code-action-menu bindings ###
 lvim.builtin.which_key.mappings["a"] = { "<cmd>CodeActionMenu<CR>", "Code action menu" }
 

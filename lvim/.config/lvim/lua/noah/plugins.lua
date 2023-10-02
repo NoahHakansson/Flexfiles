@@ -56,21 +56,21 @@ lvim.plugins = {
 		dependencies = "ggandor/leap.nvim",
 	},
 	-- Fix TSSERVER ...
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- },
 	{
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
 	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		lazy = true,
-		event = "BufRead",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-	},
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter-context",
+	-- 	lazy = true,
+	-- 	event = "BufRead",
+	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		lazy = true,
@@ -106,6 +106,12 @@ lvim.plugins = {
 	},
 	-- { "sainnhe/gruvbox-material" },
 	-- smart identation
+	{
+		"roobert/bufferline-cycle-windowless.nvim",
+		dependencies = {
+			{ "akinsho/bufferline.nvim" },
+		},
+	},
 	{
 		"tpope/vim-sleuth",
 		lazy = true,
@@ -223,7 +229,6 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "j-hui/fidget.nvim", event = "VeryLazy", version = "legacy" },
 	-- lsp navigator
 	-- {
 	-- 	"ray-x/navigator.lua",

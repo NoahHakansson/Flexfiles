@@ -6,6 +6,9 @@ export PATH="$HOME/.local/bin":$PATH
 ### bat as manpager
 # export MANPAGER="bat -p"
 # export BAT_THEME="TwoDark"
+### Bun.sh
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 ### lunarVim as manpager
 export MANPAGER='lvim +Man!'
 export MANWIDTH=999

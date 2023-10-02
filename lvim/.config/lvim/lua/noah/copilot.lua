@@ -7,6 +7,8 @@ if not ok then
 	return
 end
 
+lvim.keys.normal_mode["<M-t>"] = "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>"
+
 -- Copilot setup
 copilot.setup({
 	suggestion = {
