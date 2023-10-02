@@ -56,11 +56,11 @@ lvim.plugins = {
 		dependencies = "ggandor/leap.nvim",
 	},
 	-- Fix TSSERVER ...
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	opts = {},
-	-- },
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 	{
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
