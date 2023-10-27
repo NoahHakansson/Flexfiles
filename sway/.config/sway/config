@@ -63,6 +63,7 @@ set $email thunderbird
 set $slack slack --enable-features=WebRTCPipeWireCapturer
 set $webcord webcord --enable-features=WebRTCPipeWireCapturer --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $pavucontrol pavucontrol
+set $bruno_launch $HOME/.config/sway/scripts/bruno-launch.sh
 
 set $menu wofi --width 600 --height 300 --gtk-dark --show drun --insensitive --allow-images --style $HOME/.config/wofi/style.css --prompt=""
 # set $record wf-recorder --audio --file=$HOME/Video/recordings/recording_with_audio.mp4
@@ -90,7 +91,7 @@ output eDP-1 scale 1.5
 # sticky applications to certain workspace number
 # spotify currently doesn't work with this D:
 assign [class="Spotify" instance="spotify" title="Spotify"] 9
-assign [app_id="WebCord" class="WebCord" title="WebCord" instance="WebCord"] 8
+assign [class="WebCord"] Discord
 assign [class="Slack"] 8
 assign [class="Signal"] 8
 assign [class="thunderbird"] 7
@@ -158,13 +159,14 @@ for_window [title="System Monitor"] floating enable, resize set 900 600
 for_window [title="btop"] floating enable, resize set 1600 900
 for_window [class="1Password"] floating enable, resize set 1600 900
 for_window [app_id="com.obsproject.Studio"] floating enable, resize set 1600 900
+for_window [title="Calculator"] floating enable, resize set 600 400
 
 # float firefox bookmark, etc... window
 for_window [title="Library"] floating enable
 for_window [title="Library"] resize set 1400 900
 
 # move to scratchpad on spawn
-for_window [class="Insomnia"] move scratchpad
+for_window [class="bruno"] move scratchpad
 for_window [title="Scratchpad"] move scratchpad
 for_window [title="Scratchpad"] mark spad
 for_window [title="Scratch-browser"] move scratchpad
@@ -179,6 +181,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     bindsym $mod+f exec $files
     # bindsym $mod+e exec $email
     bindsym $mod+v exec $pavucontrol
+    bindsym $mod+i exec $bruno_launch
 
     ## control Spotify music player (playerctl --player=spotify)
     bindsym $mod+Control+Shift+p exec playerctl --player=spotify play-pause
@@ -299,6 +302,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     bindsym $mod+0 workspace number 10
     bindsym $mod+a workspace Alpha
     bindsym $mod+b workspace Beta
+    bindsym $mod+d workspace Discord
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -312,6 +316,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     bindsym $mod+Shift+0 move container to workspace number 10
     bindsym $mod+Shift+a move container to workspace Alpha
     bindsym $mod+Shift+b move container to workspace Beta
+    bindsym $mod+Shift+d move container to workspace Discord
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -343,6 +348,8 @@ for_window [title="Scratch-browser"] mark sbrowser
 
     # Move focus to the parent container
     # bindsym $mod+a focus parent
+
+    # Move focus to specific applications
 #
 # Scratchpad:
 #

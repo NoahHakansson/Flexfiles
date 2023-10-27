@@ -64,7 +64,7 @@ linters.setup({
 	-- { name = "staticcheck", }, -- Golang linter
 	-- { name = "golangci_lint", },
 	{ name = "yamllint" },
-	{ name = "shellcheck" },
+	{ name = "shellcheck", filetypes = { "sh", "zsh" } },
 	{ name = "zsh" },
 	{ name = "eslint_d" },
 })

@@ -10,6 +10,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "setlocal spell spelllang=en_us",
 	group = generalAutoCmds,
 })
+-- Detect .env files as dotenv filetype
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*.env" },
+	command = "setlocal filetype=dotenv",
+	group = generalAutoCmds,
+})
 
 -- kitty terminal config auto reload on save
 local kittyAutoCmds = vim.api.nvim_create_augroup("Kitty autocmds", { clear = true })

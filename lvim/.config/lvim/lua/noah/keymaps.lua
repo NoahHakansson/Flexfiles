@@ -76,10 +76,19 @@ lvim.builtin.which_key.mappings["m"] = {
 	s = { "<cmd>MarkdownPreviewStop<CR>", "Stop markdown preview" },
 }
 
+-- ### ts-tools.nvim bindings ###
+lvim.builtin.which_key.mappings["i"] = { "<cmd>TSToolsAddMissingImports<CR>", "Add Typescript missing imports" }
+
+-- ### copilot.nvim bindings ###
+lvim.builtin.which_key.mappings["a"] = {
+	name = "(AI) Copilot",
+	p = { "<cmd>lua require('copilot.panel').open()<CR>", "Copilot Panel" },
+}
+
 -- ### ssr.nvim bindings ###
 lvim.builtin.which_key.mappings["r"] = { "<cmd>lua require('ssr').open()<cr>", "Structural search and replace" }
 -- ### nvim-code-action-menu bindings ###
-lvim.builtin.which_key.mappings["a"] = { "<cmd>CodeActionMenu<CR>", "Code action menu" }
+lvim.builtin.which_key.mappings["la"] = { "<cmd>CodeActionMenu<CR>", "Code action menu" }
 
 -- ### go.nvim and Go bindings ###
 lvim.builtin.which_key.mappings["G"] = {
@@ -140,6 +149,7 @@ lvim.builtin.which_key.mappings["g"] = {
 		"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 		"Undo Stage Hunk",
 	},
+	a = { "<cmd>AdvancedGitSearch<cr>", "Advanced Git Search" },
 	o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 	b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 	c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },

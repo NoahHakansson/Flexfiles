@@ -26,3 +26,4 @@ lvim.builtin.telescope.defaults.mappings = {
 -- load telescope extensions
 local _, telescope = pcall(require, "telescope")
 telescope.load_extension("persisted")
+telescope.load_extension("advanced_git_search")
