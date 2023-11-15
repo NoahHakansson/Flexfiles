@@ -1,6 +1,7 @@
 require("noah.lsp.languages.golang")
 require("noah.lsp.languages.emmet")
 require("noah.lsp.languages.marksman")
+require("noah.lsp.languages.bashls")
 -- require("noah.lsp.languages.eslint-lsp")
 --
 -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
@@ -34,6 +35,7 @@ require("noah.lsp.languages.marksman")
 -- servers to configure manually
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "bashls" })
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require("lvim.lsp.null-ls.formatters")

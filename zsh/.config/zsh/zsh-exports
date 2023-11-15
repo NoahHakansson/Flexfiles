@@ -6,6 +6,8 @@ export PATH="$HOME/.local/bin":$PATH
 ### bat as manpager
 # export MANPAGER="bat -p"
 # export BAT_THEME="TwoDark"
+### spicetify
+export PATH=$HOME/.spicetify:$PATH
 ### Bun.sh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"

@@ -195,7 +195,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%
     bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%
     # clipman (clipboard manager)
-    bindsym $mod+c exec clipman pick --tool wofi -T'--prompt="Clipboard history" -i'
+    bindsym $mod+Shift+c exec clipman pick --tool wofi -T'--prompt="Clipboard history" -i'
 
     # Toggle control center (Sway Notification Center)
     bindsym $mod+Shift+n exec swaync-client -t -sw
@@ -210,9 +210,9 @@ for_window [title="Scratch-browser"] mark sbrowser
     bindsym $mod+Ctrl+backspace exec $term --title "Scratchpad" --class "Scratchpad"
 
     # Kill focused window
-    bindsym $mod+q kill
+    bindsym $mod+Shift+q kill
     # Open wofi showing all windows and force kill picked window
-    bindsym $mod+Shift+q exec $swayR quit-window --kill
+    bindsym $mod+Shift+Ctrl+q exec $swayR quit-window
 
     ## swayr commands
     # Open wofi showing all windows and switch to choosen window
@@ -233,7 +233,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -350,6 +350,7 @@ for_window [title="Scratch-browser"] mark sbrowser
     # bindsym $mod+a focus parent
 
     # Move focus to specific applications
+    bindsym $mod+c [title="tmux"] focus
 #
 # Scratchpad:
 #
