@@ -31,13 +31,34 @@ stow zsh # Just my zsh config
 ```
 
 ## Wayland fixes
+
 ### brave-browser (should work on chromium based browsers)
+
 Go to `brave://flags/` search for ozone and change the setting to `auto`.
 Close and relaunch the app fully (not the relaunch button). Should be fine after that.
+
 ### slack
+
 To fix screen sharing on Wayland start slack with `--enable-features=WebRTCPipeWireCapturer` flag.
+
 ```
 slack --enable-features=WebRTCPipeWireCapturer
+```
+
+### rust ~/.cargo/env
+
+```bash
+#!/bin/sh
+# rustup shell setup
+# affix colons on either side of $PATH to simplify matching
+case ":${PATH}:" in
+    *:"$HOME/.cargo/bin":*)
+        ;;
+    *)
+        # Prepending path in case a system-installed rustc needs to be overridden
+        export PATH="$HOME/.cargo/bin:$PATH"
+        ;;
+esac
 ```
 
 ## Programs
@@ -59,7 +80,7 @@ A non-exhaustive list of programs that I use.
 - [waybar](https://github.com/Alexays/Waybar)
 - [autotiling-rs](https://github.com/ammgws/autotiling-rs)
 - [mako](https://github.com/emersion/mako)
-- [WebCord](https://github.com/SpacingBat3/WebCord) 
+- [WebCord](https://github.com/SpacingBat3/WebCord)
 - brave-browser
 - playerctl
 - wofi
@@ -73,4 +94,3 @@ A non-exhaustive list of programs that I use.
 - node
 - [fnm](https://github.com/Schniz/fnm)
 - cargo
-
