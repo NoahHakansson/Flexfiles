@@ -79,7 +79,7 @@ esac
 
 # Define personal aliases.
 alias tree='tree -a -I .git'
-alias ls='exa --icons' # some ls/exa aliases
+alias ls='eza --icons' # some ls/eza aliases
 alias ll='ls -alF -a'
 alias la='ls -a'
 alias l='ls -F'

@@ -3,6 +3,8 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
+### Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ### bat as manpager
 # export MANPAGER="bat -p"
 # export BAT_THEME="TwoDark"
@@ -19,6 +21,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 # golang
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
+# fnm
+export PATH="/Users/noah/Library/Application Support/fnm:$PATH"
+eval "`fnm env`"
 # node
 export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
