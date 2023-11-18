@@ -21,6 +21,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 # golang
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
+export GOBIN=$HOME/.local/share/go/bin
 # fnm
 export PATH="/Users/noah/Library/Application Support/fnm:$PATH"
 eval "`fnm env`"
@@ -35,7 +36,6 @@ eval "$(fnm env)"
 # eval "`pip completion --zsh`"
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
-. "$HOME/.cargo/env"
 export PATH="$PATH:/usr/local/bin/Postman"
 # phpenv
 export PHPENV_ROOT="/usr/local/bin/phpenv"
@@ -43,7 +43,16 @@ if [ -d "${PHPENV_ROOT}" ]; then
     export PATH="${PHPENV_ROOT}/bin:${PATH}"
     eval "$(phpenv init -)"
 fi
-source "$HOME/.cargo/env"
+# rustup shell setup
+# affix colons on either side of $PATH to simplify matching
+case ":${PATH}:" in
+    *:"$HOME/.cargo/bin":*)
+        ;;
+    *)
+        # Prepending path in case a system-installed rustc needs to be overridden
+        export PATH="$HOME/.cargo/bin:$PATH"
+        ;;
+esac
 
 ### Nvim as editor
 export EDITOR='lvim'
