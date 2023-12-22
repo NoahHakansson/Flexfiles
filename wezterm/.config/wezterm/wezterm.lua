@@ -85,16 +85,52 @@ config.key_tables = {
 	copy_mode = copy_mode,
 }
 
--- This causes `wezterm` to act as though it was started as
--- `wezterm connect unix` by default, connecting to the unix
--- domain on startup.
--- If you prefer to connect manually, leave out this line.
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
-config.default_gui_startup_args = { "connect", "unix" }
+local function mysplit(inputstr, sep)
+	if sep == nil then
+		sep = "%s"
+	end
+	local t = {}
+	for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
+
+-- this is called by the mux server when it starts up.
+-- It makes a window split top/bottom
+local mux = wezterm.mux
+wezterm.on("gui-startup", function()
+	local flexfiles_dir = wezterm.home_dir .. "/Flexfiles"
+	local _, pane, window = mux.spawn_window({
+		workspace = "Flexfiles",
+		cwd = flexfiles_dir,
+	})
+	window:spawn_tab({})
+	window:spawn_tab({})
+	pane:activate()
+
+	-- logs the names of all of the entries under `/work`
+	wezterm.log_error("entries in /work:")
+	local work_dir = wezterm.home_dir .. "/work"
+	for _, v in ipairs(wezterm.read_dir(work_dir)) do
+		-- split string on the / character and get the last element
+		local filename = mysplit(v, "/")
+		-- remove entry if it contains a . character (i.e. it's a file)
+		if string.find(filename[#filename], "%.") then
+			wezterm.log_error("filename:", filename[#filename], "was not a directory")
+			table.remove(filename, #filename)
+		else
+			-- spawn a new tab for each directory
+			local _, p, w = mux.spawn_window({
+				workspace = filename[#filename],
+				cwd = v,
+			})
+			w:spawn_tab({})
+			w:spawn_tab({})
+			p:activate()
+		end
+	end
+end)
 
 -- and finally, return the configuration to wezterm
 return config
