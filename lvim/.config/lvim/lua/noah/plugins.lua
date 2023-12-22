@@ -62,6 +62,13 @@ lvim.plugins = {
 		opts = {},
 	},
 	{
+		"dmmulroy/tsc.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("tsc").setup()
+		end,
+	},
+	{
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
 	},

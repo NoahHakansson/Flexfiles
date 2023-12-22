@@ -43,8 +43,10 @@ yabai -m rule --add app="^Automator$" manage=off
 yabai -m rule --add app="^Numbers$" manage=off
 yabai -m rule --add app="^Arc$" manage=off
 yabai -m rule --add app="^Notes$" manage=off
+yabai -m rule --add app="^Bruno$" manage=off
 yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^LM Studio$" manage=off
 yabai -m rule --add app="^MonitorControlLite$" manage=off
+yabai -m rule --add app="^UnnaturalScrollWheels$" manage=off
 yabai -m rule --add app="^Google Chrome$" manage=off
 yabai -m rule --add app="^Android Studio$" manage=off

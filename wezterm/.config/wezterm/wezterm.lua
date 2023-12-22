@@ -38,6 +38,7 @@ end)
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrains Mono")
+config.window_background_opacity = 1
 config.font_size = 19
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.use_fancy_tab_bar = false
