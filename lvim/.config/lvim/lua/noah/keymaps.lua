@@ -30,9 +30,18 @@ lvim.keys.insert_mode["jj"] = false
 --
 
 -- magical base64 encoding/decoding
-
-lvim.keys.normal_mode["<M-e>"] = 'viWy:let @"=system("openssl base64 -A", @")<cr>gvP'
-lvim.keys.normal_mode["<M-d>"] = 'viWy:let @"=system("openssl base64 -A -d", @")<cr>gvP'
+vim.api.nvim_set_keymap(
+	"n",
+	"<M-e>",
+	'viWy:let @"=system("openssl base64 -A", @")<cr>gvP',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<M-d>",
+	'viWy:let @"=system("openssl base64 -A -d", @")<cr>gvP',
+	{ noremap = true, silent = true }
+)
 
 -- TODO: change to neovim keybinds
 -- Turn off highlight when pressing Esc
