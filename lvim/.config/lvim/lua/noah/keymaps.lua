@@ -26,11 +26,12 @@ lvim.keys.insert_mode["kj"] = false
 lvim.keys.insert_mode["jj"] = false
 --
 -- Nice quality of life vim binds
+
 --
 
 -- magical base 64 encoding/decoding
-lvim.keys.normal_mode["<M-e>"] = 'viWy:let @"=system("base64 -w0", @")<cr>gvP'
-lvim.keys.normal_mode["<M-d>"] = 'viWy:let @"=system("base64 -d", @")<cr>gvP'
+lvim.keys.normal_mode["<M-e>"] = 'viWy:let @"=system("base64", @")<cr>gvP'
+lvim.keys.normal_mode["<M-d>"] = 'viWy:let @"=system("base64 -D", @")<cr>gvP'
 
 -- TODO: change to neovim keybinds
 -- Turn off highlight when pressing Esc

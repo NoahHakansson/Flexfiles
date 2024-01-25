@@ -33,17 +33,19 @@ local newWorkspaceWithName = wezterm.action_callback(function(window, pane, line
 		)
 	end
 end)
--- This is where you actually apply your config choices
 
+-- This is where you actually apply your config choices
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrains Mono")
-config.window_background_opacity = 1
+config.window_background_opacity = 0.97
+config.macos_window_background_blur = 20
 config.font_size = 19
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
+config.window_decorations = "RESIZE"
 
 -- key bindings
 -- Leader is the same as my old tmux prefix
@@ -67,13 +69,7 @@ config.keys = {
 	},
 	-- Show the launcher and have it list all workspaces
 	-- and allow activating one.
-	{
-		key = "s",
-		mods = "LEADER",
-		action = act.ShowLauncherArgs({
-			flags = "FUZZY|WORKSPACES",
-		}),
-	},
+	{ key = "s", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ key = "c", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) },
 	{ key = "x", mods = "LEADER", action = act({ CloseCurrentPane = { confirm = true } }) },
 	{ key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },

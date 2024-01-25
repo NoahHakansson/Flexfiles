@@ -72,12 +72,6 @@ lvim.plugins = {
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
 	},
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-context",
-	-- 	lazy = true,
-	-- 	event = "BufRead",
-	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
-	-- },
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		lazy = true,

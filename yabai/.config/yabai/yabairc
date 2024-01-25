@@ -4,7 +4,7 @@ yabai -m config layout bsp
 # yabai -m config --space 2 layout float
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
-yabai -m config window_placement second_child
+yabai -m config window_placement first_child
 
 # padding set to 12px
 yabai -m config top_padding 6
@@ -31,6 +31,8 @@ yabai -m mouse_drop_action swap
 
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^VIA$" manage=off
+yabai -m rule --add app="^QMK Toolbox$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Latest$" manage=off
 yabai -m rule --add app="^Stats$" manage=off
