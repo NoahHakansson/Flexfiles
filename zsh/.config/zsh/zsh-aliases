@@ -2,8 +2,6 @@
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias lvimrc='lvim ~/.config/lvim/'
 
-# alias lvim='nvim -u ~/.local/share/lunarvim/lvim/init.lua --cmd "set runtimepath+=~/.local/share/lunarvim/lvim"'
-
 # Github cli copilot aliases
 alias 'gh?'="gh copilot suggest"
 alias 'gh??'="gh copilot explain"
@@ -89,7 +87,8 @@ alias l='ls -F'
 alias cls='clear'
 
 # Vim
-alias nvim='lvim'
+# alias nvim='lvim'
+# alias vim='nvim'
 alias vim='lvim'
 alias vi='lvim'
 
