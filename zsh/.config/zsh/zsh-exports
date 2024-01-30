@@ -13,8 +13,8 @@ export PATH=$HOME/.spicetify:$PATH
 ### Bun.sh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-### lunarVim as manpager
-export MANPAGER='lvim +Man!'
+### nvim as manpager
+export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 # cargo
 export PATH=$HOME/.cargo/bin:$PATH
@@ -61,8 +61,8 @@ case ":${PATH}:" in
 esac
 
 ### Nvim as editor
-export EDITOR='lvim'
-export VISUAL='lvim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 
 # >>> conda initialize >>>
