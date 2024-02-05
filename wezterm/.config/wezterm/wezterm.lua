@@ -41,7 +41,7 @@ config.color_scheme = 'OneDark (base16)'
 config.font = wezterm.font('JetBrains Mono')
 config.window_background_opacity = 1
 config.macos_window_background_blur = 20
-config.font_size = 19
+config.font_size = 20
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
@@ -73,8 +73,8 @@ config.keys = {
   { key = 's', mods = 'LEADER', action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }) },
   { key = 'c', mods = 'LEADER', action = act({ SpawnTab = 'CurrentPaneDomain' }) },
   { key = 'q', mods = 'LEADER', action = act({ CloseCurrentPane = { confirm = true } }) },
-  { key = 'l', mods = 'ALT',    action = act.ActivateTabRelative(1) },
-  { key = 'h', mods = 'ALT',    action = act.ActivateTabRelative(-1) },
+  { key = 'l', mods = 'ALT', action = act.ActivateTabRelative(1) },
+  { key = 'h', mods = 'ALT', action = act.ActivateTabRelative(-1) },
   { key = 'v', mods = 'LEADER', action = act.ActivateCopyMode },
 }
 

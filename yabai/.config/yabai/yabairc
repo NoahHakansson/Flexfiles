@@ -52,3 +52,4 @@ yabai -m rule --add app="^MonitorControlLite$" manage=off
 yabai -m rule --add app="^UnnaturalScrollWheels$" manage=off
 yabai -m rule --add app="^Google Chrome$" manage=off
 yabai -m rule --add app="^Android Studio$" manage=off
+yabai -m rule --add app="^Preview$" manage=off
