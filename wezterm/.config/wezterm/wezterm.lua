@@ -47,6 +47,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.window_decorations = 'RESIZE'
+config.enable_scroll_bar = false
 
 -- key bindings
 -- Leader is the same as my old tmux prefix
@@ -71,6 +72,7 @@ config.keys = {
   -- Show the launcher and have it list all workspaces
   -- and allow activating one.
   { key = 's', mods = 'LEADER', action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }) },
+  { key = 'p', mods = 'LEADER', action = act.ShowLauncher },
   { key = 'c', mods = 'LEADER', action = act({ SpawnTab = 'CurrentPaneDomain' }) },
   { key = 'q', mods = 'LEADER', action = act({ CloseCurrentPane = { confirm = true } }) },
   { key = 'l', mods = 'ALT', action = act.ActivateTabRelative(1) },
