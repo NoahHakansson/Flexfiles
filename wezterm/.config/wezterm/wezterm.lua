@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require('wezterm')
 local act = wezterm.action
+local mux = wezterm.mux
 
 -- This table will hold the configuration.
 -- In newer versions of wezterm, use the config_builder which will
@@ -95,23 +96,8 @@ local function mysplit(inputstr, sep)
   return t
 end
 
--- this is called by the mux server when it starts up.
--- It makes a window split top/bottom
-local mux = wezterm.mux
-wezterm.on('gui-startup', function()
-  local flexfiles_dir = wezterm.home_dir .. '/Flexfiles'
-  local _, pane, window = mux.spawn_window({
-    workspace = 'Flexfiles',
-    cwd = flexfiles_dir,
-  })
-  window:spawn_tab({})
-  window:spawn_tab({})
-  pane:activate()
-
-  -- logs the names of all of the entries under `/work`
-  wezterm.log_error('entries in /work:')
-  local work_dir = wezterm.home_dir .. '/work'
-  for _, v in ipairs(wezterm.read_dir(work_dir)) do
+local function create_workspace_for_dir(dir)
+  for _, v in ipairs(wezterm.read_dir(dir)) do
     -- split string on the / character and get the last element
     local filename = mysplit(v, '/')
     -- remove entry if it contains a . character (i.e. it's a file)
@@ -128,6 +114,28 @@ wezterm.on('gui-startup', function()
       w:spawn_tab({})
       p:activate()
     end
+  end
+end
+
+-- this is called by the mux server when it starts up.
+-- It makes a window split top/bottom
+wezterm.on('gui-startup', function()
+  local flexfiles_dir = wezterm.home_dir .. '/Flexfiles'
+  local _, pane, window = mux.spawn_window({
+    workspace = 'Flexfiles',
+    cwd = flexfiles_dir,
+  })
+  window:spawn_tab({})
+  window:spawn_tab({})
+  pane:activate()
+
+  -- logs the names of all of the entries under `/work` and `/projects`
+  local work_dirs = {
+    wezterm.home_dir .. '/work',
+    wezterm.home_dir .. '/projects',
+  }
+  for _, dir in ipairs(work_dirs) do
+    create_workspace_for_dir(dir)
   end
 end)
 
