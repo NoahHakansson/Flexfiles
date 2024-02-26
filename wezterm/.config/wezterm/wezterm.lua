@@ -96,6 +96,17 @@ local function mysplit(inputstr, sep)
   return t
 end
 
+local function spawnWorkspace(name, cwd)
+  -- spawn a new tab for each directory
+  local _, p, w = mux.spawn_window({
+    workspace = name,
+    cwd = cwd,
+  })
+  w:spawn_tab({})
+  w:spawn_tab({})
+  p:activate()
+end
+
 local function create_workspace_for_dir(dir)
   for _, v in ipairs(wezterm.read_dir(dir)) do
     -- split string on the / character and get the last element
@@ -106,13 +117,7 @@ local function create_workspace_for_dir(dir)
       table.remove(filename, #filename)
     else
       -- spawn a new tab for each directory
-      local _, p, w = mux.spawn_window({
-        workspace = filename[#filename],
-        cwd = v,
-      })
-      w:spawn_tab({})
-      w:spawn_tab({})
-      p:activate()
+      spawnWorkspace(filename[#filename], v)
     end
   end
 end
@@ -121,13 +126,9 @@ end
 -- It makes a window split top/bottom
 wezterm.on('gui-startup', function()
   local flexfiles_dir = wezterm.home_dir .. '/Flexfiles'
-  local _, pane, window = mux.spawn_window({
-    workspace = 'Flexfiles',
-    cwd = flexfiles_dir,
-  })
-  window:spawn_tab({})
-  window:spawn_tab({})
-  pane:activate()
+  local qmk_dir = wezterm.home_dir .. '/qmk_firmware'
+  spawnWorkspace('Flexfiles', flexfiles_dir)
+  spawnWorkspace('QMK_FIRMWARE', qmk_dir)
 
   -- logs the names of all of the entries under `/work` and `/projects`
   local work_dirs = {
