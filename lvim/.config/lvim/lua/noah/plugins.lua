@@ -3,185 +3,186 @@
 --
 lvim.plugins = {
 	{
-		"catppuccin/nvim",
+		'catppuccin/nvim',
 		lazy = false,
 		priority = 1000,
-		name = "catppuccin",
-		build = ":CatppuccinCompile",
+		name = 'catppuccin',
+		build = ':CatppuccinCompile',
 	},
 	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		'kylechui/nvim-surround',
+		version = '*', -- Use for stability; omit to use `main` branch for the latest features
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 		config = function()
-			require("nvim-surround").setup({
+			require('nvim-surround').setup({
 				-- Configuration here, or leave empty to use defaults
 			})
 		end,
 	},
 	{
-		"sustech-data/wildfire.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		'sustech-data/wildfire.nvim',
+		event = 'VeryLazy',
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		config = function()
-			require("wildfire").setup()
+			require('wildfire').setup()
 		end,
 	},
 	{
-		"NvChad/nvim-colorizer.lua",
+		'NvChad/nvim-colorizer.lua',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	{
-		"leoluz/nvim-dap-go",
-		ft = { "go", "gomod" },
+		'leoluz/nvim-dap-go',
+		ft = { 'go', 'gomod' },
 	},
-	{ "tpope/vim-repeat" },
-	{ "monaqa/dial.nvim", event = "VeryLazy" },
-	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	{ "folke/zen-mode.nvim", cmd = "ZenMode" },
-	{ "JellyApple102/flote.nvim", event = "VeryLazy" },
-	{ "mbbill/undotree", event = "VeryLazy" },
+	{ 'tpope/vim-repeat' },
+	{ 'monaqa/dial.nvim',         event = 'VeryLazy' },
+	{ 'stevearc/dressing.nvim',   event = 'VeryLazy' },
+	{ 'folke/zen-mode.nvim',      cmd = 'ZenMode' },
+	{ 'JellyApple102/flote.nvim', event = 'VeryLazy' },
+	{ 'mbbill/undotree',          event = 'VeryLazy' },
 	-- leap and flit
 	{
-		"ggandor/leap.nvim",
+		'ggandor/leap.nvim',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	{
-		"ggandor/flit.nvim",
+		'ggandor/flit.nvim',
 		lazy = true,
-		event = "VeryLazy",
-		dependencies = "ggandor/leap.nvim",
+		event = 'VeryLazy',
+		dependencies = 'ggandor/leap.nvim',
 	},
 	-- Fix TSSERVER ...
 	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		'pmizio/typescript-tools.nvim',
+		dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
 		opts = {},
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		event = "InsertEnter",
+		'dmmulroy/tsc.nvim',
+		event = 'VeryLazy',
+		config = function()
+			require('tsc').setup()
+		end,
 	},
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-context",
-	-- 	lazy = true,
-	-- 	event = "BufRead",
-	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
-	-- },
 	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		'zbirenbaum/copilot.lua',
+		event = 'InsertEnter',
+	},
+	{
+		'nvim-treesitter/nvim-treesitter-textobjects',
 		lazy = true,
-		event = "BufRead",
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		event = 'BufRead',
+		dependencies = 'nvim-treesitter/nvim-treesitter',
 	},
 	{
-		"cshuaimin/ssr.nvim",
+		'cshuaimin/ssr.nvim',
 		lazy = true,
 		-- Calling setup is optional.
 		config = function()
-			require("ssr").setup({
-				border = "rounded",
+			require('ssr').setup({
+				border = 'rounded',
 				min_width = 50,
 				min_height = 5,
 				max_width = 120,
 				max_height = 25,
 				keymaps = {
-					close = "q",
-					next_match = "n",
-					prev_match = "N",
-					replace_confirm = "<cr>",
-					replace_all = "<leader><cr>",
+					close = 'q',
+					next_match = 'n',
+					prev_match = 'N',
+					replace_confirm = '<cr>',
+					replace_all = '<leader><cr>',
 				},
 			})
 		end,
 	},
-	{ "kosayoda/nvim-lightbulb" },
-	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{ 'kosayoda/nvim-lightbulb' },
+	{ 'akinsho/git-conflict.nvim', version = '*', config = true },
 	{
-		"weilbith/nvim-code-action-menu",
-		cmd = "CodeActionMenu",
+		'weilbith/nvim-code-action-menu',
+		cmd = 'CodeActionMenu',
 	},
 	-- { "sainnhe/gruvbox-material" },
 	-- smart identation
 	{
-		"roobert/bufferline-cycle-windowless.nvim",
+		'roobert/bufferline-cycle-windowless.nvim',
 		dependencies = {
-			{ "akinsho/bufferline.nvim" },
+			{ 'akinsho/bufferline.nvim' },
 		},
 	},
 	{
-		"tpope/vim-sleuth",
+		'tpope/vim-sleuth',
 		lazy = true,
-		event = "BufRead",
+		event = 'BufRead',
 	},
 	-- Git-related plugins
 	{
-		"pwntester/octo.nvim",
+		'pwntester/octo.nvim',
 		lazy = true,
-		cmd = "Octo",
+		cmd = 'Octo',
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-tree/nvim-web-devicons",
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'nvim-tree/nvim-web-devicons',
 		},
 		config = function()
-			require("octo").setup()
+			require('octo').setup()
 		end,
 	},
 	{
-		"tpope/vim-fugitive",
+		'tpope/vim-fugitive',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	{
-		"tpope/vim-rhubarb",
+		'tpope/vim-rhubarb',
 		lazy = true,
-		dependencies = "tpope/vim-fugitive",
-		event = "VeryLazy",
+		dependencies = 'tpope/vim-fugitive',
+		event = 'VeryLazy',
 	},
 	{
-		"tommcdo/vim-fugitive-blame-ext",
+		'tommcdo/vim-fugitive-blame-ext',
 		lazy = true,
-		event = "VeryLazy",
-		dependencies = "tpope/vim-fugitive",
+		event = 'VeryLazy',
+		dependencies = 'tpope/vim-fugitive',
 	},
 	{
-		"ThePrimeagen/harpoon",
+		'ThePrimeagen/harpoon',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	-- { "tpope/vim-obsession" }, -- basic session management
-	{ "olimorris/persisted.nvim", lazy = false }, -- better session management with git branch support
+	{ 'olimorris/persisted.nvim', lazy = false }, -- better session management with git branch support
 	{
-		"petertriho/nvim-scrollbar",
+		'petertriho/nvim-scrollbar',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	-- misc
-	{ "RishabhRD/popfix", event = "VeryLazy" },
-	{ "dagle/nvim-cheat.sh", cmd = "Cheat" },
+	{ 'RishabhRD/popfix',         event = 'VeryLazy' },
+	{ 'dagle/nvim-cheat.sh',      cmd = 'Cheat' },
 	{
-		"iamcco/markdown-preview.nvim",
+		'iamcco/markdown-preview.nvim',
 		lazy = true,
-		ft = "markdown",
+		ft = 'markdown',
 		build = function()
-			vim.fn["mkdp#util#install"]()
+			vim.fn['mkdp#util#install']()
 		end,
 	},
 	{
-		"AckslD/nvim-neoclip.lua",
+		'AckslD/nvim-neoclip.lua',
 		init = function()
-			vim.api.nvim_create_user_command("NeoclipOpen", function()
-				require("telescope").extensions.neoclip.default()
+			vim.api.nvim_create_user_command('NeoclipOpen', function()
+				require('telescope').extensions.neoclip.default()
 			end, {})
 		end,
 		lazy = true,
-		cmd = "NeoclipOpen",
+		cmd = 'NeoclipOpen',
 		dependencies = {
-			{ "nvim-telescope/telescope.nvim" },
+			{ 'nvim-telescope/telescope.nvim' },
 		},
 	},
 	-- ## tmux.nvim
@@ -191,41 +192,41 @@ lvim.plugins = {
 	-- Also allows navigation with C-hjkl between tmux panes and neovim splits
 	-- Also allows you to resize neovim and tmux splits with Alt-hjkl (disabled by me)
 	{
-		"aserowy/tmux.nvim",
+		'aserowy/tmux.nvim',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 	},
 	-- { "rcarriga/nvim-dap-ui" },
 	-- { "ojroques/nvim-bufdel" }, -- better buffer deletion, delete buffers without closing windows
 	{
-		"kevinhwang91/nvim-bqf",
+		'kevinhwang91/nvim-bqf',
 		lazy = true,
-		ft = "qf",
+		ft = 'qf',
 	},
 	{
-		"folke/todo-comments.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		cmd = { "TodoTelescope", "TodoQuickFix" },
+		'folke/todo-comments.nvim',
+		dependencies = 'nvim-lua/plenary.nvim',
+		cmd = { 'TodoTelescope', 'TodoQuickFix' },
 		lazy = true,
 		config = function()
-			require("todo-comments").setup({
+			require('todo-comments').setup({
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 			})
 		end,
 	},
 	{
-		"ray-x/go.nvim",
+		'ray-x/go.nvim',
 		dependencies = { -- optional packages
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
+			'ray-x/guihua.lua',
+			'neovim/nvim-lspconfig',
+			'nvim-treesitter/nvim-treesitter',
 		},
 		lazy = true,
-		ft = { "go", "gomod" },
+		ft = { 'go', 'gomod' },
 		config = function()
-			require("go").setup({
-				comment_placeholder = "",
+			require('go').setup({
+				comment_placeholder = '',
 			})
 		end,
 	},
@@ -243,48 +244,48 @@ lvim.plugins = {
 	-- 	-- end,
 	-- },
 	{
-		"sindrets/diffview.nvim",
+		'sindrets/diffview.nvim',
 		lazy = true,
-		cmd = "DiffviewOpen",
+		cmd = 'DiffviewOpen',
 	},
 	{
-		"aaronhallaert/advanced-git-search.nvim",
+		'aaronhallaert/advanced-git-search.nvim',
 		config = function() end,
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
+			'nvim-telescope/telescope.nvim',
 			-- to show diff splits and open commits in browser
-			"tpope/vim-fugitive",
+			'tpope/vim-fugitive',
 			-- to open commits in browser with fugitive
-			"tpope/vim-rhubarb",
+			'tpope/vim-rhubarb',
 			-- optional: to replace the diff from fugitive with diffview.nvim
 			-- (fugitive is still needed to open in browser)
-			"sindrets/diffview.nvim",
+			'sindrets/diffview.nvim',
 		},
 	},
 	-- end Git-related plugins
 	-- {"p00f/nvim-ts-rainbow"},
 	-- The GOAT lsp_signature
-	{ "ray-x/lsp_signature.nvim", event = "InsertEnter" },
+	{ 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
 	{
-		"Badhi/nvim-treesitter-cpp-tools",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		ft = { "cpp", "c", "objc", "objcpp" },
+		'Badhi/nvim-treesitter-cpp-tools',
+		dependencies = 'nvim-treesitter/nvim-treesitter',
+		ft = { 'cpp', 'c', 'objc', 'objcpp' },
 	},
 	{
-		"danymat/neogen",
+		'danymat/neogen',
 		lazy = true,
-		cmd = "Neogen",
+		cmd = 'Neogen',
 		config = function()
-			require("neogen").setup()
+			require('neogen').setup()
 		end,
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		dependencies = 'nvim-treesitter/nvim-treesitter',
 	},
 	{
-		"gbprod/substitute.nvim",
+		'gbprod/substitute.nvim',
 		lazy = true,
-		event = "VeryLazy",
+		event = 'VeryLazy',
 		config = function()
-			require("substitute").setup()
+			require('substitute').setup()
 		end,
 	},
 	-- ###
@@ -292,21 +293,21 @@ lvim.plugins = {
 	-- ###
 	-- nvim-tetris
 	{
-		"alec-gibson/nvim-tetris",
+		'alec-gibson/nvim-tetris',
 		lazy = true,
-		cmd = "Tetris",
+		cmd = 'Tetris',
 	},
 	-- cellular-automaton animations
 	{
-		"eandrju/cellular-automaton.nvim",
+		'eandrju/cellular-automaton.nvim',
 		lazy = true,
-		cmd = "CellularAutomaton",
+		cmd = 'CellularAutomaton',
 	},
 	-- vim-be-good get better at vim navigation
 	{
-		"ThePrimeagen/vim-be-good",
+		'ThePrimeagen/vim-be-good',
 		lazy = true,
-		cmd = "VimBeGood",
+		cmd = 'VimBeGood',
 	},
 	--- ### end random uselss things
 }

@@ -62,27 +62,16 @@ bindkey -r "^u"
 bindkey -r "^d"
 
 # FZF catppuccin Macchiato theme
-# export FZF_DEFAULT_OPTS=" \
-# --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-# --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-# --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-#
-# FZF OneDark theme
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=dark
---color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
---color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef
-'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 # FZF
 # TODO update for mac
-# linux
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
-# macos homebrew
-[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
-[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
@@ -91,7 +80,7 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+# bindkey '^e' edit-command-line
 # bindkey '^I' fzf_completion
 
 ### caps as esc and key repeat (Don't work run on wayland)
@@ -119,9 +108,6 @@ fi
 export PATH=/home/noah/.fnm:$PATH
 eval "`fnm env`"
 
-#1password completions
-eval "$(op completion zsh)"; compdef _op op
-
 # bun completions
 [ -s "/home/noah/.bun/_bun" ] && source "/home/noah/.bun/_bun"
 
@@ -129,9 +115,3 @@ eval "$(op completion zsh)"; compdef _op op
 export PATH="/Users/noah/Library/Application Support/fnm:$PATH"
 eval "`fnm env`"
 export PATH=$PATH:/Users/noah/.spicetify
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/noah/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/noah/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/noah/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/noah/google-cloud-sdk/completion.zsh.inc'; fi

@@ -1,9 +1,9 @@
 #!/bin/sh
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
-alias lvimrc='lvim ~/.config/lvim/'
 
-# alias lvim='nvim -u ~/.local/share/lunarvim/lvim/init.lua --cmd "set runtimepath+=~/.local/share/lunarvim/lvim"'
-
+# Github cli copilot aliases
+alias 'gh?'="gh copilot suggest"
+alias 'gh??'="gh copilot explain"
 
 # get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
@@ -79,16 +79,17 @@ esac
 
 # Define personal aliases.
 alias tree='tree -a -I .git'
-alias ls='exa --icons' # some ls/exa aliases
+alias ls='eza --icons' # some ls/eza aliases
 alias ll='ls -alF -a'
 alias la='ls -a'
 alias l='ls -F'
 alias cls='clear'
 
 # Vim
-alias nvim='lvim'
-alias vim='lvim'
-alias vi='lvim'
+alias vim='nvim'
+alias vi='nvim'
+# alias vim='lvim'
+# alias nvim='lvim'
 
 # Quality of life
 

@@ -2,6 +2,7 @@ require("noah.lsp.languages.golang")
 require("noah.lsp.languages.emmet")
 require("noah.lsp.languages.marksman")
 require("noah.lsp.languages.bashls")
+require("noah.lsp.languages.templ")
 -- require("noah.lsp.languages.eslint-lsp")
 --
 -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>

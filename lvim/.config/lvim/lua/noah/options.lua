@@ -6,10 +6,10 @@
 -- lvim.colorscheme = "gruvbox-material"
 lvim.colorscheme = "catppuccin"
 -- Transparency
-lvim.transparent_window = true
+lvim.transparent_window = false
 -- ## General Settings ##
 vim.opt.spelllang = "en"
-vim.opt.clipboard = ""
+vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = true
 vim.opt.showmode = false
 vim.opt.scrolloff = 15
