@@ -119,6 +119,9 @@ fi
 export PATH=/home/noah/.fnm:$PATH
 eval "`fnm env`"
 
+#1password completions
+eval "$(op completion zsh)"; compdef _op op
+
 # bun completions
 [ -s "/home/noah/.bun/_bun" ] && source "/home/noah/.bun/_bun"
 
