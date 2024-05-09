@@ -64,6 +64,9 @@ esac
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+# magic-enter
+MAGIC_ENTER_GIT_COMMAND='git status -u'
+MAGIC_ENTER_OTHER_COMMAND='eza --icons -a'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

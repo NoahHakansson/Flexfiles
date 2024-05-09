@@ -42,7 +42,7 @@ config.color_scheme = 'OneDark (base16)'
 config.font = wezterm.font('JetBrains Mono')
 config.window_background_opacity = 1
 config.macos_window_background_blur = 20
-config.font_size = 20
+config.font_size = 22
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
@@ -57,6 +57,16 @@ config.keys = {
   -- splitting
   { mods = 'LEADER', key = '-', action = act.SplitVertical({ domain = 'CurrentPaneDomain' }) },
   { mods = 'LEADER', key = '/', action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
+  -- move between panes
+  { mods = 'CMD', key = 'h', action = act.ActivatePaneDirection('Left') },
+  { mods = 'CMD', key = 'j', action = act.ActivatePaneDirection('Down') },
+  { mods = 'CMD', key = 'k', action = act.ActivatePaneDirection('Up') },
+  { mods = 'CMD', key = 'l', action = act.ActivatePaneDirection('Right') },
+  -- resize panes
+  { mods = 'CMD|SHIFT', key = 'h', action = act.AdjustPaneSize({ 'Left', 5 }) },
+  { mods = 'CMD|SHIFT', key = 'j', action = act.AdjustPaneSize({ 'Down', 5 }) },
+  { mods = 'CMD|SHIFT', key = 'k', action = act.AdjustPaneSize({ 'Up', 5 }) },
+  { mods = 'CMD|SHIFT', key = 'l', action = act.AdjustPaneSize({ 'Right', 5 }) },
   -- Prompt for a name to use for a new workspace and switch to it.
   {
     key = 'n',

@@ -14,6 +14,9 @@ unsetopt BEEP
 
 
 # completions
+# brew completion + completions for all brew installed packages
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# (end) brew completion
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
@@ -35,13 +38,17 @@ source "$ZDOTDIR/zsh-functions"
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
-zsh_add_file "zsh-prompt"
+# zsh_add_file "zsh-prompt"
+# starship prompt
+eval "$(starship init zsh)"
+
 
 # Plugins
 zsh_add_plugin "Aloxaf/fzf-tab"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "zap-zsh/magic-enter"
 # zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
