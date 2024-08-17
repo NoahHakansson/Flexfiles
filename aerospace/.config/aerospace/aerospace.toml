@@ -49,6 +49,9 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
+[workspace-to-monitor-force-assignment]
+P = '^built-in retina display$'  # Case insensitive regex match
+
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace C"
@@ -61,6 +64,9 @@ run = "move-node-to-workspace D"
 if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace W"
 
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.cinhimbnkkaeohfgghhklpknlkffjgod'
+run = "move-node-to-workspace P"
 
 # make certain windows always floating
 [[on-window-detected]]
@@ -161,20 +167,20 @@ alt-shift-ctrl-equal = 'resize smart +50'
 alt-shift-ctrl-cmd-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-shift-ctrl-c = 'workspace C' # C For Code
-alt-shift-ctrl-d = 'workspace D' # D for Discord
-alt-shift-ctrl-w = 'workspace W' # W for Web Brower
-alt-shift-ctrl-p = 'workspace P'
+alt-shift-ctrl-c = 'workspace C' # C For [C]ode
+alt-shift-ctrl-d = 'workspace D' # D for [D]iscord
+alt-shift-ctrl-w = 'workspace W' # W for [W]eb Brower
+alt-shift-ctrl-p = 'workspace P' # P for Music [P]layer
 alt-shift-ctrl-z = 'workspace Z'
 alt-shift-ctrl-1 = 'workspace 1'
 alt-shift-ctrl-2 = 'workspace 2'
 alt-shift-ctrl-3 = 'workspace 3'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # C For Code
-alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # D for Discord
-alt-shift-ctrl-cmd-w = 'move-node-to-workspace W' # W for Web Brower
-alt-shift-ctrl-cmd-p = 'move-node-to-workspace P'
+alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # C For [C]ode
+alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # D for [D]iscord
+alt-shift-ctrl-cmd-w = 'move-node-to-workspace W' # W for [W]eb Brower
+alt-shift-ctrl-cmd-p = 'move-node-to-workspace P' # P for Music [P]layer
 alt-shift-ctrl-cmd-z = 'move-node-to-workspace Z'
 alt-shift-ctrl-cmd-1 = 'move-node-to-workspace 1'
 alt-shift-ctrl-cmd-2 = 'move-node-to-workspace 2'
@@ -189,7 +195,7 @@ alt-shift-ctrl-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-ctrl-cmd-semicolon = 'mode service'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-ctrl-semicolon = 'layout floating'
+alt-shift-ctrl-semicolon = 'layout floating tiling'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
