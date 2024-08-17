@@ -49,6 +49,7 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.window_decorations = 'RESIZE'
 config.enable_scroll_bar = false
+config.audible_bell = 'Disabled'
 
 -- key bindings
 -- Leader is the same as my old tmux prefix

@@ -68,6 +68,8 @@ export VISUAL='nvim'
 MAGIC_ENTER_GIT_COMMAND='git status -u'
 MAGIC_ENTER_OTHER_COMMAND='eza --icons -a'
 
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$("$HOME/.miniconda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
