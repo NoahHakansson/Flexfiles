@@ -5,6 +5,12 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias 'gh?'="gh copilot suggest"
 alias 'gh??'="gh copilot explain"
 
+# gridscale gscloud aliases
+alias 'gs-renew'="gscloud kubernetes cluster save-kubeconfig --cluster 5f28ae4f-7cef-4a0c-ae17-321f4107010a"
+
+# python aliases
+alias 'py'='python3'
+
 # Remarkable
 alias remarkable_ssh='ssh root@10.11.99.1'
 alias restream='restream -p'

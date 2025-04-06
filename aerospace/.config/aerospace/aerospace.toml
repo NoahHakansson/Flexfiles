@@ -57,16 +57,34 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace C"
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Cursor'
+if.window-title-regex-substring = 'Cursor'
+run = "move-node-to-workspace X"
+
+[[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = "move-node-to-workspace W"
+run =  "move-node-to-workspace W"
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.cinhimbnkkaeohfgghhklpknlkffjgod'
 run = "move-node-to-workspace P"
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace A"
+
+[[on-window-detected]]
+if.app-id = 'com.usebruno.app'
+run = "move-node-to-workspace I"
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.thunderbird'
+run = "move-node-to-workspace M"
+
 
 # make certain windows always floating
 [[on-window-detected]]
@@ -74,7 +92,15 @@ if.app-id = 'info.filesmanager.Files-Lite'
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = 'com.apple.iCal'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'cc.ffitch.shottr'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -86,10 +112,6 @@ if.app-id = 'com.apple.ActivityMonitor'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.thunderbird'
-run = 'layout floating'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = 'layout floating'
 
@@ -98,11 +120,11 @@ if.app-id = 'com.1password.1password'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'org.raspberrypi.imagingutility'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.usebruno.app'
+if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
@@ -160,18 +182,17 @@ alt-shift-ctrl-cmd-j = 'move down'
 alt-shift-ctrl-cmd-k = 'move up'
 alt-shift-ctrl-cmd-l = 'move right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-ctrl-minus = 'resize smart -50'
-alt-shift-ctrl-equal = 'resize smart +50'
-
-alt-shift-ctrl-cmd-m = 'fullscreen'
+alt-shift-ctrl-z = 'fullscreen' # Z for [Z]oom
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-shift-ctrl-c = 'workspace C' # C For [C]ode
 alt-shift-ctrl-d = 'workspace D' # D for [D]iscord
 alt-shift-ctrl-w = 'workspace W' # W for [W]eb Brower
 alt-shift-ctrl-p = 'workspace P' # P for Music [P]layer
-alt-shift-ctrl-z = 'workspace Z'
+alt-shift-ctrl-a = 'workspace A' # A for [A] Google chrome
+alt-shift-ctrl-i = 'workspace I' # I for AP[I] testing
+alt-shift-ctrl-m = 'workspace M' # M for [M]essaging
+alt-shift-ctrl-x = 'workspace X'
 alt-shift-ctrl-1 = 'workspace 1'
 alt-shift-ctrl-2 = 'workspace 2'
 alt-shift-ctrl-3 = 'workspace 3'
@@ -181,7 +202,10 @@ alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # C For [C]ode
 alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # D for [D]iscord
 alt-shift-ctrl-cmd-w = 'move-node-to-workspace W' # W for [W]eb Brower
 alt-shift-ctrl-cmd-p = 'move-node-to-workspace P' # P for Music [P]layer
-alt-shift-ctrl-cmd-z = 'move-node-to-workspace Z'
+alt-shift-ctrl-cmd-a = 'move-node-to-workspace A' # A for [A] Google chrome
+alt-shift-ctrl-cmd-i = 'move-node-to-workspace I' # I for AP[I] testing
+alt-shift-ctrl-cmd-m = 'move-node-to-workspace M' # M for [M]essaging
+alt-shift-ctrl-cmd-x = 'move-node-to-workspace X'
 alt-shift-ctrl-cmd-1 = 'move-node-to-workspace 1'
 alt-shift-ctrl-cmd-2 = 'move-node-to-workspace 2'
 alt-shift-ctrl-cmd-3 = 'move-node-to-workspace 3'
@@ -193,12 +217,19 @@ alt-shift-ctrl-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-ctrl-cmd-semicolon = 'mode service'
+alt-shift-ctrl-cmd-r = 'mode resize'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-ctrl-semicolon = 'layout floating tiling'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.resize.binding]
+esc = ['mode main']
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+h = 'resize smart -50'
+l = 'resize smart +50'
+
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
