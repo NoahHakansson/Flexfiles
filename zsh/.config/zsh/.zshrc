@@ -12,6 +12,8 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
+# source zoxide init
+eval "$(zoxide init --cmd=cd zsh)"
 
 # completions
 # brew completion + completions for all brew installed packages
@@ -159,3 +161,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/noah/.cache/lm-studio/bin"
+# End of LM Studio CLI section

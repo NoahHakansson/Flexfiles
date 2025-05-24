@@ -151,5 +151,9 @@ wezterm.on('gui-startup', function()
   end
 end)
 
+-- Load Plugins
+-- local toggle_terminal = wezterm.plugin.require('https://github.com/zsh-sage/toggle_terminal.wez')
+-- toggle_terminal.apply_to_config(config)
+
 -- and finally, return the configuration to wezterm
 return config

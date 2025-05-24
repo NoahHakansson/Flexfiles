@@ -82,6 +82,7 @@ alias cls='clear'
 # Vim
 alias vim='nvim'
 alias vi='nvim'
+alias oldnvim='NVIM_APPNAME="old-nvim" nvim'
 # alias vim='lvim'
 # alias nvim='lvim'
 
