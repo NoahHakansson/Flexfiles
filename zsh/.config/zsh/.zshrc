@@ -38,8 +38,8 @@ source "$ZDOTDIR/zsh-functions"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
-zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
+zsh_add_file ".zsh_secret_exports"
 # zsh_add_file "zsh-prompt"
 # starship prompt
 eval "$(starship init zsh)"
@@ -47,6 +47,7 @@ eval "$(starship init zsh)"
 
 # Plugins
 zsh_add_plugin "Aloxaf/fzf-tab"
+zsh_add_plugin "jeffreytse/zsh-vi-mode"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"

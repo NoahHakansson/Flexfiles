@@ -68,6 +68,8 @@ export VISUAL='nvim'
 MAGIC_ENTER_GIT_COMMAND='git status -u'
 MAGIC_ENTER_OTHER_COMMAND='eza --icons -a'
 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # >>> conda initialize >>>

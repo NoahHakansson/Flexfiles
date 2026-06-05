@@ -1,10 +1,6 @@
 #!/bin/sh
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
-# Github cli copilot aliases
-alias 'gh?'="gh copilot suggest"
-alias 'gh??'="gh copilot explain"
-
 # gridscale gscloud aliases
 alias 'gs-renew'="gscloud kubernetes cluster save-kubeconfig --cluster 5f28ae4f-7cef-4a0c-ae17-321f4107010a"
 
@@ -87,6 +83,7 @@ alias oldnvim='NVIM_APPNAME="old-nvim" nvim'
 # alias nvim='lvim'
 
 # Quality of life
+alias gen-api-key='dd bs=1024 count=1 if=/dev/urandom of=/dev/stdout | sha256sum -'
 
 # add your user to the docker group to avoid having to use sudo with docker commands
 # alias docker='sudo docker'
