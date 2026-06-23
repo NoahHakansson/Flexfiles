@@ -58,8 +58,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace C"
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Cursor'
-if.window-title-regex-substring = 'Cursor'
+if.app-id = 'com.openai.codex'
 run = "move-node-to-workspace X"
 
 [[on-window-detected]]
@@ -102,6 +101,14 @@ run = "move-node-to-workspace X"
 # make certain windows always floating
 [[on-window-detected]]
 if.app-id = 'info.filesmanager.Files-Lite'
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'sh.executor.desktop'
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'com.protonmail.bridge'
 run = "layout floating"
 
 [[on-window-detected]]
