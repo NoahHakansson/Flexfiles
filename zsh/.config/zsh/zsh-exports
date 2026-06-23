@@ -86,3 +86,16 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# mcfly setup — own ctrl-r completely
+export MCFLY_KEY_SCHEME=vim
+eval "$(mcfly init zsh)"
+
+# zsh-vi-mode rebuilds keymaps at the first prompt (and fzf also grabs ^R),
+# clobbering mcfly's binding. Re-assert it in vi-mode's after-init hook,
+# which runs last, so McFly wins in every keymap.
+function zvm_after_init() {
+  bindkey -M emacs '^R' mcfly-history-widget
+  bindkey -M viins '^R' mcfly-history-widget
+  bindkey -M vicmd '^R' mcfly-history-widget
+}
