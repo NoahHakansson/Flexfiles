@@ -35,3 +35,24 @@ function mach_java_mode() {
     export SDKMAN_DIR="$HOME/.sdkman"
     [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 }
+
+unalias claudex 2>/dev/null
+
+function claudex() {
+    local proxy_config="$HOME/.cli-proxy-api/merged-config.yaml"
+    local proxy_token
+
+    proxy_token="$(/usr/bin/ruby -ryaml -e 'config = YAML.safe_load(File.read(ARGV.fetch(0)), aliases: true); puts Array(config.fetch("api-keys")).fetch(0)' "$proxy_config")" || return
+
+    ANTHROPIC_BASE_URL="http://127.0.0.1:8318" \
+    ANTHROPIC_AUTH_TOKEN="$proxy_token" \
+    CLAUDE_CODE_SUBAGENT_MODEL="gpt-5.6-sol" \
+    CLAUDE_CODE_ALWAYS_ENABLE_EFFORT=1 \
+    CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY=3 \
+    ENABLE_TOOL_SEARCH=false \
+    command claude \
+        --settings '{"skillOverrides":{"agent-delegation-rules":"off"}}' \
+        --append-system-prompt "NEVER use Sonnet 5." \
+        --model "gpt-5.6-sol" \
+        "$@"
+}

@@ -90,4 +90,12 @@ alias gen-api-key='dd bs=1024 count=1 if=/dev/urandom of=/dev/stdout | sha256sum
 # alias docker-compose='sudo docker-compose'
 
 # Config editing aliases
+
+# Socket Firewall aliases, matching Socket's wrapper-mode docs for JS package managers.
+# This makes normal npm/pnpm commands route through sfw transparently.
+if command -v sfw >/dev/null 2>&1; then
+    alias npm="sfw npm"
+    alias pnpm="sfw pnpm"
+fi
+
 # Aliases end

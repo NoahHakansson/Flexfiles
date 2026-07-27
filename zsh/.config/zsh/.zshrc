@@ -109,7 +109,6 @@ bindkey '^e' edit-command-line
 # setxkbmap -option caps:escape
 
 # Environment variables set everywhere
-export EDITOR="lvim"
 export TERMINAL="alacritty"
 export BROWSER="brave"
 
@@ -165,3 +164,11 @@ unset __conda_setup
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/noah/.cache/lm-studio/bin"
 # End of LM Studio CLI section
+
+# pnpm
+export PNPM_HOME="/Users/noah/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

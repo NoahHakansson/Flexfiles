@@ -1,0 +1,8 @@
+# Keep Option/Alt chords available for terminal programs such as Herdr.
+macos-option-as-alt = true
+
+# Keep Ghostty's own terminal identity; it advertises modern keyboard support to TUIs.
+term = xterm-ghostty
+
+# Ghostty does not bind Alt+s or bare Ctrl+h/j/k/l by default.
+# Leave those chords unbound here so Herdr can receive them directly.

@@ -3,6 +3,10 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
+# Hermes-managed Node/npm global binaries, including Socket Firewall (sfw).
+export PATH="$HOME/.hermes/node/bin:$PATH"
+# pnpm global binary directory, used by pnpm global installs.
+export PATH="$HOME/Library/pnpm/bin:$PATH"
 ### Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ### bat as manpager
@@ -65,7 +69,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # magic-enter
-MAGIC_ENTER_GIT_COMMAND='git status -u'
+MAGIC_ENTER_GIT_COMMAND='bgst'
 MAGIC_ENTER_OTHER_COMMAND='eza --icons -a'
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True

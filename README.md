@@ -30,6 +30,17 @@ stow */ # Everything (the '/' ignores the README)
 stow zsh # Just my zsh config
 ```
 
+### Herdr and Ghostty
+
+Herdr is configured as a stow package and expects Ghostty as the host terminal.
+
+```bash
+stow herdr ghostty
+herdr server reload-config
+```
+
+Herdr uses `Alt+s` as its prefix, matching the WezTerm leader. Pane movement is also bound directly to `Ctrl+h/j/k/l`. The Ghostty config keeps Option-as-Alt enabled and intentionally leaves those Herdr chords unbound so they reach the foreground app.
+
 ## Wayland fixes
 
 ### brave-browser (should work on chromium based browsers)
@@ -71,6 +82,8 @@ A non-exhaustive list of programs that I use.
 - [Zathura](https://pwmt.org/projects/zathura/)
 - [gofumpt (stricter gofmt)](https://github.com/mvdan/gofumpt)
 - [Tmux](https://github.com/tmux/tmux)
+- [Herdr](https://herdr.dev/)
+- [Ghostty](https://ghostty.org/)
 - [Bear](https://github.com/rizsotto/Bear)
 - [Bismuth](https://github.com/Bismuth-Forge/bismuth)
 - [patat](https://github.com/jaspervdj/patat)
