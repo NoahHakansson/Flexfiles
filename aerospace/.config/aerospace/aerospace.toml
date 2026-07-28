@@ -88,6 +88,10 @@ if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace A"
 
 [[on-window-detected]]
+if.app-id = 'net.imput.helium'
+run = "move-node-to-workspace A"
+
+[[on-window-detected]]
 if.app-id = 'com.usebruno.app'
 run = "move-node-to-workspace I"
 
