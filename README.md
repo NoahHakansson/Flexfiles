@@ -14,13 +14,20 @@ Feel free to use/steal anything 🙂
 
 You will need `git` and GNU `stow`
 
-Clone into your `$HOME` directory or `~`
+Clone the repository into your home directory:
 
 ```bash
-git clone https://github.com/NoahHakansson/Flexfiles.git ~
+git clone https://github.com/NoahHakansson/Flexfiles.git ~/Flexfiles
+cd ~/Flexfiles
 ```
 
-Run `stow` to symlink everything or just select what you want
+Create the stateful agent configuration directories before running Stow. This keeps Stow from linking the entire directories into the repository.
+
+```bash
+mkdir -p ~/.claude ~/.codex
+```
+
+Run `stow` to symlink everything or select individual packages.
 
 ```bash
 stow */ # Everything (the '/' ignores the README)
@@ -28,6 +35,14 @@ stow */ # Everything (the '/' ignores the README)
 
 ```bash
 stow zsh # Just my zsh config
+```
+
+### Agent instructions
+
+Claude Code and Codex share the tracked instructions in `agent-instructions.md`. The `agents` package maps that file to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`.
+
+```bash
+stow agents
 ```
 
 ### Herdr and Ghostty
