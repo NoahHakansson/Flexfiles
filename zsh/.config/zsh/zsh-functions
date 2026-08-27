@@ -46,13 +46,16 @@ function claudex() {
 
     ANTHROPIC_BASE_URL="http://127.0.0.1:8318" \
     ANTHROPIC_AUTH_TOKEN="$proxy_token" \
-    CLAUDE_CODE_SUBAGENT_MODEL="gpt-5.6-sol" \
     CLAUDE_CODE_ALWAYS_ENABLE_EFFORT=1 \
+    CLAUDE_CODE_MAX_CONTEXT_TOKENS=272000 \
+    CLAUDE_CODE_AUTO_COMPACT_WINDOW=272000 \
+    CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=75 \
     CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY=3 \
     ENABLE_TOOL_SEARCH=false \
     command claude \
-        --settings '{"skillOverrides":{"agent-delegation-rules":"off"}}' \
-        --append-system-prompt "NEVER use Sonnet 5." \
+        --settings '{"availableModels":["gpt-5.6-sol","fable","claude-fable-5","claude-fable-5[1m]"],"skillOverrides":{"agent-delegation-rules":"off","claude-api":"off"},"permissions":{"deny":["Agent(codex-cli)"]}}' \
+        --append-system-prompt "Claudex workflow routing: never use the codex-cli agent or claude -p. Use agentType 'claude' with no model for normal Workflow agents so they inherit gpt-5.6-sol; use explicit Claude models only when requested. NEVER use Sonnet 5." \
         --model "gpt-5.6-sol" \
+        --effort high \
         "$@"
 }
