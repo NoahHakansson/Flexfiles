@@ -1,1 +1,1 @@
-../../agent-instructions.md
+../../AGENTS.md

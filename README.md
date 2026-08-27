@@ -39,7 +39,7 @@ stow zsh # Just my zsh config
 
 ### Agent instructions
 
-Claude Code and Codex share the tracked instructions in `agent-instructions.md`. The `agents` package maps that file to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`.
+Claude Code and Codex share the tracked instructions in `AGENTS.md`. The `agents` package maps that file to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`.
 
 ```bash
 stow agents
