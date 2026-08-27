@@ -1,7 +1,15 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
+format = '$all$kubernetes$line_break$character'
 
 # The base prompt.
 
 [gcloud]
 disabled = true
+
+[conda]
+ignore_base = true
+
+[kubernetes]
+disabled = false
+format = 'on [$context]($style) '
