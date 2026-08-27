@@ -1,8 +1,9 @@
 onboarding = false
 
 [theme]
-name = "one-dark"
+name = "catppuccin"
 
+auto_switch = false
 [terminal]
 shell_mode = "auto"
 new_cwd = "follow"
@@ -16,49 +17,107 @@ manifest_check = true
 prefix = "alt+s"
 
 reload_config = "prefix+shift+r"
-detach = "prefix+q"
-workspace_picker = "prefix+w"
-goto = "prefix+g"
-new_workspace = "prefix+shift+n"
+detach = "prefix+shift+q"
+settings = "prefix+shift+s"
+workspace_picker = "prefix+p"
+goto = "prefix+s"
+new_workspace = "prefix+n"
 new_worktree = "prefix+shift+g"
 open_worktree = "prefix+shift+o"
 remove_worktree = "prefix+alt+d"
 rename_workspace = "prefix+shift+w"
 close_workspace = "prefix+shift+d"
-previous_workspace = "prefix+shift+left"
-next_workspace = "prefix+shift+right"
-previous_agent = "prefix+alt+k"
-next_agent = "prefix+alt+j"
+previous_workspace = ["alt+shift+h", "prefix+shift+left"]
+next_workspace = ["alt+shift+l", "prefix+shift+right"]
+previous_agent = ["alt+k", "prefix+alt+k"]
+next_agent = ["alt+j", "prefix+alt+j"]
 focus_agent = "prefix+alt+1..9"
 
-new_tab = ["prefix+c", "ctrl+alt+c"]
+new_tab = ["cmd+t", "prefix+c", "ctrl+alt+c"]
 rename_tab = "prefix+shift+t"
-previous_tab = ["prefix+p", "ctrl+alt+["]
-next_tab = ["prefix+n", "ctrl+alt+]"]
+previous_tab = ["alt+h", "ctrl+alt+["]
+next_tab = ["alt+l", "ctrl+alt+]"]
 switch_tab = "prefix+1..9"
-close_tab = "prefix+shift+x"
+close_tab = ["cmd+w", "prefix+shift+x"]
 
 rename_pane = "prefix+shift+p"
-focus_pane_left = ["prefix+h", "ctrl+h"]
-focus_pane_down = ["prefix+j", "ctrl+j"]
-focus_pane_up = ["prefix+k", "ctrl+k"]
-focus_pane_right = ["prefix+l", "ctrl+l"]
+copy_mode = "prefix+v"
+focus_pane_left = "cmd+h"
+focus_pane_down = ["cmd+j", "prefix+j"]
+focus_pane_up = ["cmd+k", "prefix+k"]
+focus_pane_right = ["cmd+l", "prefix+l"]
 cycle_pane_next = "prefix+tab"
 cycle_pane_previous = "prefix+shift+tab"
 last_pane = "prefix+backtick"
-split_vertical = ["prefix+v", "ctrl+alt+d"]
+split_vertical = ["prefix+slash", "ctrl+alt+d"]
 split_horizontal = ["prefix+minus", "ctrl+alt+shift+d"]
-close_pane = "prefix+x"
+close_pane = "prefix+q"
 zoom = "prefix+z"
 resize_mode = "prefix+r"
 toggle_sidebar = "prefix+b"
 
-navigate_workspace_up = "up"
-navigate_workspace_down = "down"
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
 navigate_pane_left = "h"
-navigate_pane_down = "j"
-navigate_pane_up = "k"
+navigate_pane_down = "ctrl+j"
+navigate_pane_up = "ctrl+k"
 navigate_pane_right = "l"
+
+[[keys.command]]
+key = "ctrl+shift+h"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --current --direction left'
+description = "resize pane left"
+
+[[keys.command]]
+key = "ctrl+shift+j"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --current --direction down'
+description = "resize pane down"
+
+[[keys.command]]
+key = "ctrl+shift+k"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --current --direction up'
+description = "resize pane up"
+
+[[keys.command]]
+key = "ctrl+shift+l"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --current --direction right'
+description = "resize pane right"
+
+[[keys.command]]
+key = "prefix+h"
+type = "popup"
+command = "hunk diff --theme catppuccin-mocha"
+description = "open hunk diff"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "lazygit"
+description = "open lazygit"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+d"
+type = "popup"
+command = "lazydocker"
+description = "open lazydocker"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = 'exec "${SHELL:-sh}"'
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
 
 [ui]
 sidebar_width = 30
@@ -73,8 +132,17 @@ prompt_new_tab_name = false
 pane_borders = true
 pane_gaps = true
 show_agent_labels_on_pane_borders = true
+hide_tab_bar_when_single_tab = false
 agent_panel_sort = "priority"
 accent = "cyan"
+
+status_indicators = "symbols"
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", "workspace", "tab"],
+  ["terminal_title_stripped"],
+  ["agent"],
+]
 
 [ui.toast]
 delivery = "terminal"

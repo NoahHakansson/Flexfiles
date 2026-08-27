@@ -39,7 +39,7 @@ stow herdr ghostty
 herdr server reload-config
 ```
 
-Herdr uses `Alt+s` as its prefix, matching the WezTerm leader. Pane movement is also bound directly to `Ctrl+h/j/k/l`. The Ghostty config keeps Option-as-Alt enabled and intentionally leaves those Herdr chords unbound so they reach the foreground app.
+Herdr uses `Alt+s` as its prefix, matching the WezTerm leader. Its split, pane, tab, workspace, launcher, close, copy-mode, and resize bindings mirror the WezTerm config where Herdr has an equivalent. Pane movement uses `Cmd+h/j/k/l`, pane resizing uses `Ctrl+Shift+h/j/k/l`, and the corresponding prefix bindings remain available as fallbacks. Ghostty forwards the pane movement bindings to Herdr, keeps Option-as-Alt enabled, and keeps its system bell sound enabled.
 
 ## Wayland fixes
 

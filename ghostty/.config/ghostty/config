@@ -4,5 +4,22 @@ macos-option-as-alt = true
 # Keep Ghostty's own terminal identity; it advertises modern keyboard support to TUIs.
 term = xterm-ghostty
 
-# Ghostty does not bind Alt+s or bare Ctrl+h/j/k/l by default.
-# Leave those chords unbound here so Herdr can receive them directly.
+theme = Catppuccin Macchiato
+font-family = JetBrains Mono
+font-size = 22
+font-feature = -calt, -clig, -liga
+background-opacity = 1
+background-blur = false
+macos-titlebar-style = hidden
+scrollbar = never
+bell-features = system,no-audio,no-attention,no-title,no-border
+
+# Forward Herdr's direct Cmd pane-focus chords instead of handling them in Ghostty or macOS.
+keybind = cmd+h=csi:104;9:1u
+keybind = cmd+j=unbind
+keybind = cmd+k=unbind
+keybind = cmd+l=unbind
+
+# Leave Herdr's direct tab bindings unbound in Ghostty.
+keybind = cmd+t=unbind
+keybind = cmd+w=unbind
