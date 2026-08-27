@@ -64,6 +64,10 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace C"
 
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = "move-node-to-workspace C"
+
+[[on-window-detected]]
 if.app-id = 'com.openai.codex'
 run = "move-node-to-workspace X"
 
@@ -283,6 +287,9 @@ esc = ['mode main']
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 h = 'resize smart -50'
 l = 'resize smart +50'
+1 = ['resize width 2360', 'mode main']
+2 = ['resize width 2005', 'mode main']
+3 = ['resize width 1605', 'mode main']
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
