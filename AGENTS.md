@@ -52,7 +52,7 @@ I wanted to share some of my preferences here so we can be more aligned as we wo
 
 - Creating a PR is allowed, but only with the user's explicit permission each time.
 - Make sure titles follow conventions from the repo. They should be simple and easy to understand. Conventional commit styles in projects that use them, i.e. `fix(web): new threads no longer spike CPU`.
-- PR descriptions should aim for simplicity. Open with a minimal, clear description of the problem. Follow up with how you solved it.
+- PR descriptions should aim for simplicity. Open with a minimal, clear description of the problem. Follow up with how you solved it. Do not add AI attribution, generated-by footers, agent or session links, or similar metadata.
 - **Open a real PR, not a draft.** Drafts do not get review-bot coverage.
 - When making comments on PRs as the user start with a blurb that states it's from an agent and what model and harness was used.
 - **Rebase onto latest `main` before opening.** Stale branches conflict and waste a review round.
