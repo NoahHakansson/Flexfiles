@@ -56,7 +56,7 @@ I wanted to share some of my preferences here so we can be more aligned as we wo
 - **Open a real PR, not a draft.** Drafts do not get review-bot coverage.
 - When making comments on PRs as the user start with a blurb that states it's from an agent and what model and harness was used.
 - **Rebase onto latest `main` before opening.** Stale branches conflict and waste a review round.
-- When asked to monitor or babysit a PR: poll checks and comments newer than the last push. In `allbin` owned repos you trigger reviews by commenting exacly `@allbin-reviewbot`; verify each bot finding against the source before acting on it; fix real ones and dismiss false positives with a written reason; fix CI failures, distinguishing real breaks from known infra flakes. If nothing is new, stay quiet - do not post filler comments. Stop when the repo's review bots are green on the latest commit.
+- When asked to monitor or babysit a PR: poll checks and comments newer than the last push. In `allbin` owned repos you trigger reviews by commenting exacly `@allbin-reviewbot fable`; verify each bot finding against the source before acting on it; fix real ones and dismiss false positives with a written reason; fix CI failures, distinguishing real breaks from known infra flakes. If nothing is new, stay quiet - do not post filler comments. Stop when the repo's review bots are green on the latest commit.
 - Merge only per the disposition given in the request (merge when green, or stop and report). If none was given, report and ask.
 
 
