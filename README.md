@@ -21,12 +21,6 @@ git clone https://github.com/NoahHakansson/Flexfiles.git ~/Flexfiles
 cd ~/Flexfiles
 ```
 
-Create the stateful agent configuration directories before running Stow. This keeps Stow from linking the entire directories into the repository.
-
-```bash
-mkdir -p ~/.claude ~/.codex
-```
-
 Run `stow` to symlink everything or select individual packages.
 
 ```bash
@@ -39,11 +33,7 @@ stow zsh # Just my zsh config
 
 ### Agent instructions
 
-Claude Code and Codex share the tracked instructions in `AGENTS.md`. The `agents` package maps that file to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`.
-
-```bash
-stow agents
-```
+Global agent instructions, personal skills and machine operations are maintained in [fleet](../fleet/README.md). Use its reviewed copy workflow; Stow does not manage global agent files.
 
 ### Herdr and Ghostty
 
