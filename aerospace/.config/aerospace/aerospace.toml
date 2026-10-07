@@ -77,7 +77,7 @@ run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run =  "move-node-to-workspace W"
+run =  "move-node-to-workspace C"
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -93,7 +93,7 @@ run = "move-node-to-workspace A"
 
 [[on-window-detected]]
 if.app-id = 'net.imput.helium'
-run = "move-node-to-workspace A"
+run = "move-node-to-workspace W"
 
 [[on-window-detected]]
 if.app-id = 'com.usebruno.app'
@@ -117,6 +117,14 @@ run = "move-node-to-workspace X"
 
 
 # make certain windows always floating
+[[on-window-detected]]
+if.app-id = 'com.sarensx.MacPacker'
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = "layout floating"
+
 [[on-window-detected]]
 if.app-id = 'info.filesmanager.Files-Lite'
 run = "layout floating"
