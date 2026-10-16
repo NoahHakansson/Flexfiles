@@ -1,4 +1,7 @@
 #!/bin/sh
+# Agent and script shells (zsh -c, zsh -lc): treat `=word` and unmatched globs
+# literally, as bash does, instead of failing the command.
+[[ -o interactive ]] || setopt no_equals no_nomatch
 # HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -35,7 +38,6 @@ export PATH="$PATH:./node_modules/.bin"
 # deno
 export DENO_INSTALL="/home/noah/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-eval "$(fnm env)"
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
@@ -93,7 +95,7 @@ unset __conda_setup
 
 # mcfly setup — own ctrl-r completely
 export MCFLY_KEY_SCHEME=vim
-eval "$(mcfly init zsh)"
+[[ -o interactive ]] && eval "$(mcfly init zsh)"
 
 # zsh-vi-mode rebuilds keymaps at the first prompt (and fzf also grabs ^R),
 # clobbering mcfly's binding. Re-assert it in vi-mode's after-init hook,
