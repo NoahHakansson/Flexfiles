@@ -1,4 +1,11 @@
-# macOS /etc/zprofile runs path_helper, which moves /usr/local/bin (an old
-# python.org 3.11 without our packages) ahead of the PATH from zsh-exports.
-# Put conda base Python back in front for agent login shells (Codex: zsh -lc).
-[[ -o interactive ]] || export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+# macOS /etc/zprofile runs path_helper, which moves the system dirs from
+# /etc/paths and /etc/paths.d (/usr/local/bin, /usr/bin, ...) ahead of the rest
+# of PATH. Move them back behind our own dirs. Rebuilt from PATH alone because
+# Codex command shells (zsh -lc plus a replayed snapshot) don't see variables
+# set in .zshenv.
+typeset -U path
+() {
+  local f sys=(${(f)"$(</etc/paths)"})
+  for f in /etc/paths.d/*(N); sys+=(${(f)"$(<$f)"})
+  path=(${path:|sys} ${path:*sys})
+}

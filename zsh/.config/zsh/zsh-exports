@@ -45,6 +45,7 @@ export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 export PATH="$PATH:/usr/local/bin/Postman"
 # java SDK
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # andoird SDK
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -75,6 +76,8 @@ MAGIC_ENTER_GIT_COMMAND='git status --short && bgst'
 MAGIC_ENTER_OTHER_COMMAND='eza --icons -a'
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/noah/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/noah/google-cloud-sdk/path.zsh.inc'; fi
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 

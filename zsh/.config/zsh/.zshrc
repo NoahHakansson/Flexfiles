@@ -37,8 +37,7 @@ autoload -Uz colors && colors
 # Useful Functions
 source "$ZDOTDIR/zsh-functions"
 
-# Normal files to source
-zsh_add_file "zsh-exports"
+# Normal files to source (zsh-exports already ran from .zshenv)
 zsh_add_file "zsh-aliases"
 zsh_add_file ".zsh_secret_exports"
 # zsh_add_file "zsh-prompt"
@@ -136,12 +135,8 @@ export PATH="/Users/noah/Library/Application Support/fnm:$PATH"
 eval "`fnm env`"
 export PATH=$PATH:/Users/noah/.spicetify
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/noah/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/noah/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/noah/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/noah/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
