@@ -123,16 +123,9 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 
-# fnm
-export PATH=/home/noah/.fnm:$PATH
-eval "`fnm env`"
-
 # bun completions
 [ -s "/home/noah/.bun/_bun" ] && source "/home/noah/.bun/_bun"
 
-# fnm
-export PATH="/Users/noah/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
 export PATH=$PATH:/Users/noah/.spicetify
 
 # The next line enables shell command completion for gcloud.
