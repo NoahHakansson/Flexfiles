@@ -3,3 +3,4 @@
 .zsh_sessions
 plugins/
 .zsh_secret_exports
+.zsh_history
