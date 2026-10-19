@@ -118,6 +118,10 @@ run = "move-node-to-workspace X"
 
 # make certain windows always floating
 [[on-window-detected]]
+if.app-id = 'com.tw93.MoleApp'
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = 'com.sarensx.MacPacker'
 run = "layout floating"
 
