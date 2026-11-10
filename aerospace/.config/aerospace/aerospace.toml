@@ -56,6 +56,13 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
+# Records each workspace switch as "<window that took focus> <workspace left>".
+# The Crest rule below reads it to tell where a link was opened: opening one
+# activates Crest, which can pull AeroSpace over to A before the Quick Window exists.
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'echo "$AEROSPACE_WINDOW_ID $AEROSPACE_PREV_WORKSPACE" > "$TMPDIR/aerospace-workspace-switch"'
+]
+
 [workspace-to-monitor-force-assignment]
 P = '^built-in retina display$'  # Case insensitive regex match
 
@@ -115,6 +122,16 @@ run = "move-node-to-workspace M"
 if.app-id = 'com.nousresearch.hermes'
 run = "move-node-to-workspace X"
 
+# Crest's browser windows and Quick Windows share an app id, so every Crest
+# window floats where it opens and crest-window-detected.sh then picks out the
+# browser windows, which are tiled on A. It also puts a Quick Window on the
+# workspace and screen its link was opened on. One eval is one trip to AeroSpace.
+[[on-window-detected]]
+if.app-id = 'com.pauldavis.crest'
+run = [
+    'layout floating',
+    'exec-and-forget source ~/.config/aerospace/crest-window-detected.sh && aerospace eval "move-node-to-workspace A && layout tiling"',
+]
 
 # make certain windows always floating
 [[on-window-detected]]
