@@ -283,18 +283,19 @@ alt-shift-ctrl-cmd-l = 'move right'
 
 alt-shift-ctrl-z = 'fullscreen' # Z for [Z]oom
 
+# Clear the window-recovery cache before switching workspaces. A zero resize preserves layout.
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-shift-ctrl-c = 'workspace C' # C For [C]ode
-alt-shift-ctrl-d = 'workspace D' # D for [D]iscord
-alt-shift-ctrl-w = 'workspace W' # W for [W]eb Brower
-alt-shift-ctrl-p = 'workspace P' # P for Music [P]layer
-alt-shift-ctrl-a = 'workspace A' # Helium
-alt-shift-ctrl-i = 'workspace I' # I for AP[I] testing
-alt-shift-ctrl-m = 'workspace M' # M for [M]essaging
-alt-shift-ctrl-x = 'workspace X'
-alt-shift-ctrl-1 = 'workspace 1'
-alt-shift-ctrl-2 = 'workspace 2'
-alt-shift-ctrl-3 = 'workspace 3'
+alt-shift-ctrl-c = ['resize smart +0', 'workspace C'] # C For [C]ode
+alt-shift-ctrl-d = ['resize smart +0', 'workspace D'] # D for [D]iscord
+alt-shift-ctrl-w = ['resize smart +0', 'workspace W'] # W for [W]eb Brower
+alt-shift-ctrl-p = ['resize smart +0', 'workspace P'] # P for Music [P]layer
+alt-shift-ctrl-a = ['resize smart +0', 'workspace A'] # Helium
+alt-shift-ctrl-i = ['resize smart +0', 'workspace I'] # I for AP[I] testing
+alt-shift-ctrl-m = ['resize smart +0', 'workspace M'] # M for [M]essaging
+alt-shift-ctrl-x = ['resize smart +0', 'workspace X']
+alt-shift-ctrl-1 = ['resize smart +0', 'workspace 1']
+alt-shift-ctrl-2 = ['resize smart +0', 'workspace 2']
+alt-shift-ctrl-3 = ['resize smart +0', 'workspace 3']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # C For [C]ode
@@ -310,7 +311,7 @@ alt-shift-ctrl-cmd-2 = 'move-node-to-workspace 2'
 alt-shift-ctrl-cmd-3 = 'move-node-to-workspace 3'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-shift-ctrl-tab = 'workspace-back-and-forth'
+alt-shift-ctrl-tab = ['resize smart +0', 'workspace-back-and-forth']
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-ctrl-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
 
