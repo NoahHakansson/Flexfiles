@@ -8,7 +8,7 @@
 // identified as "browser-window-<uuid>", a Quick Window holds "quick-window-*" controls.
 //
 // A Quick Window is also put where its link was opened, which Crest and AeroSpace get wrong
-// in two ways. See workspaceLinkWasOpenedOn for the workspace and bringOnScreen for the place.
+// in two ways. See workspaceLinkWasOpenedOn for the workspace and place for the position.
 //
 // The window stays where it opened until this has run, so the run is kept short. Nearly all
 // of it is first contact with the accessibility API and with the window server, about 30 ms
@@ -27,12 +27,27 @@ let crestBundleID = "com.pauldavis.crest"
 let markerDepth = 3
 // A new window's content shows up shortly after AeroSpace detects it.
 let timeout: TimeInterval = 3
-// How long a Quick Window is watched for Crest or AeroSpace still moving it or the pointer.
+// How long a Quick Window is watched, after it was last changed, for Crest or AeroSpace still
+// moving it or the pointer, and how long that may go on at most.
 let settleTime: TimeInterval = 0.15
+let settleLimit: TimeInterval = 1
+// How long a moved window may take to glide to its new position before it is resized anyway,
+// and how often its progress is checked.
+let glideTimeout: TimeInterval = 0.5
+let glidePollInterval: useconds_t = 5_000
 // How long after a workspace switch a new Quick Window still counts as opened by its cause.
-// The two are 20 to 75 ms apart. Switching by hand and then opening one takes longer than this.
-let switchRecency: TimeInterval = 0.3
+// Crest 0.9.1 creates the window about 220 ms after the switch, and this checks about 300 ms
+// after it. Switching by hand and then opening one takes longer than this.
+let switchRecency: TimeInterval = 1
+// How far a Quick Window opening where another already is moves, and how many such steps it
+// takes at most. These are Crest's own values.
+let cascadeStep: CGFloat = 22
+let cascadeLimit = 8
 let pollInterval: useconds_t = 10_000
+
+extension CGRect {
+    var center: CGPoint { CGPoint(x: midX, y: midY) }
+}
 
 func attribute<Value>(_ element: AXUIElement, _ name: String) -> Value? {
     var value: CFTypeRef?
@@ -44,11 +59,16 @@ func children(of element: AXUIElement) -> [AXUIElement] {
     attribute(element, kAXChildrenAttribute) ?? []
 }
 
-func window(_ id: CGWindowID, in apps: [AXUIElement]) -> AXUIElement? {
-    apps.lazy.flatMap { attribute($0, kAXWindowsAttribute) as [AXUIElement]? ?? [] }.first { window in
-        var candidate: CGWindowID = 0
-        return _AXUIElementGetWindow(window, &candidate) == .success && candidate == id
+// Crest's windows, with the window ids AeroSpace knows them by.
+func windows(of apps: [AXUIElement]) -> [(id: CGWindowID, element: AXUIElement)] {
+    apps.flatMap { attribute($0, kAXWindowsAttribute) as [AXUIElement]? ?? [] }.compactMap { window in
+        var id: CGWindowID = 0
+        return _AXUIElementGetWindow(window, &id) == .success ? (id, window) : nil
     }
+}
+
+func window(_ id: CGWindowID, in apps: [AXUIElement]) -> AXUIElement? {
+    windows(of: apps).first { $0.id == id }?.element
 }
 
 // Searches level by level, which reaches a marker in the fewest calls and stops above the
@@ -82,12 +102,14 @@ func workspaceLinkWasOpenedOn(crest: [AXUIElement]) -> String? {
     return String(fields[1])
 }
 
-// Moves the window AeroSpace named to `workspace` and takes the focus along.
+// Moves the window AeroSpace named to `workspace`, takes the focus along, and returns once
+// AeroSpace has. Until then the Quick Windows already on `workspace` are parked off screen.
 func moveToWorkspace(_ workspace: String) {
     let aerospace = Process()
     aerospace.executableURL = URL(fileURLWithPath: "/usr/bin/env")
     aerospace.arguments = ["aerospace", "move-node-to-workspace", "--focus-follows-window", workspace]
-    try? aerospace.run()
+    guard (try? aerospace.run()) != nil else { return }
+    aerospace.waitUntilExit()
 }
 
 // Display bounds share the accessibility coordinate space: origin at the main display's top left.
@@ -105,41 +127,104 @@ func frame(of window: AXUIElement) -> CGRect? {
     return frame
 }
 
-// Crest opens a Quick Window over the frontmost window of another app, and takes for that the
-// JankyBorders border of its own browser window, which AeroSpace keeps parked off screen
-// while workspace A is hidden. This centers `window` on the display it overlaps most, unless
-// a display already holds all of it, and returns the frame it left and its new center.
-func bringOnScreen(_ window: AXUIElement) -> (from: CGRect, center: CGPoint)? {
-    guard let frame = frame(of: window) else { return nil }
-    let displays = displayBounds()
-    func overlap(_ display: CGRect) -> CGFloat {
-        let shared = display.intersection(frame)
-        return shared.width * shared.height
+// The frames of the Quick Windows on `display` other than window `id`, front to back as
+// Crest lists its windows. Those on hidden workspaces are parked off screen and minimized
+// ones are out of sight, so neither counts.
+func quickWindowFrames(on display: CGRect, besides id: CGWindowID, in apps: [AXUIElement]) -> [CGRect] {
+    windows(of: apps).compactMap { other in
+        guard other.id != id, attribute(other.element, kAXMinimizedAttribute) != true,
+              let frame = frame(of: other.element), display.contains(frame.center),
+              kind(of: other.element) == .quick else { return nil }
+        return frame
     }
-    guard !displays.contains(where: { $0.contains(frame) }),
-          let display = displays.max(by: { overlap($0) < overlap($1) }) else { return nil }
-
-    var origin = CGPoint(x: display.midX - frame.width / 2, y: display.midY - frame.height / 2)
-    guard let position = AXValueCreate(.cgPoint, &origin) else { return nil }
-    AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, position)
-    return (frame, CGPoint(x: display.midX, y: display.midY))
 }
 
-// Crest places a Quick Window once, a few frames after creating it, and AeroSpace's
-// mouse-follows-focus sends the pointer after it, sometimes twice. Both normally come before
-// this runs, but nothing orders them against it, so the window is watched for a moment: it is
-// moved back once, and the pointer follows whenever it is sent to where the window had been.
-func keepOnScreen(_ window: AXUIElement) {
-    let settled = Date().addingTimeInterval(settleTime)
-    var move: (from: CGRect, center: CGPoint)?
+// The first free spot for a window of `size` on `display`: its center, else one cascade step
+// at a time down and to the right, then up and to the left, while the window still fits. A
+// spot is taken when another Quick Window is centered within half a step of it.
+func freeSpot(for size: CGSize, on display: CGRect, clearOf taken: [CGPoint]) -> CGRect {
+    let centered = CGRect(
+        x: (display.midX - size.width / 2).rounded(), y: (display.midY - size.height / 2).rounded(),
+        width: size.width, height: size.height)
+    let steps = Array(0...cascadeLimit) + (1...cascadeLimit).map { -$0 }
+    return steps.lazy
+        .map { centered.offsetBy(dx: cascadeStep * CGFloat($0), dy: cascadeStep * CGFloat($0)) }
+        .filter { display.contains($0) }
+        .first { spot in
+            !taken.contains { abs($0.x - spot.midX) < cascadeStep / 2 && abs($0.y - spot.midY) < cascadeStep / 2 }
+        } ?? centered
+}
+
+// Where the window server shows window `id` now. The accessibility frame jumps to a new
+// position at once, while macOS glides the window there over about 250 ms.
+func shownOrigin(of id: CGWindowID) -> CGPoint? {
+    let info = (CGWindowListCopyWindowInfo(.optionIncludingWindow, id) as? [[CFString: Any]])?.first
+    guard let bounds = info?[kCGWindowBounds] as? NSDictionary else { return nil }
+    return CGRect(dictionaryRepresentation: bounds)?.origin
+}
+
+// Sets window `id`, now at `current`, to `frame`, leaving what already matches alone, and says
+// whether it changed anything. A resize during the glide to a new position starts from
+// wherever the window is on the way and cancels the rest of the move, so it waits for the
+// window to arrive. It moves first, so the window never grows past the screen's bottom edge,
+// where macOS would cut it short.
+func setFrame(of window: AXUIElement, id: CGWindowID, from current: CGRect, to frame: CGRect) -> Bool {
+    var origin = frame.origin, size = frame.size
+    let moves = abs(current.minX - origin.x) > 1 || abs(current.minY - origin.y) > 1
+    let resizes = abs(current.width - size.width) > 1 || abs(current.height - size.height) > 1
+    if moves, let value = AXValueCreate(.cgPoint, &origin) {
+        AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, value)
+    }
+    if resizes, let value = AXValueCreate(.cgSize, &size) {
+        let arrival = Date().addingTimeInterval(glideTimeout)
+        while moves, Date() < arrival, let shown = shownOrigin(of: id),
+              abs(shown.x - origin.x) > 1 || abs(shown.y - origin.y) > 1 {
+            usleep(glidePollInterval)
+        }
+        AXUIElementSetAttributeValue(window, kAXSizeAttribute as CFString, value)
+    }
+    return moves || resizes
+}
+
+// Crest centers a Quick Window opened from another app over the frontmost window outside
+// Crest, at 80% of its size. After a link click that is usually the JankyBorders border of
+// Crest's own browser window, which AeroSpace parks off screen while A is hidden, so Crest
+// pushes the window into the nearest corner of the screen. With a Quick Window already open,
+// it is that window's border, so each new one is smaller than the last. This moves `window`
+// to the first free spot on the display it overlaps most instead, at the size of the Quick
+// Window in front there. Crest remembers a size given to a Quick Window and opens later ones
+// at it, so after the first such resize its own sizes match as well.
+//
+// Crest places the window a few frames after creating it, AeroSpace's mouse-follows-focus
+// sends the pointer after it, sometimes twice, and AeroSpace brings back the windows it had
+// parked when the workspace returns. These normally come before this runs, but nothing orders
+// them against it, so the window is watched for a moment: it is put back if it moves, it
+// steps aside for Quick Windows that come back into view, and the pointer follows whenever it
+// is left where the window had been.
+func place(_ window: AXUIElement, id: CGWindowID, among apps: [AXUIElement]) {
+    guard let opened = frame(of: window) else { return }
+    func overlap(_ display: CGRect) -> CGFloat {
+        let shared = display.intersection(opened)
+        return shared.width * shared.height
+    }
+    guard let display = displayBounds().max(by: { overlap($0) < overlap($1) }) else { return }
+
+    let limit = Date().addingTimeInterval(settleLimit)
+    var settled = Date().addingTimeInterval(settleTime)
     repeat {
-        move = move ?? bringOnScreen(window)
-        if let move, let pointer = CGEvent(source: nil)?.location, move.from.contains(pointer) {
-            CGEvent(mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: move.center, mouseButton: .left)?
-                .post(tap: .cghidEventTap)
+        if let current = frame(of: window) {
+            let others = quickWindowFrames(on: display, besides: id, in: apps)
+            let spot = freeSpot(for: others.first?.size ?? current.size, on: display, clearOf: others.map(\.center))
+            if setFrame(of: window, id: id, from: current, to: spot) {
+                settled = Date().addingTimeInterval(settleTime)
+            }
+            if let pointer = CGEvent(source: nil)?.location, opened.contains(pointer), !spot.contains(pointer) {
+                CGEvent(mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: spot.center, mouseButton: .left)?
+                    .post(tap: .cghidEventTap)
+            }
         }
         usleep(pollInterval)
-    } while Date() < settled
+    } while Date() < min(settled, limit)
 }
 
 guard let id = ProcessInfo.processInfo.environment["AEROSPACE_WINDOW_ID"].flatMap(CGWindowID.init) else {
@@ -164,7 +249,7 @@ repeat {
         case .browser: exit(0)
         case .quick:
             if let origin = workspaceLinkWasOpenedOn(crest: crest) { moveToWorkspace(origin) }
-            keepOnScreen(window)
+            place(window, id: id, among: crest)
             exit(1)
         case nil: break
         }

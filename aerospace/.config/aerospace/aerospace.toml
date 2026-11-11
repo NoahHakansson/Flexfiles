@@ -124,8 +124,10 @@ run = "move-node-to-workspace X"
 
 # Crest's browser windows and Quick Windows share an app id, so every Crest
 # window floats where it opens and crest-window-detected.sh then picks out the
-# browser windows, which are tiled on A. It also puts a Quick Window on the
-# workspace and screen its link was opened on. One eval is one trip to AeroSpace.
+# browser windows, which are tiled on A. It also centers a Quick Window on the
+# workspace its link was opened on, staggered past other open Quick Windows
+# and at their size.
+# One eval is one trip to AeroSpace.
 [[on-window-detected]]
 if.app-id = 'com.pauldavis.crest'
 run = [
@@ -270,10 +272,13 @@ alt-shift-ctrl-slash = 'layout tiles horizontal vertical'
 alt-shift-ctrl-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-shift-ctrl-h = 'focus left'
-alt-shift-ctrl-j = 'focus down'
-alt-shift-ctrl-k = 'focus up'
-alt-shift-ctrl-l = 'focus right'
+# One focus at a time: with floating windows open, overlapping focus commands
+# crash AeroSpace (https://github.com/nikitabobko/AeroSpace/issues/1311).
+# lockf drops a press that arrives while the previous focus is still running.
+alt-shift-ctrl-h = 'exec-and-forget exec /usr/bin/lockf -k -s -t 0 "${TMPDIR:-/tmp/}aerospace-focus.lock" aerospace focus left'
+alt-shift-ctrl-j = 'exec-and-forget exec /usr/bin/lockf -k -s -t 0 "${TMPDIR:-/tmp/}aerospace-focus.lock" aerospace focus down'
+alt-shift-ctrl-k = 'exec-and-forget exec /usr/bin/lockf -k -s -t 0 "${TMPDIR:-/tmp/}aerospace-focus.lock" aerospace focus up'
+alt-shift-ctrl-l = 'exec-and-forget exec /usr/bin/lockf -k -s -t 0 "${TMPDIR:-/tmp/}aerospace-focus.lock" aerospace focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-ctrl-cmd-h = 'move left'
